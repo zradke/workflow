@@ -13,44 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 
 android rootProject.ext.defaultAndroidConfig
 
 android {
   defaultConfig {
-    applicationId "com.squareup.sample.tictacworkflow"
-    minSdkVersion versions.minSdk
-    multiDexEnabled true
-    targetSdkVersion versions.targetSdk
-    versionCode 1
-    versionName "1.0.0"
+    applicationId = "com.squareup.sample.tictacworkflow"
+    minSdkVersion = versions.minSdk
+    multiDexEnabled = true
+    targetSdkVersion = versions.targetSdk
+    versionCode = 1
+    versionName = "1.0.0"
   }
 
   // See https://github.com/Kotlin/kotlinx.coroutines/issues/1064#issuecomment-479412940
   packagingOptions {
-    exclude 'META-INF/atomicfu.kotlin_module'
+    exclude("META-INF/atomicfu.kotlin_module")
   }
 }
 
 dependencies {
-  implementation project(':samples:tictactoe:common')
-  implementation project(':workflow-ui-android')
-  implementation project(':workflow-core')
-  implementation project(':workflow-runtime')
+  implementation(project(":samples:tictactoe:common"))
+  implementation(project(":workflow-ui-android"))
+  implementation(project(":workflow-core"))
+  implementation(project(":workflow-runtime"))
 
-  implementation deps.appcompatv7
-  implementation deps.constraint_layout
-  implementation deps.design
-  implementation deps.lifecycle
-  implementation deps.kotlin.coroutines.rx2
-  implementation deps.kotlin.reflect
-  implementation deps.okio
-  implementation deps.rxandroid2
-  implementation deps.rxjava2.rxjava2
-  implementation deps.timber
+  implementation(deps.appcompatv7)
+  implementation(deps.constraint_layout)
+  implementation(deps.design)
+  implementation(deps.lifecycle)
+  implementation(deps.kotlin.coroutines.rx2)
+  implementation(deps.kotlin.reflect)
+  implementation(deps.okio)
+  implementation(deps.rxandroid2)
+  implementation(deps.rxjava2.rxjava2)
+  implementation(deps.timber)
 
-  testImplementation deps.test.assertj
-  testImplementation deps.test.junit
+  testImplementation(deps.test.assertj)
+  testImplementation(deps.test.junit)
 }

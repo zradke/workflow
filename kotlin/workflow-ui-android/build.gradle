@@ -13,34 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "com.vanniktech.maven.publish"
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
-android rootProject.ext.defaultAndroidConfig
+android(rootProject.ext.defaultAndroidConfig)
 
 // See https://github.com/Kotlin/kotlinx.coroutines/issues/1064#issuecomment-479412940
 android.packagingOptions {
-  exclude 'META-INF/atomicfu.kotlin_module'
+  exclude("META-INF/atomicfu.kotlin_module")
 }
 
 dependencies {
-  api project(':workflow-core')
-  api project(':workflow-ui-core')
+  api(project(":workflow-core"))
+  api(project(":workflow-ui-core"))
 
-  api deps.coordinators
-  api deps.kotlin.stdLib.jdk6
-  api deps.lifecycle
-  api deps.rxjava2.rxjava2
-  api deps.transition
+  api(deps.coordinators)
+  api(deps.kotlin.stdLib.jdk6)
+  api(deps.lifecycle)
+  api(deps.rxjava2.rxjava2)
+  api(deps.transition)
 
-  implementation project(':workflow-runtime')
-  implementation deps.appcompatv7
-  implementation deps.kotlin.coroutines.android
-  implementation deps.kotlin.coroutines.core
-  implementation deps.kotlin.coroutines.rx2
-  implementation deps.kotlin.reflect
+  implementation(project(":workflow-runtime"))
+  implementation(deps.appcompatv7)
+  implementation(deps.kotlin.coroutines.android)
+  implementation(deps.kotlin.coroutines.core)
+  implementation(deps.kotlin.coroutines.rx2)
+  implementation(deps.kotlin.reflect)
 }

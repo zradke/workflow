@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: "java-library"
+apply plugin: "kotlin"
+apply plugin: "com.vanniktech.maven.publish"
 
 dependencies {
-  implementation project(':legacy:legacy-workflow-rx2')
+  implementation(project(":legacy:legacy-workflow-rx2"))
 }
