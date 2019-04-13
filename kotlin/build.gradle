@@ -30,14 +30,11 @@ buildscript {
       "timber": "4.7.1",
 
       "assertj": "2.6.0",
-      "detektPlugin": "1.0.0-RC11",
-      "dokka": "0.9.16",
       "hamcrest": "1.3",
       "intellijAnnotations": "13.0",
       "junit": "4.12",
       "kotlin": "1.3.30",
       "kotlinCoroutines": "1.2.0",
-      "ktlintPlugin": "5.1.0",
       "mavenPublishPlugin": "0.6.0",
       "mockito": "2.7.5",
       "mockitoKotlin": "1.5.0",
@@ -46,7 +43,6 @@ buildscript {
 
   ext.deps = [
       "android_gradle_plugin": "com.android.tools.build:gradle:${versions.agp}",
-
       "appcompatv7": "com.android.support:appcompat-v7:${versions.support}",
       "coordinators": "com.squareup.coordinators:coordinators:${versions.coordinators}",
       "constraint_layout": "com.android.support.constraint:constraint-layout:1.1.0",
@@ -57,7 +53,6 @@ buildscript {
       "transition": "com.android.support:transition:${versions.support}",
 
       "kotlin": [
-          "gradlePlugin": "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
           "stdLib": [
               "common": "org.jetbrains.kotlin:kotlin-stdlib-common",
               "jdk8": "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
@@ -77,11 +72,7 @@ buildscript {
               "mockito": "com.nhaarman:mockito-kotlin-kt1.1:${versions.mockitoKotlin}"
           ]
       ],
-      "dokkaAndroid": "org.jetbrains.dokka:dokka-android-gradle-plugin:${versions.dokka}",
-      "dokka": "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
       "mavenPublish": "com.vanniktech:gradle-maven-publish-plugin:${versions.mavenPublishPlugin}",
-      "ktlint": "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:${versions.ktlintPlugin}",
-      "detekt": "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.detektPlugin}",
       "okio": "com.squareup.okio:okio:2.2.2",
       "rxjava2":[
           "rxjava2": "io.reactivex.rxjava2:rxjava:2.2.3",
@@ -101,13 +92,8 @@ buildscript {
   ]
 
   dependencies {
-    classpath deps.android_gradle_plugin
-    classpath deps.detekt
-    classpath deps.dokka
-    classpath deps.dokkaAndroid
-    classpath deps.kotlin.gradlePlugin
-    classpath deps.ktlint
-    classpath deps.mavenPublish
+    classpath(deps.android_gradle_plugin)
+    classpath(deps.mavenPublish)
   }
 
   repositories {
@@ -115,6 +101,16 @@ buildscript {
     gradlePluginPortal()
     google()
   }
+}
+
+// Don't apply any plugins just yet. Each module will apply the plugins it wants, or they'll be
+// applied in the subprojects block below.
+plugins {
+  id("io.gitlab.arturbosch.detekt") version "1.0.0-RC11" apply false
+  id("org.jetbrains.dokka") version "0.9.16" apply false
+  id("org.jetbrains.kotlin.jvm") version "1.3.30" apply false
+  id("org.jetbrains.kotlin.android") version "1.3.30" apply false
+  id("org.jlleitschuh.gradle.ktlint") version "5.1.0" apply false
 }
 
 rootProject.ext.defaultDokkaConfig = {
