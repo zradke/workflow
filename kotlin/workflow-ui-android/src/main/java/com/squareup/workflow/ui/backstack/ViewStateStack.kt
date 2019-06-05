@@ -80,7 +80,7 @@ class ViewStateStack private constructor(
    * To be called when the container is ready to create and show the view for
    * a new [BackStackScreen]. Returns [UpdateTools] to help get the job done.
    */
-  fun prepareToUpdate(newScreenKey: Key<*>): UpdateTools {
+  fun prepareToUpdate(newStack: List<*>): UpdateTools {
     val popIndex = viewStates.indexOfFirst { it.key == newScreenKey.toString() }
     if (popIndex < 0) {
       return object : UpdateTools {

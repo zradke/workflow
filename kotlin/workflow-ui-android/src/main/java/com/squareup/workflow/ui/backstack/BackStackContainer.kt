@@ -65,14 +65,14 @@ class BackStackContainer(
   private fun update(newRendering: BackStackScreen<*>) {
     // Existing view is of the right type, just update it.
     showing
-        ?.takeIf { it.canShowRendering(newRendering.wrapped) }
+        ?.takeIf { it.canShowRendering(newRendering.top) }
         ?.let {
-          it.showRendering(newRendering.wrapped)
+          it.showRendering(newRendering.top)
           return
         }
 
-    val updateTools = viewStateStack.prepareToUpdate(newRendering.key)
-    val newView = registry.buildView(newRendering.wrapped, this)
+    val updateTools = viewStateStack.prepareToUpdate(newRendering.stack)
+    val newView = registry.buildView(newRendering.top, this)
         .apply { updateTools.setUpNewView(this) }
 
     // Showing something already, transition with push or pop effect.
