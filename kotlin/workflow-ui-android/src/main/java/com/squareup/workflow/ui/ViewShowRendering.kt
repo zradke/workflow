@@ -21,14 +21,21 @@ import android.view.View
  * Function attached to a view created by [ViewRegistry], to allow it
  * to respond to [View.showRendering].
  */
-typealias ViewShowRendering<RenderingT> = (RenderingT) -> Unit
+typealias ViewShowRendering<RenderingT> = (@UnsafeVariance RenderingT) -> Unit
 
 @ExperimentalWorkflowUi
-internal data class ShowRenderingTag<RenderingT : Any>(
+data class ShowRenderingTag<out RenderingT : Any>(
   val showing: RenderingT,
   val showRendering: ViewShowRendering<RenderingT>
 )
 
+/**
+ * Establishes [showRendering] as the implementation of [View.showRendering]
+ * for the receiver, possibly replacing the existing one. Calls [showRendering]
+ * to display [initialRendering].
+ *
+ * Intended for use by implementations of [ViewBinding.buildView].
+ */
 @ExperimentalWorkflowUi
 fun <RenderingT : Any> View.bindShowRendering(
   initialRendering: RenderingT,
@@ -39,16 +46,20 @@ fun <RenderingT : Any> View.bindShowRendering(
 }
 
 /**
- * True if this view is able to show [rendering]. Determined by comparing it
- * to what is currently showing. If the current rendering implements [UpdatableRendering],
- * [UpdatableRendering.canUpdateFrom] is called. Otherwise this is true if the old and
- * new renderings are of (exactly) the same type.
+ * True if this view is able to show [rendering].
+ *
+ * Returns`false` if [bindShowRendering] has not been called, so it is always safe to
+ * call this method. Otherwise uses [renderingsMatch] to decide if the current rendering
+ * is compatible with [rendering].
  */
 @ExperimentalWorkflowUi
 fun View.canShowRendering(rendering: Any): Boolean {
   return showRenderingTag?.showing?.matchesRendering(rendering) == true
 }
 
+/**
+ * Shows [rendering] in a view that has been initialized by [bindShowRendering].
+ */
 @ExperimentalWorkflowUi
 fun <RenderingT : Any> View.showRendering(rendering: RenderingT) {
   showRenderingTag
@@ -58,14 +69,17 @@ fun <RenderingT : Any> View.showRendering(rendering: RenderingT) {
         }
 
         @Suppress("UNCHECKED_CAST")
-        bindShowRendering(rendering, tag.showRendering as ViewShowRendering<RenderingT>)
+        (tag.showRendering as ViewShowRendering<RenderingT>).invoke(rendering)
       }
-      ?: throw IllegalStateException("showRendering function for $rendering not found on $this.")
+      ?: error("Expected $this to have a showRendering function for $rendering.")
 }
 
+/**
+ * Returns the [ShowRenderingTag] established by the last call to [View.bindShowRendering],
+ * or null if none has been set.
+ */
 @ExperimentalWorkflowUi
-private val View.showRenderingTag: ShowRenderingTag<*>?
+val View.showRenderingTag: ShowRenderingTag<*>?
   get() = getTag(R.id.view_show_rendering_function) as? ShowRenderingTag<*>
-
 
 private fun Any.matchesRendering(other: Any) = renderingsMatch(this, other)

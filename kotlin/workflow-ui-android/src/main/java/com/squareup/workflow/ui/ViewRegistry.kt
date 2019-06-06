@@ -21,8 +21,8 @@ import android.view.ViewGroup
 import kotlin.reflect.KClass
 
 /**
- * A collection of [ViewBinding]s that can be used to display the stream of screen
- * models rendered by a workflow.
+ * A collection of [ViewBinding]s that can be used to display the stream of renderings
+ * from a workflow tree.
  *
  * Two concrete [ViewBinding] implementations are provided:
  *
@@ -48,11 +48,17 @@ import kotlin.reflect.KClass
  * In the above example, note that the `companion object`s of the various [LayoutRunner] classes
  * honor a convention of implementing [ViewBinding], in aid of this kind of assembly. See the
  * class doc on [LayoutRunner] for details.
+ *
+ * A binding for [UniquedRendering]`<*>` is built in, which delegates to the renderer
+ * for [UniquedRendering.wrapped].
  */
 @ExperimentalWorkflowUi
 class ViewRegistry private constructor(
   private val bindings: Map<KClass<*>, ViewBinding<*>>
 ) {
+  /** [bindings] plus any built-ins. Segregated to keep dup checking simple. */
+  private val allBindings = bindings + (UniquedBinding.type to UniquedBinding)
+
   constructor(vararg bindings: ViewBinding<*>) : this(
       bindings.map { it.type to it }.toMap().apply {
         check(keys.size == bindings.size) {
@@ -71,7 +77,7 @@ class ViewRegistry private constructor(
   )
 
   /**
-   * Creates a [View] to display [initialRendering], and which can handle calls
+   * Creates a [View] to display [initialRendering], which can be updated via calls
    * to [View.showRendering].
    */
   fun <RenderingT : Any> buildView(
@@ -80,10 +86,15 @@ class ViewRegistry private constructor(
     container: ViewGroup? = null
   ): View {
     @Suppress("UNCHECKED_CAST")
-    return (bindings[initialRendering::class] as? ViewBinding<RenderingT>)
-        ?.buildView(this, initialRendering, contextForNewView, container)
+    return (allBindings[initialRendering::class] as? ViewBinding<RenderingT>)
+        ?.buildView(this, initialRendering, contextForNewView, container)?.apply {
+          check(showRenderingTag?.showing != null) {
+            "View.bindShowRendering must be called for $this."
+          }
+        }
         ?: throw IllegalArgumentException(
-            "No view binding found for $initialRendering (${initialRendering::class.simpleName})"
+            "A binding for ${initialRendering::class.qualifiedName} must be registered " +
+                "to display $initialRendering."
         )
   }
 
@@ -109,3 +120,18 @@ class ViewRegistry private constructor(
     return ViewRegistry(this, registry)
   }
 }
+
+@UseExperimental(ExperimentalWorkflowUi::class)
+private object UniquedBinding : ViewBinding<UniquedRendering<*>>
+by BuilderBinding(
+    type = UniquedRendering::class,
+    viewConstructor = { viewRegistry, initialRendering, contextForNewView, container ->
+      val view = viewRegistry.buildView(initialRendering.wrapped, contextForNewView, container)
+      view.apply {
+        val wrappedUpdater = showRenderingTag!!.showRendering
+        bindShowRendering(initialRendering) {
+          wrappedUpdater.invoke(it.wrapped)
+        }
+      }
+    }
+)

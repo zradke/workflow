@@ -33,11 +33,10 @@ import com.squareup.workflow.ui.BuilderBinding
 import com.squareup.workflow.ui.ExperimentalWorkflowUi
 import com.squareup.workflow.ui.HandlesBack
 import com.squareup.workflow.ui.R
+import com.squareup.workflow.ui.UniquedRendering
 import com.squareup.workflow.ui.ViewBinding
 import com.squareup.workflow.ui.ViewRegistry
-import com.squareup.workflow.ui.backstack.ViewStateStack.Direction.POP
-import com.squareup.workflow.ui.backstack.ViewStateStack.Direction.PUSH
-import com.squareup.workflow.ui.backstack.ViewStateStack.SavedState
+import com.squareup.workflow.ui.backstack.ViewStateCache.SavedState
 import com.squareup.workflow.ui.bindShowRendering
 import com.squareup.workflow.ui.canShowRendering
 import com.squareup.workflow.ui.showRendering
@@ -55,25 +54,30 @@ class BackStackContainer(
 ) : FrameLayout(context, attributeSet), HandlesBack {
   constructor(context: Context) : this(context, null)
 
-  private var restored: ViewStateStack? = null
-  private val viewStateStack by lazy { restored ?: ViewStateStack() }
+  private var restored: ViewStateCache? = null
+  private val viewStateCache by lazy { restored ?: ViewStateCache() }
 
   private val showing: View? get() = if (childCount > 0) getChildAt(0) else null
 
   private lateinit var registry: ViewRegistry
 
   private fun update(newRendering: BackStackScreen<*>) {
+    // ViewStateCache requires every frame to be a UniquedRendering, so that each
+    // has a Parcelable-friendly comparison key.
+    val uniquedRendering: BackStackScreen<UniquedRendering<*>> =
+      BackStackScreen(newRendering.stack.makeUniform(), newRendering.onGoBack)
+
     // Existing view is of the right type, just update it.
     showing
-        ?.takeIf { it.canShowRendering(newRendering.top) }
+        ?.takeIf { it.canShowRendering(uniquedRendering.top) }
         ?.let {
-          it.showRendering(newRendering.top)
+          it.showRendering(uniquedRendering.top)
           return
         }
 
-    val updateTools = viewStateStack.prepareToUpdate(newRendering.stack)
-    val newView = registry.buildView(newRendering.top, this)
-        .apply { updateTools.setUpNewView(this) }
+    val updateTools = viewStateCache.prepareToUpdate(uniquedRendering.stack)
+    val newView = registry.buildView(uniquedRendering.top, this)
+        .apply { updateTools.restoreNewView(this) }
 
     // Showing something already, transition with push or pop effect.
     showing
@@ -82,9 +86,10 @@ class BackStackContainer(
 
           val newScene = Scene(this, newView)
 
-          val (outEdge, inEdge) = when (updateTools.direction) {
-            PUSH -> Gravity.START to Gravity.END
-            POP -> Gravity.END to Gravity.START
+          // restored means we're popping, otherwise push.
+          val (outEdge, inEdge) = when (updateTools.restored) {
+            false -> Gravity.START to Gravity.END
+            true -> Gravity.END to Gravity.START
           }
 
           val outSet = TransitionSet()
@@ -110,14 +115,14 @@ class BackStackContainer(
   }
 
   override fun onSaveInstanceState(): Parcelable {
-    showing?.let { viewStateStack.save(it) }
-    return SavedState(super.onSaveInstanceState(), viewStateStack)
+    showing?.let { viewStateCache.save(it) }
+    return SavedState(super.onSaveInstanceState(), viewStateCache)
   }
 
   override fun onRestoreInstanceState(state: Parcelable) {
     (state as? SavedState)
         ?.let {
-          restored = it.viewStateStack
+          restored = it.viewStateCache
           super.onRestoreInstanceState(state.superState)
         }
         ?: super.onRestoreInstanceState(state)
@@ -136,4 +141,10 @@ class BackStackContainer(
             }
       }
   )
+}
+
+private fun List<Any>.makeUniform(): List<UniquedRendering<*>> {
+  return map {
+    if (it is UniquedRendering<*>) it else UniquedRendering(it)
+  }
 }

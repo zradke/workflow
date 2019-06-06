@@ -16,9 +16,12 @@
 package com.squareup.workflow.ui
 
 /**
- * Implemented by rendering types that need control over the response
- * to [android.view.View.canShowRendering]. Useful when several objects
- * of the same type need to be on screen at the same time.
+ * Implemented by renderings that need to be distinguishable by more
+ * than just their type in response when a view system is deciding
+ * if an existing view can display them, e.g. via the `View.canShowRendering` for Android.
+ *
+ * Renderings that don't implement this interface directly can be distinguished
+ * by wrapping them with [UniquedRendering].
  */
 interface UpdatableRendering<out T : UpdatableRendering<T>> {
   fun canUpdateFrom(another: @UnsafeVariance T): Boolean
