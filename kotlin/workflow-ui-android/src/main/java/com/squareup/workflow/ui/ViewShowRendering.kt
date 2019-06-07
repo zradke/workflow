@@ -49,12 +49,12 @@ fun <RenderingT : Any> View.bindShowRendering(
  * True if this view is able to show [rendering].
  *
  * Returns`false` if [bindShowRendering] has not been called, so it is always safe to
- * call this method. Otherwise uses [renderingsMatch] to decide if the current rendering
- * is compatible with [rendering].
+ * call this method. Otherwise returns the [compatibility][compatible] of the new
+ * [rendering] and the current one.
  */
 @ExperimentalWorkflowUi
 fun View.canShowRendering(rendering: Any): Boolean {
-  return showRenderingTag?.showing?.matchesRendering(rendering) == true
+  return showRenderingTag?.showing?.matches(rendering) == true
 }
 
 /**
@@ -64,7 +64,7 @@ fun View.canShowRendering(rendering: Any): Boolean {
 fun <RenderingT : Any> View.showRendering(rendering: RenderingT) {
   showRenderingTag
       ?.let { tag ->
-        check(tag.showing.matchesRendering(rendering)) {
+        check(tag.showing.matches(rendering)) {
           "Expected ${this} to be able to update of ${tag.showing} from $rendering"
         }
 
@@ -82,4 +82,4 @@ fun <RenderingT : Any> View.showRendering(rendering: RenderingT) {
 val View.showRenderingTag: ShowRenderingTag<*>?
   get() = getTag(R.id.view_show_rendering_function) as? ShowRenderingTag<*>
 
-private fun Any.matchesRendering(other: Any) = renderingsMatch(this, other)
+private fun Any.matches(other: Any) = compatible(this, other)

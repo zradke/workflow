@@ -23,7 +23,7 @@ import android.view.View
 import android.view.View.BaseSavedState
 import com.squareup.workflow.ui.BackStackScreen
 import com.squareup.workflow.ui.ExperimentalWorkflowUi
-import com.squareup.workflow.ui.UniquedRendering
+import com.squareup.workflow.ui.Uniqued
 import com.squareup.workflow.ui.backstack.ViewStateCache.SavedState
 import com.squareup.workflow.ui.backstack.ViewStateCache.UpdateTools
 import com.squareup.workflow.ui.showRenderingTag
@@ -71,11 +71,12 @@ class ViewStateCache private constructor(
    * To be called when the container is ready to create and show the view for
    * a new [BackStackScreen]. Returns [UpdateTools] to help get the job done.
    */
-  fun prepareToUpdate(newStack: List<UniquedRendering<*>>): UpdateTools {
+  fun prepareToUpdate(newStack: List<Uniqued<*>>): UpdateTools {
     require(newStack.isNotEmpty()) { "newStack must not be empty." }
 
     // Prune any saved states that are no longer in the back stack.
-    viewStates -= newStack.map { it.key.toString() }
+    val deadKeys = viewStates.keys - newStack.map { it.key.toString() }
+    viewStates -= deadKeys
 
     val newScreenKey = newStack.last()
         .key.toString()
@@ -181,8 +182,8 @@ class ViewStateCache private constructor(
 // endregion
 }
 
-private val View.uniquedKey: UniquedRendering.Key<*>
+private val View.uniquedKey: Uniqued.Key<*>
   get() {
     @UseExperimental(ExperimentalWorkflowUi::class)
-    return (showRenderingTag!!.showing as UniquedRendering<*>).key
+    return (showRenderingTag!!.showing as Uniqued<*>).key
   }

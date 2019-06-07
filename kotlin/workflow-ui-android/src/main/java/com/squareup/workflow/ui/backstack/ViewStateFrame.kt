@@ -23,7 +23,7 @@ import android.util.SparseArray
 /**
  * Used by [ViewStateCache] to record the [viewState] data for the view identified
  * by [key], which is expected to match the `toString()` of a
- * [com.squareup.workflow.ui.UniquedRendering.Key].
+ * [com.squareup.workflow.ui.Uniqued.Key].
  */
 internal data class ViewStateFrame(
   val key: String,

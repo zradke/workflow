@@ -49,8 +49,8 @@ import kotlin.reflect.KClass
  * honor a convention of implementing [ViewBinding], in aid of this kind of assembly. See the
  * class doc on [LayoutRunner] for details.
  *
- * A binding for [UniquedRendering]`<*>` is built in, which delegates to the renderer
- * for [UniquedRendering.wrapped].
+ * A binding for [Uniqued]`<*>` is built in, which delegates to the renderer
+ * for [Uniqued.wrapped].
  */
 @ExperimentalWorkflowUi
 class ViewRegistry private constructor(
@@ -122,9 +122,9 @@ class ViewRegistry private constructor(
 }
 
 @UseExperimental(ExperimentalWorkflowUi::class)
-private object UniquedBinding : ViewBinding<UniquedRendering<*>>
+private object UniquedBinding : ViewBinding<Uniqued<*>>
 by BuilderBinding(
-    type = UniquedRendering::class,
+    type = Uniqued::class,
     viewConstructor = { viewRegistry, initialRendering, contextForNewView, container ->
       val view = viewRegistry.buildView(initialRendering.wrapped, contextForNewView, container)
       view.apply {

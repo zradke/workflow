@@ -17,13 +17,29 @@ package com.squareup.workflow.ui
 
 typealias GoBackHandler = () -> Unit
 
-data class BackStackScreen<out StackedT : Any>(
+/**
+ * @param stack: screens that have are / have been displayed, ending in the current screen
+ *
+ * @param onGoBack: function to call for a "go back" gesture. Null indicates such gestures
+ * should be disabled.
+ */
+data class BackStackScreen<StackedT : Any>(
   val stack: List<StackedT>,
   val onGoBack: GoBackHandler? = null
 ) {
-  val top: StackedT get() = stack.last()
+  constructor(
+    only: StackedT,
+    onGoBack: GoBackHandler? = null
+  ) : this(listOf(only), onGoBack)
+
+  constructor(
+    vararg stack: StackedT,
+    onGoBack: GoBackHandler? = null
+  ) : this(stack.toList(), onGoBack)
 
   init {
-    require(stack.isNotEmpty()) { "There must be something to display." }
+    require(stack.isNotEmpty()) { "Empty stacks are not allowed." }
   }
+
+  val top: StackedT = stack.last()
 }

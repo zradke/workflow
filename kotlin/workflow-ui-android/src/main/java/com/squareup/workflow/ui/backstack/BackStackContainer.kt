@@ -33,7 +33,7 @@ import com.squareup.workflow.ui.BuilderBinding
 import com.squareup.workflow.ui.ExperimentalWorkflowUi
 import com.squareup.workflow.ui.HandlesBack
 import com.squareup.workflow.ui.R
-import com.squareup.workflow.ui.UniquedRendering
+import com.squareup.workflow.ui.Uniqued
 import com.squareup.workflow.ui.ViewBinding
 import com.squareup.workflow.ui.ViewRegistry
 import com.squareup.workflow.ui.backstack.ViewStateCache.SavedState
@@ -62,21 +62,21 @@ class BackStackContainer(
   private lateinit var registry: ViewRegistry
 
   private fun update(newRendering: BackStackScreen<*>) {
-    // ViewStateCache requires every frame to be a UniquedRendering, so that each
+    // ViewStateCache requires every frame to be a Uniqued, so that each
     // has a Parcelable-friendly comparison key.
-    val uniquedRendering: BackStackScreen<UniquedRendering<*>> =
-      BackStackScreen(newRendering.stack.makeUniform(), newRendering.onGoBack)
+    val uniqued: BackStackScreen<Uniqued<*>> =
+      BackStackScreen(newRendering.stack.map { Uniqued(it) }, newRendering.onGoBack)
 
     // Existing view is of the right type, just update it.
     showing
-        ?.takeIf { it.canShowRendering(uniquedRendering.top) }
+        ?.takeIf { it.canShowRendering(uniqued.top) }
         ?.let {
-          it.showRendering(uniquedRendering.top)
+          it.showRendering(uniqued.top)
           return
         }
 
-    val updateTools = viewStateCache.prepareToUpdate(uniquedRendering.stack)
-    val newView = registry.buildView(uniquedRendering.top, this)
+    val updateTools = viewStateCache.prepareToUpdate(uniqued.stack)
+    val newView = registry.buildView(uniqued.top, this)
         .apply { updateTools.restoreNewView(this) }
 
     // Showing something already, transition with push or pop effect.
@@ -141,10 +141,4 @@ class BackStackContainer(
             }
       }
   )
-}
-
-private fun List<Any>.makeUniform(): List<UniquedRendering<*>> {
-  return map {
-    if (it is UniquedRendering<*>) it else UniquedRendering(it)
-  }
 }
