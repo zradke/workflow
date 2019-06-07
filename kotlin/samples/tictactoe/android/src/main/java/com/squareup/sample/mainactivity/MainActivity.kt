@@ -28,7 +28,6 @@ import com.squareup.workflow.ui.backstack.BackStackContainer
 import com.squareup.workflow.ui.setContentWorkflow
 import com.squareup.workflow.ui.workflowOnBackPressed
 import io.reactivex.disposables.Disposables
-import timber.log.Timber
 
 @UseExperimental(ExperimentalWorkflowUi::class)
 class MainActivity : AppCompatActivity() {
@@ -44,9 +43,11 @@ class MainActivity : AppCompatActivity() {
         ?: MainComponent()
 
     workflowRunner = setContentWorkflow(viewRegistry, component.mainWorkflow, savedInstanceState)
-        .apply {
-          loggingSub = renderings.subscribe { Timber.d("rendering: %s", it) }
-        }
+// Uncomment this to crash instead of hanging.
+// Details in https://github.com/square/workflow/issues/399
+//        .apply {
+//          loggingSub = renderings.subscribe { Timber.d("rendering: %s", it) }
+//        }
   }
 
   override fun onBackPressed() {
