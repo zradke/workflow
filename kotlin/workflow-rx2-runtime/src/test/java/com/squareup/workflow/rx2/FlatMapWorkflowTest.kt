@@ -18,11 +18,18 @@ package com.squareup.workflow.rx2
 import com.squareup.workflow.Workflow
 import com.squareup.workflow.stateless
 import io.reactivex.BackpressureStrategy.BUFFER
+import io.reactivex.Flowable
+import io.reactivex.exceptions.OnErrorNotImplementedException
+import io.reactivex.flowables.ConnectableFlowable
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subscribers.TestSubscriber
 import kotlin.test.Test
+import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class FlatMapWorkflowTest {
+
+  private class ExpectedException : RuntimeException()
 
   private val workflow = Workflow.stateless<String, Nothing, String> { input ->
     "rendered: $input"
@@ -63,5 +70,61 @@ class FlatMapWorkflowTest {
   @Test fun `output errors when input completes before emitting`() {
     inputs.onComplete()
     renderings.assertError { it is NoSuchElementException }
+  }
+
+  @Test fun `regular exceptions from subscribers are propagated through replay`() {
+    assertErrorFromSubPropagatedThroughRenderings(::ExpectedException) { replay(1) }
+  }
+
+  // See https://github.com/square/workflow/issues/399
+  @Test fun `fatal exceptions from subscribers are propagated through replay`() {
+    // LinkageError is considered a fatal exception by RxJava2.
+    assertErrorFromSubPropagatedThroughRenderings(::LinkageError) { replay(1) }
+  }
+
+  @Test fun `regular exceptions from subscribers are propagated through publish`() {
+    assertErrorFromSubPropagatedThroughRenderings(::ExpectedException) { publish() }
+  }
+
+  // See https://github.com/square/workflow/issues/399
+  @Test fun `fatal exceptions from subscribers are propagated through publish`() {
+    // LinkageError is considered a fatal exception by RxJava2.
+    assertErrorFromSubPropagatedThroughRenderings(::LinkageError) { publish() }
+  }
+
+  private fun <E : Throwable> assertErrorFromSubPropagatedThroughRenderings(
+    exceptionProvider: () -> E,
+    shareStrategy: Flowable<Unit>.() -> ConnectableFlowable<Unit>
+  ) {
+    val workflow = Workflow.stateless<Unit, Nothing, Unit> { }
+    val updates = Flowable.just(Unit)
+        .flatMapWorkflow(workflow)
+    val renderings = updates.map { Unit }
+        .shareStrategy()
+        .autoConnect(1)
+
+    val err = assertFailsWith<OnErrorNotImplementedException> {
+      throwUncaughtExceptions {
+        renderings.subscribe { throw exceptionProvider() }
+      }
+    }
+    assertTrue(exceptionProvider().javaClass.isInstance(err.cause))
+  }
+
+  private fun throwUncaughtExceptions(block: () -> Unit) {
+    val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
+    var err: Throwable? = null
+    Thread.setDefaultUncaughtExceptionHandler { _, e ->
+      if (err == null) err = e
+      else err!!.addSuppressed(e)
+    }
+    try {
+      block()
+    } catch (e: Throwable) {
+      err = e.apply { err?.let { addSuppressed(it) } }
+    } finally {
+      Thread.setDefaultUncaughtExceptionHandler(oldHandler)
+      err?.let { throw it }
+    }
   }
 }
