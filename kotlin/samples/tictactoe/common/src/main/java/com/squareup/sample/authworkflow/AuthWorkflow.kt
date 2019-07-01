@@ -91,7 +91,7 @@ class RealAuthWorkflow(private val authService: AuthService) : AuthWorkflow,
 
         BackStackScreen(
             LoginScreen(),
-            AuthorizingScreen("Logging in…")
+            AuthorizingScreen("Crashing…")
         )
       }
 

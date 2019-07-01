@@ -18,16 +18,14 @@ package com.squareup.sample.mainactivity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.squareup.sample.authworkflow.AuthViewBindings
-import com.squareup.sample.gameworkflow.TicTacToeViewBindings
-import com.squareup.sample.panel.PanelContainer
 import com.squareup.workflow.ui.ExperimentalWorkflowUi
-import com.squareup.workflow.ui.ModalContainer
 import com.squareup.workflow.ui.ViewRegistry
 import com.squareup.workflow.ui.WorkflowRunner
 import com.squareup.workflow.ui.backstack.BackStackContainer
 import com.squareup.workflow.ui.setContentWorkflow
 import com.squareup.workflow.ui.workflowOnBackPressed
 import io.reactivex.disposables.Disposables
+import timber.log.Timber
 
 @UseExperimental(ExperimentalWorkflowUi::class)
 class MainActivity : AppCompatActivity() {
@@ -42,12 +40,10 @@ class MainActivity : AppCompatActivity() {
     component = lastCustomNonConfigurationInstance as? MainComponent
         ?: MainComponent()
 
-    workflowRunner = setContentWorkflow(viewRegistry, component.mainWorkflow, savedInstanceState)
-// Uncomment this to crash instead of hanging.
-// Details in https://github.com/square/workflow/issues/399
-//        .apply {
-//          loggingSub = renderings.subscribe { Timber.d("rendering: %s", it) }
-//        }
+    workflowRunner = setContentWorkflow(viewRegistry, component.authWorkflow, savedInstanceState)
+        .apply {
+          loggingSub = renderings.subscribe { Timber.d("rendering: %s", it) }
+        }
   }
 
   override fun onBackPressed() {
@@ -67,10 +63,6 @@ class MainActivity : AppCompatActivity() {
   }
 
   private companion object {
-    val viewRegistry = ViewRegistry(
-        BackStackContainer,
-        ModalContainer.forAlertContainerScreen(),
-        PanelContainer
-    ) + AuthViewBindings + TicTacToeViewBindings
+    val viewRegistry = ViewRegistry(BackStackContainer) + AuthViewBindings
   }
 }

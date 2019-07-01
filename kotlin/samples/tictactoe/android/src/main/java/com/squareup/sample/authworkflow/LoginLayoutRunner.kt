@@ -17,8 +17,6 @@ package com.squareup.sample.authworkflow
 
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import com.squareup.sample.authworkflow.LoginScreen.SubmitLogin
 import com.squareup.sample.tictactoe.R
 import com.squareup.workflow.ui.ExperimentalWorkflowUi
@@ -28,16 +26,11 @@ import com.squareup.workflow.ui.ViewBinding
 
 @UseExperimental(ExperimentalWorkflowUi::class)
 internal class LoginLayoutRunner(view: View) : LayoutRunner<LoginScreen> {
-  private val error: TextView = view.findViewById(R.id.login_error_message)
-  private val email: EditText = view.findViewById(R.id.login_email)
-  private val password: EditText = view.findViewById(R.id.login_password)
   private val button: Button = view.findViewById(R.id.login_button)
 
   override fun showRendering(rendering: LoginScreen) {
-    error.text = rendering.errorMessage
-
     button.setOnClickListener {
-      rendering.onEvent(SubmitLogin(email.text.toString(), password.text.toString()))
+      rendering.onEvent(SubmitLogin("foo@bar", "wrong"))
     }
   }
 

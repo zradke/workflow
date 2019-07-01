@@ -18,13 +18,6 @@ package com.squareup.sample.mainactivity
 import com.squareup.sample.authworkflow.AuthService
 import com.squareup.sample.authworkflow.AuthWorkflow
 import com.squareup.sample.authworkflow.RealAuthWorkflow
-import com.squareup.sample.gameworkflow.RealGameLog
-import com.squareup.sample.gameworkflow.RealRunGameWorkflow
-import com.squareup.sample.gameworkflow.RealTakeTurnsWorkflow
-import com.squareup.sample.gameworkflow.RunGameWorkflow
-import com.squareup.sample.gameworkflow.TakeTurnsWorkflow
-import com.squareup.sample.mainworkflow.MainWorkflow
-import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
 import timber.log.Timber
 
 /**
@@ -34,15 +27,7 @@ internal class MainComponent {
 
   private val authService = AuthService()
 
-  private fun authWorkflow(): AuthWorkflow = RealAuthWorkflow(authService)
-
-  private fun gameLog() = RealGameLog(mainThread())
-
-  private fun gameWorkflow(): RunGameWorkflow = RealRunGameWorkflow(takeTurnsWorkflow(), gameLog())
-
-  private fun takeTurnsWorkflow(): TakeTurnsWorkflow = RealTakeTurnsWorkflow()
-
-  val mainWorkflow = MainWorkflow(authWorkflow(), gameWorkflow())
+  val authWorkflow: AuthWorkflow = RealAuthWorkflow(authService)
 
   companion object {
     init {
