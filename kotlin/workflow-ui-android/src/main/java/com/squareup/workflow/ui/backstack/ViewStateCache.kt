@@ -15,18 +15,11 @@
  */
 package com.squareup.workflow.ui.backstack
 
-import android.os.Parcel
-import android.os.Parcelable
-import android.os.Parcelable.Creator
-import android.util.SparseArray
-import android.view.View
-import android.view.View.BaseSavedState
-import com.squareup.workflow.ui.BackStackScreen
-import com.squareup.workflow.ui.ExperimentalWorkflowUi
-import com.squareup.workflow.ui.Uniqued
-import com.squareup.workflow.ui.backstack.ViewStateCache.SavedState
 import com.squareup.workflow.ui.backstack.ViewStateCache.UpdateTools
-import com.squareup.workflow.ui.showRenderingTag
+
+class View {
+  var uniquedKey : String =""
+}
 
 /**
  * Maintains a stack of persisted [view hierarchy states][View.saveHierarchyState].
@@ -41,7 +34,7 @@ import com.squareup.workflow.ui.showRenderingTag
  */
 class ViewStateCache private constructor(
   private var viewStates: Map<String, ViewStateFrame>
-) : Parcelable {
+) {
   constructor() : this(emptyMap())
 
   /**
@@ -91,7 +84,6 @@ class ViewStateCache private constructor(
             }
 
             override fun restoreNewView(newView: View) {
-              newView.restoreHierarchyState(it.viewState)
               viewStates -= it.key
             }
           }
@@ -100,9 +92,8 @@ class ViewStateCache private constructor(
           override val restored = false
 
           override fun saveOldView(oldView: View) {
-            val saved = SparseArray<Parcelable>().apply { oldView.saveHierarchyState(this) }
             val savedKey = oldView.uniquedKey.toString()
-            viewStates += savedKey to ViewStateFrame(savedKey, saved)
+            viewStates += savedKey to ViewStateFrame(savedKey)
           }
 
           override fun restoreNewView(newView: View) {
@@ -116,74 +107,7 @@ class ViewStateCache private constructor(
    * to ensure that the state of the currently visible view is saved.
    */
   fun save(currentView: View) {
-    val saved = SparseArray<Parcelable>().apply { currentView.saveHierarchyState(this) }
-    val newFrame = ViewStateFrame(currentView.uniquedKey.toString(), saved)
+    val newFrame = ViewStateFrame(currentView.uniquedKey)
     viewStates += newFrame.key to newFrame
   }
-
-  /**
-   * Convenience for use in [View.onSaveInstanceState] and [View.onRestoreInstanceState]
-   * methods of container views that have no other state or their own to save.
-   *
-   * More interesting containers should create their own subclass of [BaseSavedState]
-   * rather than trying to extend this one.
-   */
-  class SavedState : BaseSavedState {
-    constructor(
-      superState: Parcelable?,
-      viewStateCache: ViewStateCache
-    ) : super(superState) {
-      this.viewStateCache = viewStateCache
-    }
-
-    constructor(source: Parcel) : super(source) {
-      this.viewStateCache = source.readParcelable(SavedState::class.java.classLoader)!!
-    }
-
-    val viewStateCache: ViewStateCache
-
-    override fun writeToParcel(
-      out: Parcel,
-      flags: Int
-    ) {
-      super.writeToParcel(out, flags)
-      out.writeParcelable(viewStateCache, flags)
-    }
-
-    companion object CREATOR : Creator<SavedState> {
-      override fun createFromParcel(source: Parcel) =
-        SavedState(source)
-
-      override fun newArray(size: Int): Array<SavedState?> = arrayOfNulls(size)
-    }
-  }
-
-// region Parcelable
-
-  override fun describeContents(): Int = 0
-
-  override fun writeToParcel(
-    parcel: Parcel,
-    flags: Int
-  ) {
-    parcel.writeMap(viewStates)
-  }
-
-  companion object CREATOR : Creator<ViewStateCache> {
-    override fun createFromParcel(parcel: Parcel): ViewStateCache {
-      return mutableMapOf<String, ViewStateFrame>()
-          .apply { parcel.readMap(this, ViewStateCache::class.java.classLoader) }
-          .let { ViewStateCache(it) }
-    }
-
-    override fun newArray(size: Int): Array<ViewStateCache?> = arrayOfNulls(size)
-  }
-
-// endregion
 }
-
-private val View.uniquedKey: Uniqued.Key<*>
-  get() {
-    @UseExperimental(ExperimentalWorkflowUi::class)
-    return (showRenderingTag!!.showing as Uniqued<*>).key
-  }

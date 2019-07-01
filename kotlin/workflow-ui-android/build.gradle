@@ -28,19 +28,14 @@ android.packagingOptions {
 }
 
 dependencies {
-  api project(':workflow-core')
-  api project(':workflow-ui-core')
-
   api deps.kotlin.stdLib.jdk6
   api deps.lifecycle
   api deps.rxjava2.rxjava2
   api deps.transition
-
-  implementation project(':workflow-rx2-runtime')
-  implementation deps.appcompatv7
-  implementation deps.coordinators
-  implementation deps.kotlin.coroutines.android
-  implementation deps.kotlin.coroutines.core
-  implementation deps.kotlin.coroutines.rx2
   implementation deps.kotlin.reflect
+
+  testImplementation deps.test.assertj
+  testImplementation deps.test.hamcrestCore
+  testImplementation deps.test.junit
+  testImplementation deps.rxjava2.extensions
 }
