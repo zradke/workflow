@@ -3,13 +3,13 @@ package com.squareup.workflow.ui
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.google.common.truth.Truth.assertThat
-import com.squareup.workflow.RenderContext
 import com.squareup.workflow.RenderingAndSnapshot
 import com.squareup.workflow.Snapshot
-import com.squareup.workflow.StatelessWorkflow
+import com.squareup.workflow.Workflow
 import com.squareup.workflow.WorkflowAction.Companion.emitOutput
 import com.squareup.workflow.asWorker
 import com.squareup.workflow.onWorkerOutput
+import com.squareup.workflow.stateless
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Unconfined
@@ -24,7 +24,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -72,13 +71,8 @@ class WorkflowRunnerViewModelTest {
   @Test fun magilla() {
     val outputs = ConflatedBroadcastChannel<String>()
 
-    val w = object : StatelessWorkflow<Unit, String, Unit>() {
-      override fun render(
-        input: Unit,
-        context: RenderContext<Nothing, String>
-      ) {
-        context.onWorkerOutput(outputs.asWorker()) { emitOutput(it) }
-      }
+    val w = Workflow.stateless<Unit, String, Unit> {
+      onWorkerOutput(outputs.asWorker()) { emitOutput(it) }
     }
 
     val factory = WorkflowRunnerViewModel.Factory(

@@ -23,13 +23,17 @@ import android.util.AttributeSet
 import android.util.SparseArray
 import android.view.View
 import android.widget.FrameLayout
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import com.squareup.coordinators.Coordinator
+import com.squareup.coordinators.Coordinators
+import io.reactivex.Observable
+import io.reactivex.Observable.never
+import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.Disposables
+import org.reactivestreams.Publisher
 
 /**
  * A view that can be driven by a [WorkflowRunner]. In most cases you'll use
- * [Activity.setContentWorkflow][android.support.v4.app.FragmentActivity.setContentWorkflow]
+ * [Activity.setContentWorkflow][com.squareup.workflow.ui.setContentWorkflow]
  * or subclass [WorkflowFragment] rather than manage this class directly.
  */
 @ExperimentalWorkflowUi
@@ -40,32 +44,63 @@ class WorkflowLayout(
   private var restoredChildState: SparseArray<Parcelable>? = null
   private val showing: View? get() = if (childCount > 0) getChildAt(0) else null
 
+  private val attached: Observable<Boolean> = Observable
+      .create<Boolean> { emitter ->
+        emitter.onNext(isAttachedToWindow)
+
+        object : OnAttachStateChangeListener {
+          override fun onViewDetachedFromWindow(view: View) {
+            emitter.onNext(false)
+          }
+
+          override fun onViewAttachedToWindow(view: View) {
+            emitter.onNext(true)
+          }
+        }.apply {
+          addOnAttachStateChangeListener(this)
+          emitter.setCancellable { removeOnAttachStateChangeListener(this) }
+        }
+      }
+      .doOnEach { println("create: $it") }
+      .distinctUntilChanged()
+      .doOnEach { println("distinct: $it") }
+
+  private var sub = Disposables.disposed()
+
   /**
-   * Subscribes to [renderings], and uses [registry] to
+   * Subscribes to [renderings] (only while [isAttachedToWindow]), and uses [registry] to
    * [build a new view][ViewRegistry.buildView] each time a new type of rendering is received,
    * making that view the only child of this one.
    *
    * Views created this way may make recursive calls to [ViewRegistry.buildView] to make
    * children of their own to handle nested renderings.
    */
+
   fun start(
-    owner: LifecycleOwner,
-    renderings: LiveData<out Any>,
+    renderings: Publisher<out Any>,
     registry: ViewRegistry
   ) {
-    renderings.observe(owner, Observer { show(it, registry) })
+    takeWhileAttached(Observable.fromPublisher(renderings)) { show(it, registry)}
+//    sub.dispose()
+//    sub = attached
+//        .doOnEach { println("attached: $it") }
+//        .switchMap { attached ->
+//          when {
+//            attached -> never()
+//            else -> Observable.fromPublisher(renderings)
+//                .doOnEach { println("asObservable: $it") }
+//          }
+//        }
+//        .doOnEach { println("switchmap: $it") }
+//        .subscribe { show(it, registry) }
   }
 
   /**
    * Convenience override to start this layout from [renderings][WorkflowRunner.renderings]
    * and [viewRegistry][WorkflowRunner.viewRegistry] of [workflowRunner].
    */
-  fun start(
-    owner: LifecycleOwner,
-    workflowRunner: WorkflowRunner<*>
-  ) {
-    start(owner, workflowRunner.renderings, workflowRunner.viewRegistry)
-  }
+  fun start(workflowRunner: WorkflowRunner<*>) =
+    start(workflowRunner.renderings, workflowRunner.viewRegistry)
 
   override fun onBackPressed(): Boolean {
     return showing
@@ -136,6 +171,31 @@ class WorkflowLayout(
         SavedState(source)
 
       override fun newArray(size: Int): Array<SavedState?> = arrayOfNulls(size)
+    }
+  }
+
+  /**
+   * Subscribes [update] to [source] only while this [View] is attached to a window.
+   */
+  private fun <S : Any> View.takeWhileAttached(
+    source: Observable<S>,
+    update: (S) -> Unit
+  ) {
+    Coordinators.bind(this) {
+      object : Coordinator() {
+        var sub: Disposable? = null
+
+        override fun attach(view: View) {
+          sub = source.subscribe { screen -> update(screen) }
+        }
+
+        override fun detach(view: View) {
+          sub?.let {
+            it.dispose()
+            sub = null
+          }
+        }
+      }
     }
   }
 }

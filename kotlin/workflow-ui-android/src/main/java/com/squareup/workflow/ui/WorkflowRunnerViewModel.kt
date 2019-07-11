@@ -19,7 +19,6 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
 import com.squareup.workflow.RenderingAndSnapshot
 import com.squareup.workflow.Snapshot
 import com.squareup.workflow.Workflow
@@ -33,9 +32,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.reactive.flow.asPublisher
+import kotlinx.coroutines.rx2.asFlowable
 import org.jetbrains.annotations.TestOnly
+import org.reactivestreams.Publisher
 import java.util.concurrent.CancellationException
-import kotlin.coroutines.CoroutineContext
 import kotlin.reflect.jvm.jvmName
 
 /**
@@ -49,7 +50,7 @@ import kotlin.reflect.jvm.jvmName
 internal class WorkflowRunnerViewModel<OutputT : Any>(
   override val viewRegistry: ViewRegistry,
   private val renderingsFlow: Flow<RenderingAndSnapshot<Any>>,
-  override val output: LiveData<out OutputT>,
+  override val output: Publisher<out OutputT>,
   private val scope: CoroutineScope
 ) : ViewModel(), WorkflowRunner<OutputT> {
 
@@ -71,11 +72,14 @@ internal class WorkflowRunnerViewModel<OutputT : Any>(
         snapshot
     ) { renderings, outputs ->
       @Suppress("UNCHECKED_CAST")
-      WorkflowRunnerViewModel(
-          viewRegistry, renderings, outputs.asLiveData(coroutineContext), this
-      ) as T
+      WorkflowRunnerViewModel(viewRegistry, renderings, outputs.asFlowable().share(), this) as T
     }
   }
+
+  override val renderings: Publisher<out Any> = renderingsFlow
+      .map { it.rendering }
+      .asFlowable()
+      .share()
 
   private val snapshotJob = scope.launch {
     renderingsFlow
@@ -84,10 +88,6 @@ internal class WorkflowRunnerViewModel<OutputT : Any>(
   }
 
   private var lastSnapshot: Snapshot = Snapshot.EMPTY
-
-  override val renderings: LiveData<out Any> = renderingsFlow
-      .map { it.rendering }
-      .asLiveData(scope.coroutineContext)
 
   override fun onCleared() {
     val cancellationException = CancellationException("WorkflowRunnerViewModel cleared.")
@@ -109,12 +109,3 @@ internal class WorkflowRunnerViewModel<OutputT : Any>(
     val BUNDLE_KEY = WorkflowRunner::class.jvmName + "-workflow"
   }
 }
-
-@UseExperimental(ExperimentalCoroutinesApi::class)
-private fun <T> Flow<T>.asLiveData(context: CoroutineContext): LiveData<T> =
-// The default timeout is several seconds, to avoid thrashing sources during config change.
-// We set it to zero to ensure that values are immediately blocked when no one is listening.
-  liveData(
-      context = context,
-      timeoutInMs = 0L
-  ) { collect { emit(it) } }

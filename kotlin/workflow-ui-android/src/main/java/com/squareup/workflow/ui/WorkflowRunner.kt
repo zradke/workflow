@@ -21,7 +21,6 @@ import android.os.Bundle
 import androidx.annotation.CheckResult
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
 import com.squareup.workflow.Workflow
 import kotlinx.coroutines.CoroutineDispatcher
@@ -52,13 +51,13 @@ interface WorkflowRunner<out OutputT> {
    * Outputs emitted while there are no active observers are cached -- that is,
    * all outputs will be delivered to some observer.
    */
-  val output: LiveData<out OutputT>
+  val output: Publisher<out OutputT>
 
   /**
    * A stream of the renderings emitted by the running [Workflow]. Renderings emitted
    * while there are no active observers are dropped.
    */
-  val renderings: LiveData<out Any>
+  val renderings: Publisher<out Any>
 
   val viewRegistry: ViewRegistry
 
@@ -267,7 +266,7 @@ fun <InputT, OutputT : Any> FragmentActivity.setContentWorkflow(
   val layout = WorkflowLayout(this@setContentWorkflow)
       .apply {
         id = R.id.workflow_layout
-        start(this@setContentWorkflow, runner)
+        start(runner)
       }
 
   this.setContentView(layout)
