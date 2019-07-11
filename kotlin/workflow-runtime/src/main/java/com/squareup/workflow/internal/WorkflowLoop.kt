@@ -80,7 +80,14 @@ internal object RealWorkflowLoop : WorkflowLoop {
           val snapshot = rootNode.snapshot(workflow)
 
           onRendering(RenderingAndSnapshot(rendering, snapshot))
-          output?.let { onOutput(it) }
+          output?.let {
+            try {
+              onOutput(it)
+            } catch (e: Throwable) {
+              println("fml $e")
+              throw(e)
+            }
+          }
 
           // Tick _might_ return an output, but if it returns null, it means the state or a child
           // probably changed, so we should re-render/snapshot and emit again.

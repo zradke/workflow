@@ -1,7 +1,5 @@
 package com.squareup.workflow.ui
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import com.google.common.truth.Truth.assertThat
 import com.squareup.workflow.RenderingAndSnapshot
 import com.squareup.workflow.Snapshot
@@ -17,21 +15,17 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
-import org.junit.Rule
+import org.junit.Assert.fail
 import org.junit.Test
-import org.junit.rules.TestRule
 
 @UseExperimental(ExperimentalWorkflowUi::class, ExperimentalCoroutinesApi::class)
 class WorkflowRunnerViewModelTest {
-  @get:Rule
-  val rule: TestRule = InstantTaskExecutorRule()
 
   private val scope = CoroutineScope(Unconfined)
   @Suppress("RemoveRedundantSpreadOperator")
@@ -43,7 +37,7 @@ class WorkflowRunnerViewModelTest {
     val snapshotsChannel = Channel<RenderingAndSnapshot<Unit>>(UNLIMITED)
     val snapshotsFlow = flow { snapshotsChannel.consumeEach { emit(it) } }
 
-    val runner = WorkflowRunnerViewModel(viewRegistry, snapshotsFlow, MutableLiveData(), scope)
+    val runner = WorkflowRunnerViewModel(viewRegistry, snapshotsFlow, flowOf(Unit), scope)
 
     assertThat(runner.getLastSnapshotForTest()).isEqualTo(Snapshot.EMPTY)
 
@@ -60,7 +54,7 @@ class WorkflowRunnerViewModelTest {
       if (e is CancellationException) cancelled = true
     }
 
-    val runner = WorkflowRunnerViewModel(viewRegistry, emptyFlow(), MutableLiveData(), scope)
+    val runner = WorkflowRunnerViewModel(viewRegistry, emptyFlow(), flowOf(Unit), scope)
 
     assertThat(cancelled).isFalse()
 
@@ -68,8 +62,8 @@ class WorkflowRunnerViewModelTest {
     assertThat(cancelled).isTrue()
   }
 
-  @Test fun magilla() {
-    val outputs = ConflatedBroadcastChannel<String>()
+  @Test fun errorOnOutputIsNotSwallowed() {
+    val outputs = Channel<String>()
 
     val w = Workflow.stateless<Unit, String, Unit> {
       onWorkerOutput(outputs.asWorker()) { emitOutput(it) }
@@ -80,13 +74,17 @@ class WorkflowRunnerViewModelTest {
     )
     val model = factory.create(WorkflowRunnerViewModel::class.java)
 
+    model.output.subscribe {
+      // This should be failing, but AssertionError is being swallowed by Flow.asFlowable()
+      assertThat(it).isEqualTo("Snot")
+    }
     runBlocking {
-      model.output.observeForever {
-        assertThat(it).isEqualTo("Snot")
-      }
-
-      // java.lang.RuntimeException: Method getMainLooper in android.os.Looper not mocked. See http://g.co/androidstudio/not-mocked for details.
       outputs.send("Fnord")
     }
+    TODO("This isn't failing as expected.")
+  }
+
+  @Test fun errorOnRenderIsNotSwallowed() {
+    TODO()
   }
 }
