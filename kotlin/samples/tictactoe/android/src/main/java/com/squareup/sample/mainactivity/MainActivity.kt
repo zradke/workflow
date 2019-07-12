@@ -25,7 +25,6 @@ import com.squareup.workflow.ui.ViewRegistry
 import com.squareup.workflow.ui.WorkflowRunner
 import com.squareup.workflow.ui.setContentWorkflow
 import com.squareup.workflow.ui.workflowOnBackPressed
-import io.reactivex.Observable
 import io.reactivex.disposables.Disposables
 import timber.log.Timber
 
@@ -43,12 +42,11 @@ class MainActivity : AppCompatActivity() {
         ?: MainComponent()
 
     workflowRunner = setContentWorkflow(viewRegistry, component.mainWorkflow, savedInstanceState)
-//        .apply {
-//          if (Timber.treeCount() > 0) {
-//            loggingSub = Observable.fromPublisher(renderings)
-//                .subscribe { Timber.d("rendering: %s", it) }
-//          }
-//        }
+        .apply {
+          if (Timber.treeCount() > 0) {
+            loggingSub = renderings.subscribe { Timber.d("rendering: %s", it) }
+          }
+        }
   }
 
   override fun onBackPressed() {

@@ -8,6 +8,7 @@ import com.squareup.workflow.WorkflowAction.Companion.emitOutput
 import com.squareup.workflow.asWorker
 import com.squareup.workflow.onWorkerOutput
 import com.squareup.workflow.stateless
+import io.reactivex.subjects.BehaviorSubject
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Unconfined
@@ -60,6 +61,17 @@ class WorkflowRunnerViewModelTest {
 
     runner.clearForTest()
     assertThat(cancelled).isTrue()
+  }
+
+  @Test fun crashFromSubscriber() {
+    val foo = BehaviorSubject.createDefault("fnord")
+
+    Thread.setDefaultUncaughtExceptionHandler { _, t ->
+      throw AssertionError("fml", t)
+    }
+    foo.subscribe {
+      fail("")
+    }
   }
 
   @Test fun errorOnOutputIsNotSwallowed() {
