@@ -1,0 +1,8 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:com.squareup.workflow.rx2$asWorker(io.reactivex.Completable, kotlin.String)com.squareup.workflow.rx2/io.reactivex.-completable/as-worker.md
+$dokka.location:com.squareup.workflow.rx2$asWorker(io.reactivex.Flowable((com.squareup.workflow.rx2.asWorker.T)), kotlin.String)com.squareup.workflow.rx2/io.reactivex.-flowable/as-worker.md
+$dokka.location:com.squareup.workflow.rx2$asWorker(io.reactivex.Maybe((com.squareup.workflow.rx2.asWorker.T)), kotlin.String)com.squareup.workflow.rx2/io.reactivex.-maybe/as-worker.md
+$dokka.location:com.squareup.workflow.rx2$asWorker(io.reactivex.Observable((com.squareup.workflow.rx2.asWorker.T)), kotlin.String)com.squareup.workflow.rx2/io.reactivex.-observable/as-worker.md
+$dokka.location:com.squareup.workflow.rx2$asWorker(io.reactivex.Single((com.squareup.workflow.rx2.asWorker.T)), kotlin.String)com.squareup.workflow.rx2/io.reactivex.-single/as-worker.md
+com.squareup.workflow.rx2
