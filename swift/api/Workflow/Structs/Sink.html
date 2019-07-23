@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sink Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144488214-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-144488214-1');
+</script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Sink" class="dashAnchor"></a>
+    <a title="Sink Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/square/workflow"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Sink Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/RenderContext.html">RenderContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WorkflowHost.html">WorkflowHost</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AnyWorkflowConvertible.html">AnyWorkflowConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Worker.html">Worker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Workflow.html">Workflow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WorkflowAction.html">WorkflowAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WorkflowDebugger.html">WorkflowDebugger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWorkflow.html">AnyWorkflow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWorkflowAction.html">AnyWorkflowAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Sink.html">Sink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowHierarchyDebugSnapshot.html">WorkflowHierarchyDebugSnapshot</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowHierarchyDebugSnapshot/Child.html">– Child</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowUpdateDebugInfo.html">WorkflowUpdateDebugInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowUpdateDebugInfo/Kind.html">– Kind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowUpdateDebugInfo/Source.html">– Source</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Sink</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Sink</span><span class="o">&lt;</span><span class="kt">Value</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>Sink is a type that receives incoming values (commonly events or actions)</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Workflow4SinkVyACyxGyxccfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Workflow4SinkVyACyxGyxccfc">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new sink with the given closure.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">onValue</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Workflow4SinkV4sendyyxF"></a>
+                    <a name="//apple_ref/swift/Method/send(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Workflow4SinkV4sendyyxF">send(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sends a new event into the sink.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Value</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>event</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to send into the sink.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Workflow4SinkV9contraMapyACyqd__Gxqd__clF"></a>
+                    <a name="//apple_ref/swift/Method/contraMap(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Workflow4SinkV9contraMapyACyqd__Gxqd__clF">contraMap(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generates a new sink of type NewValue.</p>
+
+<p>Given a <code>transform</code> closure, the following code is functionally equivalent:</p>
+<pre class="highlight swift"><code><span class="n">sink</span><span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nf">transform</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="n">sink</span><span class="o">.</span><span class="nf">contraMap</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span><span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre>
+
+<p><strong>Trivia</strong>: Why is this called <code>contraMap</code>?</p>
+
+<ul>
+<li><code>map</code> turns <code>Type&lt;T&gt;</code> into <code>Type&lt;U&gt;</code> via <code>(T)-&gt;U</code>.</li>
+<li><code>contraMap</code> turns <code>Type&lt;T&gt;</code> into <code>Type&lt;U&gt;</code> via <code>(U)-&gt;T</code></li>
+</ul>
+
+<p>Another way to think about this is: <code>map</code> transforms a type by changing the
+output types of its API, while <code>contraMap</code> transforms a type by changing the
+<em>input</em> types of its API.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">contraMap</span><span class="o">&lt;</span><span class="kt">NewValue</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">transform</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">NewValue</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Sink</span><span class="o">&lt;</span><span class="kt">NewValue</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transform</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An escaping closure that transforms <code>T</code> into <code>Event</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://developer.squareup.com" target="_blank" rel="external">Square</a>. All rights reserved. (Last updated: 2019-07-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

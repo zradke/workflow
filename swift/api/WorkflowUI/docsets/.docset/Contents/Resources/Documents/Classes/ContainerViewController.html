@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ContainerViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144488214-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-144488214-1');
+</script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ContainerViewController" class="dashAnchor"></a>
+    <a title="ContainerViewController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/square/workflow"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ContainerViewController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContainerViewController.html">ContainerViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ScreenViewController.html">ScreenViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:10WorkflowUI6ScreenP">Screen</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyScreen.html">AnyScreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewRegistry.html">ViewRegistry</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ContainerViewController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ContainerViewController</span><span class="o">&lt;</span><span class="kt">Output</span><span class="p">,</span> <span class="kt">ScreenType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">UIViewController</span> <span class="k">where</span> <span class="kt">ScreenType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:10WorkflowUI6ScreenP">Screen</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Drives view controllers from a root Workflow.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC6output13ReactiveSwift6SignalCyx6Result7NoErrorOGvp"></a>
+                    <a name="//apple_ref/swift/Property/output" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC6output13ReactiveSwift6SignalCyx6Result7NoErrorOGvp">output</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Emits output events from the bound workflow.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">output</span><span class="p">:</span> <span class="kt">Signal</span><span class="o">&lt;</span><span class="kt">Output</span><span class="p">,</span> <span class="kt">NoError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC8workflow12viewRegistryACyxq_Gqd___AA0dH0Vtc6OutputQyd__Rsz9RenderingQyd__Rs_0A0AMRd__lufc"></a>
+                    <a name="//apple_ref/swift/Method/init(workflow:viewRegistry:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC8workflow12viewRegistryACyxq_Gqd___AA0dH0Vtc6OutputQyd__Rsz9RenderingQyd__Rs_0A0AMRd__lufc">init(workflow:viewRegistry:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">W</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">workflow</span><span class="p">:</span> <span class="kt">W</span><span class="p">,</span> <span class="nv">viewRegistry</span><span class="p">:</span> <span class="kt"><a href="../Structs/ViewRegistry.html">ViewRegistry</a></span><span class="p">)</span> <span class="k">where</span> <span class="kt">Output</span> <span class="o">==</span> <span class="kt">W</span><span class="o">.</span><span class="kt">Output</span><span class="p">,</span> <span class="kt">ScreenType</span> <span class="o">==</span> <span class="kt">W</span><span class="o">.</span><span class="kt">Rendering</span><span class="p">,</span> <span class="kt">W</span> <span class="p">:</span> <span class="kt">Workflow</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC5coderACyxq_GSgSo7NSCoderC_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC5coderACyxq_GSgSo7NSCoderC_tcfc">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC11viewDidLoadyyF"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC11viewDidLoadyyF">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC21viewDidLayoutSubviewsyyF"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLayoutSubviews()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC21viewDidLayoutSubviewsyyF">viewDidLayoutSubviews()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewDidLayoutSubviews</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC22childForStatusBarStyleSo06UIViewE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/childForStatusBarStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC22childForStatusBarStyleSo06UIViewE0CSgvp">childForStatusBarStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">childForStatusBarStyle</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC23childForStatusBarHiddenSo06UIViewE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/childForStatusBarHidden" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC23childForStatusBarHiddenSo06UIViewE0CSgvp">childForStatusBarHidden</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">childForStatusBarHidden</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC31childForHomeIndicatorAutoHiddenSo06UIViewE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/childForHomeIndicatorAutoHidden" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC31childForHomeIndicatorAutoHiddenSo06UIViewE0CSgvp">childForHomeIndicatorAutoHidden</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">childForHomeIndicatorAutoHidden</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC42childForScreenEdgesDeferringSystemGesturesSo06UIViewE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/childForScreenEdgesDeferringSystemGestures" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC42childForScreenEdgesDeferringSystemGesturesSo06UIViewE0CSgvp">childForScreenEdgesDeferringSystemGestures</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">childForScreenEdgesDeferringSystemGestures</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI23ContainerViewControllerC30supportedInterfaceOrientationsSo26UIInterfaceOrientationMaskVvp"></a>
+                    <a name="//apple_ref/swift/Property/supportedInterfaceOrientations" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI23ContainerViewControllerC30supportedInterfaceOrientationsSo26UIInterfaceOrientationMaskVvp">supportedInterfaceOrientations</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">supportedInterfaceOrientations</span><span class="p">:</span> <span class="kt">UIInterfaceOrientationMask</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://developer.squareup.com" target="_blank" rel="external">Square</a>. All rights reserved. (Last updated: 2019-07-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
