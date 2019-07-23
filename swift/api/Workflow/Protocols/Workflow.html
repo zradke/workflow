@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Workflow Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Workflow" class="dashAnchor"></a>
+    <a title="Workflow Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/square/workflow"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Workflow Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/RenderContext.html">RenderContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WorkflowHost.html">WorkflowHost</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AnyWorkflowConvertible.html">AnyWorkflowConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Worker.html">Worker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Workflow.html">Workflow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WorkflowAction.html">WorkflowAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WorkflowDebugger.html">WorkflowDebugger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWorkflow.html">AnyWorkflow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWorkflowAction.html">AnyWorkflowAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Sink.html">Sink</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowHierarchyDebugSnapshot.html">WorkflowHierarchyDebugSnapshot</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowHierarchyDebugSnapshot/Child.html">– Child</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowUpdateDebugInfo.html">WorkflowUpdateDebugInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowUpdateDebugInfo/Kind.html">– Kind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowUpdateDebugInfo/Source.html">– Source</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Workflow</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Workflow</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/AnyWorkflowConvertible.html">AnyWorkflowConvertible</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Defines a node in the workflow tree.</p>
+
+<hr>
+
+<p><strong>Initialization and Updating</strong></p>
+
+<hr>
+
+<p>A workflow node comes into existence after its parent produces
+an instance of that workflow and uses it during a render pass (see the
+<code>render</code> method for more details).</p>
+
+<ul>
+<li><p>If this is the first time the parent has rendered a child of
+this type, a new workflow node is created. The workflow
+passed in from the parent will be used to invoke
+<code>initialState()</code> to obtain an initial state.</p></li>
+<li><p>If the parent had previously rendered a child of this type, the
+existing workflow node will be updated.
+<code>workflowDidChange(from:state:)</code> will be invoked
+to allow the workflow to respond to the change.</p></li>
+</ul>
+
+<hr>
+
+<p><strong>Render</strong></p>
+
+<hr>
+
+<p>After a workflow node has been created, or any time its state changes,
+a render pass occurs. The render pass takes the workflow that was passed
+down from the parent along with the current state and generates a value
+of type <code>Rendering</code>. In a common case, a workflpw might render to a screen
+model for display.</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">render</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt">State</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">RenderContext</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">MyScreenModel</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kt">MyScreenModel</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8WorkflowAAP5StateQa"></a>
+                    <a name="//apple_ref/swift/Alias/State" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8WorkflowAAP5StateQa">State</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines the state that is managed by this workflow.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">State</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8WorkflowAAP6OutputQa"></a>
+                    <a name="//apple_ref/swift/Alias/Output" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8WorkflowAAP6OutputQa">Output</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>Output</code> defines the type that can be emitted as output events.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Output</span> <span class="o">=</span> <span class="kt">Never</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8WorkflowAAP9RenderingQa"></a>
+                    <a name="//apple_ref/swift/Alias/Rendering" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8WorkflowAAP9RenderingQa">Rendering</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>Rendering</code> is the type that is produced by the <code>render</code> method: it
+is commonly a view / screen model.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Rendering</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8WorkflowAAP16makeInitialState0D0QzyF"></a>
+                    <a name="//apple_ref/swift/Method/makeInitialState()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8WorkflowAAP16makeInitialState0D0QzyF">makeInitialState()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method is invoked once when a workflow node comes into existence.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">makeInitialState</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Workflow.html#/s:8WorkflowAAP5StateQa">State</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The initial state for the workflow.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8WorkflowAAP17workflowDidChange4from5stateyx_5StateQzztF"></a>
+                    <a name="//apple_ref/swift/Method/workflowDidChange(from:state:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8WorkflowAAP17workflowDidChange4from5stateyx_5StateQzztF">workflowDidChange(from:state:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when a new workflow is passed down from the parent to an existing workflow node.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">workflowDidChange</span><span class="p">(</span><span class="n">from</span> <span class="nv">previousWorkflow</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">state</span><span class="p">:</span> <span class="k">inout</span> <span class="kt"><a href="../Protocols/Workflow.html#/s:8WorkflowAAP5StateQa">State</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>previousWorkflow</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The workflow before the update.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>state</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current state.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8WorkflowAAP6render5state7context9RenderingQz5StateQz_AA13RenderContextCyxGtF"></a>
+                    <a name="//apple_ref/swift/Method/render(state:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8WorkflowAAP6render5state7context9RenderingQz5StateQz_AA13RenderContextCyxGtF">render(state:context:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called to <q>render</q> the current state into <code><a href="../Protocols/Workflow.html#/s:8WorkflowAAP9RenderingQa">Rendering</a></code>. A workflow&rsquo;s <code><a href="../Protocols/Workflow.html#/s:8WorkflowAAP9RenderingQa">Rendering</a></code> type is commonly a view or
+screen model.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">render</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Workflow.html#/s:8WorkflowAAP5StateQa">State</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt"><a href="../Classes/RenderContext.html">RenderContext</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Workflow.html#/s:8WorkflowAAP9RenderingQa">Rendering</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>state</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current state.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The workflow context is the composition point for the workflow tree. To use a nested
+                 workflow, instantiate it based on the current state. The newly instantiated workflow is
+                 then used to invoke <code>context.render(_ workflow:)</code>, which returns the child&rsquo;s <code><a href="../Protocols/Workflow.html#/s:8WorkflowAAP9RenderingQa">Rendering</a></code>
+                 type after creating or updating the nested workflow.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Workflow03AnyA11ConvertibleP02asbA0AA0bA0Vy9RenderingQz6OutputQzGyF"></a>
+                    <a name="//apple_ref/swift/Method/asAnyWorkflow()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Workflow03AnyA11ConvertibleP02asbA0AA0bA0Vy9RenderingQz6OutputQzGyF">asAnyWorkflow()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">asAnyWorkflow</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/AnyWorkflow.html">AnyWorkflow</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Workflow.html#/s:8WorkflowAAP9RenderingQa">Rendering</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Workflow.html#/s:8WorkflowAAP6OutputQa">Output</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://developer.squareup.com" target="_blank" rel="external">Square</a>. All rights reserved. (Last updated: 2019-07-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

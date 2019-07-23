@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ScreenViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ScreenViewController" class="dashAnchor"></a>
+    <a title="ScreenViewController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/square/workflow"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ScreenViewController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContainerViewController.html">ContainerViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ScreenViewController.html">ScreenViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:10WorkflowUI6ScreenP">Screen</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyScreen.html">AnyScreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewRegistry.html">ViewRegistry</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ScreenViewController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ScreenViewController</span><span class="o">&lt;</span><span class="kt">ScreenType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">UIViewController</span> <span class="k">where</span> <span class="kt">ScreenType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:10WorkflowUI6ScreenP">Screen</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Generic base class that should be subclassed in order to to define a UI implementation that is powered by the
+given screen type.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI20ScreenViewControllerC12viewRegistryAA0dG0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/viewRegistry" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI20ScreenViewControllerC12viewRegistryAA0dG0Vvp">viewRegistry</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">let</span> <span class="nv">viewRegistry</span><span class="p">:</span> <span class="kt"><a href="../Structs/ViewRegistry.html">ViewRegistry</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI20ScreenViewControllerC6screenxvp"></a>
+                    <a name="//apple_ref/swift/Property/screen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI20ScreenViewControllerC6screenxvp">screen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">screen</span><span class="p">:</span> <span class="kt">ScreenType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI20ScreenViewControllerC10screenTypeAA0C0_pXpvp"></a>
+                    <a name="//apple_ref/swift/Property/screenType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI20ScreenViewControllerC10screenTypeAA0C0_pXpvp">screenType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">screenType</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:10WorkflowUI6ScreenP">Screen</a></span><span class="o">.</span><span class="k">Type</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI20ScreenViewControllerC6screen12viewRegistryACyxGx_AA0dH0Vtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(screen:viewRegistry:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI20ScreenViewControllerC6screen12viewRegistryACyxGx_AA0dH0Vtcfc">init(screen:viewRegistry:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span><span class="nv">screen</span><span class="p">:</span> <span class="kt">ScreenType</span><span class="p">,</span> <span class="nv">viewRegistry</span><span class="p">:</span> <span class="kt"><a href="../Structs/ViewRegistry.html">ViewRegistry</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI20ScreenViewControllerC6update6screenyx_tF"></a>
+                    <a name="//apple_ref/swift/Method/update(screen:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI20ScreenViewControllerC6update6screenyx_tF">update(screen:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">screen</span><span class="p">:</span> <span class="kt">ScreenType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10WorkflowUI20ScreenViewControllerC15screenDidChange4fromyx_tF"></a>
+                    <a name="//apple_ref/swift/Method/screenDidChange(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10WorkflowUI20ScreenViewControllerC15screenDidChange4fromyx_tF">screenDidChange(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subclasses should override this method in order to update any relevant UI bits when the screen model changes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">screenDidChange</span><span class="p">(</span><span class="n">from</span> <span class="nv">previousScreen</span><span class="p">:</span> <span class="kt">ScreenType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://developer.squareup.com" target="_blank" rel="external">Square</a>. All rights reserved. (Last updated: 2019-07-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
