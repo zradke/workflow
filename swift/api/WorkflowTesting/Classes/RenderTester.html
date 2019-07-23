@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RenderTester Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/RenderTester" class="dashAnchor"></a>
+    <a title="RenderTester Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/square/workflow"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        RenderTester Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/RenderTester.html">RenderTester</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Workflow.html">Workflow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/WorkflowAction.html">WorkflowAction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ExpectedState.html">ExpectedState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ExpectedWorker.html">ExpectedWorker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RenderExpectations.html">RenderExpectations</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/WorkflowActionTester.html">WorkflowActionTester</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RenderTester</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RenderTester</span><span class="o">&lt;</span><span class="kt">WorkflowType</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">WorkflowType</span> <span class="p">:</span> <span class="kt">Workflow</span></code></pre>
+
+                </div>
+              </div>
+            <p>Testing helper for validating the behavior of calls to <code>render</code>.</p>
+
+<p>Usage: Set up a set of <code><a href="../Structs/RenderExpectations.html">RenderExpectations</a></code> and then validate with a call to <code>render</code>.
+Side-effects may be performed against the rendering to validate the behavior of actions.</p>
+
+<p>Child workflows will always be rendered based upon their initial state.</p>
+
+<p>To directly test actions and their effects, use the <code><a href="../Structs/WorkflowActionTester.html">WorkflowActionTester</a></code>.</p>
+<pre class="highlight swift"><code><span class="n">workflow</span>
+    <span class="o">.</span><span class="nf">renderTester</span><span class="p">(</span><span class="nv">initialState</span><span class="p">:</span> <span class="kt">TestWorkflow</span><span class="o">.</span><span class="kt">State</span><span class="p">())</span>
+    <span class="o">.</span><span class="nf">render</span><span class="p">(</span>
+        <span class="nv">with</span><span class="p">:</span> <span class="kt">RenderExpectations</span><span class="p">(</span>
+        <span class="nv">expectedState</span><span class="p">:</span> <span class="kt">ExpectedState</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt">TestWorkflow</span><span class="o">.</span><span class="kt">State</span><span class="p">()),</span>
+        <span class="nv">expectedWorkers</span><span class="p">:</span> <span class="p">[</span>
+            <span class="kt">ExpectedWorker</span><span class="p">(</span>
+                <span class="nv">worker</span><span class="p">:</span> <span class="kt">TestWorker</span><span class="p">(),</span>
+                <span class="nv">output</span><span class="p">:</span> <span class="kt">TestWorker</span><span class="o">.</span><span class="kt">Output</span><span class="o">.</span><span class="n">success</span><span class="p">),</span>
+            <span class="o">...</span><span class="p">,</span>
+        <span class="p">]),</span>
+        <span class="nv">assertions</span><span class="p">:</span> <span class="p">{</span> <span class="n">rendering</span> <span class="k">in</span>
+            <span class="kt">XCTAssertEqual</span><span class="p">(</span><span class="s">"expected text on rendering"</span><span class="p">,</span> <span class="n">rendering</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="o">.</span><span class="nf">render</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1">// continue testing. The state will be updated based on actions or outputs.</span>
+</code></pre>
+
+<p>Validating the rendering only from the initial state provided by the workflow:</p>
+<pre class="highlight swift"><code><span class="n">workflow</span>
+    <span class="o">.</span><span class="nf">renderTester</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">render</span><span class="p">(</span>
+        <span class="nv">with</span><span class="p">:</span> <span class="kt">RenderExpectations</span><span class="p">(),</span>
+        <span class="nv">assertions</span><span class="p">:</span> <span class="p">{</span> <span class="n">rendering</span> <span class="k">in</span>
+            <span class="kt">XCTAssertEqual</span><span class="p">(</span><span class="s">"expected text on rendering"</span><span class="p">,</span> <span class="n">rendering</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="p">}</span>
+</code></pre>
+
+<p>Validate the state was updated from a callback on the rendering:</p>
+<pre class="highlight swift"><code><span class="n">workflow</span>
+    <span class="o">.</span><span class="nf">renderTester</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">render</span><span class="p">(</span>
+        <span class="nv">with</span><span class="p">:</span> <span class="kt">RenderExpectations</span><span class="p">(</span>
+        <span class="nv">expectedState</span><span class="p">:</span> <span class="kt">ExpectedState</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt">TestWorkflow</span><span class="o">.</span><span class="kt">State</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"updated"</span><span class="p">)),</span>
+        <span class="nv">assertions</span><span class="p">:</span> <span class="p">{</span> <span class="n">rendering</span> <span class="k">in</span>
+            <span class="kt">XCTAssertEqual</span><span class="p">(</span><span class="s">"expected text on rendering"</span><span class="p">,</span> <span class="n">rendering</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">rendering</span><span class="o">.</span><span class="nf">updateText</span><span class="p">(</span><span class="s">"updated"</span><span class="p">)</span>
+        <span class="p">}</span>
+</code></pre>
+
+<p>Validate a worker is running, and simulate the effect of its output:</p>
+<pre class="highlight swift"><code><span class="n">workflow</span>
+    <span class="o">.</span><span class="nf">renderTester</span><span class="p">(</span><span class="nv">initialState</span><span class="p">:</span> <span class="kt">TestWorkflow</span><span class="o">.</span><span class="kt">State</span><span class="p">(</span><span class="nv">loadingState</span><span class="p">:</span> <span class="o">.</span><span class="n">loading</span><span class="p">))</span>
+    <span class="o">.</span><span class="nf">render</span><span class="p">(</span>
+        <span class="nv">with</span><span class="p">:</span> <span class="kt">RenderExpectations</span><span class="p">(</span>
+        <span class="nv">expectedState</span><span class="p">:</span> <span class="kt">ExpectedState</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt">TestWorkflow</span><span class="o">.</span><span class="kt">State</span><span class="p">(</span><span class="nv">loadingState</span><span class="p">:</span> <span class="o">.</span><span class="n">idle</span><span class="p">)),</span>
+        <span class="nv">expectedWorkers</span><span class="p">:</span> <span class="p">[</span>
+            <span class="kt">ExpectedWorker</span><span class="p">(</span>
+                <span class="nv">worker</span><span class="p">:</span> <span class="kt">TestWorker</span><span class="p">(),</span>
+                <span class="nv">output</span><span class="p">:</span> <span class="kt">TestWorker</span><span class="o">.</span><span class="kt">Output</span><span class="o">.</span><span class="n">success</span><span class="p">),</span>
+            <span class="o">...</span><span class="p">,</span>
+        <span class="p">]),</span>
+        <span class="nv">assertions</span><span class="p">:</span> <span class="p">{}</span>
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15WorkflowTesting12RenderTesterC6render4with10assertions4file4lineACyxGAA0C12ExpectationsVyxG_y9RenderingQzXEs12StaticStringVSutF"></a>
+                    <a name="//apple_ref/swift/Method/render(with:assertions:file:line:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15WorkflowTesting12RenderTesterC6render4with10assertions4file4lineACyxGAA0C12ExpectationsVyxG_y9RenderingQzXEs12StaticStringVSutF">render(with:assertions:file:line:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Call <code>render</code> with a set of expectations. If the expectations have not been fulfilled, the test will fail.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">render</span><span class="p">(</span><span class="n">with</span> <span class="nv">expectations</span><span class="p">:</span> <span class="kt"><a href="../Structs/RenderExpectations.html">RenderExpectations</a></span><span class="o">&lt;</span><span class="kt">WorkflowType</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">assertions</span><span class="p">:</span> <span class="p">(</span><span class="kt">WorkflowType</span><span class="o">.</span><span class="kt">Rendering</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">file</span><span class="p">:</span> <span class="kt">StaticString</span> <span class="o">=</span> <span class="kd">#file</span><span class="p">,</span> <span class="nv">line</span><span class="p">:</span> <span class="kt">UInt</span> <span class="o">=</span> <span class="kd">#line</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RenderTester</span><span class="o">&lt;</span><span class="kt">WorkflowType</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15WorkflowTesting12RenderTesterC6assert5stateACyxGy5StateQzXE_tF"></a>
+                    <a name="//apple_ref/swift/Method/assert(state:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15WorkflowTesting12RenderTesterC6assert5stateACyxGy5StateQzXE_tF">assert(state:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Assert the internal state.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">assert</span><span class="p">(</span><span class="n">state</span> <span class="nv">assertions</span><span class="p">:</span> <span class="p">(</span><span class="kt">WorkflowType</span><span class="o">.</span><span class="kt">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RenderTester</span><span class="o">&lt;</span><span class="kt">WorkflowType</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://developer.squareup.com" target="_blank" rel="external">Square</a>. All rights reserved. (Last updated: 2019-07-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
