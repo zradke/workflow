@@ -13,6 +13,8 @@
         <meta name="description" content="A library for making composable state machines, and UIs driven by those state machines.">
       
       
+        <link rel="canonical" href="https://square.github.io/workflow/">
+      
       
         <meta name="author" content="Square, Inc.">
       
@@ -125,7 +127,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="." title="Workflow" class="md-header-nav__button md-logo">
+        <a href="https://square.github.io/workflow/" title="Workflow" class="md-header-nav__button md-logo">
           
             <img src="images/icon-square.png" width="24" height="24">
           
@@ -217,7 +219,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="." title="Workflow" class="md-nav__button md-logo">
+    <a href="https://square.github.io/workflow/" title="Workflow" class="md-nav__button md-logo">
       
         <img src="images/icon-square.png" width="48" height="48">
       
@@ -329,6 +331,13 @@
         <li class="md-nav__item">
   <a href="#releasing-and-deploying" title="Releasing and Deploying" class="md-nav__link">
     Releasing and Deploying
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" title="License" class="md-nav__link">
+    License
   </a>
   
 </li>
@@ -508,8 +517,8 @@
 
 
   <li class="md-nav__item">
-    <a href="swift/api/Workflow/index.html" title="Workflow ⏏" class="md-nav__link">
-      Workflow ⏏
+    <a href="swift/api/Workflow/README.md" title="Workflow" class="md-nav__link">
+      Workflow
     </a>
   </li>
 
@@ -520,8 +529,8 @@
 
 
   <li class="md-nav__item">
-    <a href="swift/api/WorkflowUI/index.html" title="WorkflowUI ⏏" class="md-nav__link">
-      WorkflowUI ⏏
+    <a href="swift/api/WorkflowUI/README.md" title="WorkflowUI" class="md-nav__link">
+      WorkflowUI
     </a>
   </li>
 
@@ -532,8 +541,8 @@
 
 
   <li class="md-nav__item">
-    <a href="swift/api/WorkflowTesting/index.html" title="WorkflowTesting ⏏" class="md-nav__link">
-      WorkflowTesting ⏏
+    <a href="swift/api/WorkflowTesting/README.md" title="WorkflowTesting" class="md-nav__link">
+      WorkflowTesting
     </a>
   </li>
 
@@ -802,6 +811,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#license" title="License" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
       
       
       
@@ -825,16 +841,20 @@
 <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img alt="GitHub license" src="https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat" /></a>
 <a href="https://cocoapods.org/pods/Workflow"><img alt="CocoaPods compatible" src="https://img.shields.io/cocoapods/v/Workflow.svg" /></a>
 <a href="https://search.maven.org/search?q=g:%22com.squareup.workflow%22"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.squareup.workflow/workflow-core-jvm.svg?label=Maven%20Central" /></a></p>
-<p>An architecture that allows composable state machines to drive UI navigation and content, where the state machines are cleanly separated from UI code.</p>
+<p>An architecture that allows composable state machines to drive UI navigation and content, where the
+ state machines are cleanly separated from UI code.</p>
 <p><em><strong>This project is currently experimental and the API subject to breaking changes without notice.</strong>
-Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/blog/">The Corner</a>, to see when this project becomes stable.</em></p>
+Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/blog/">The Corner</a>, to see when
+this project becomes stable.</em></p>
 <p>Workflow is a library for making composable state machines, and UIs driven by those state machines.</p>
-<p>This project is under active development. The workflow code is being piloted in production apps. The view code is not (yet).</p>
+<p>This project is under active development. The workflow code is being piloted in production apps. The
+view code is not (yet).</p>
 <p>More documentation and samples will be coming soon!</p>
 <h2 id="using-workflows-in-your-project">Using Workflows in your project<a class="headerlink" href="#using-workflows-in-your-project" title="Permanent link">&para;</a></h2>
 <h3 id="swift">Swift<a class="headerlink" href="#swift" title="Permanent link">&para;</a></h3>
 <p><a href="https://cocoapods.org/pods/Workflow"><img alt="CocoaPods compatible" src="https://img.shields.io/cocoapods/v/Workflow.svg" /></a></p>
-<p>If you use CocoaPods to manage your dependencies, simply add Workflow and WorkflowUI to your Podfile:</p>
+<p>If you use CocoaPods to manage your dependencies, simply add Workflow and WorkflowUI to your
+Podfile:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pod</span> <span class="s1">&#39;Workflow&#39;</span>
 <span class="n">pod</span> <span class="s1">&#39;WorkflowUI&#39;</span>
@@ -843,7 +863,8 @@ Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/
 
 <h3 id="kotlin">Kotlin<a class="headerlink" href="#kotlin" title="Permanent link">&para;</a></h3>
 <p><a href="https://search.maven.org/search?q=g:%22com.squareup.workflow%22"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.squareup.workflow/workflow-core-jvm.svg?label=Maven%20Central" /></a></p>
-<p>Artifacts are hosted on Maven Central. If you&rsquo;re using Gradle, ensure <code>mavenCentral()</code> appears in your <code>repositories</code> block, and then add dependencies on the following artifacts:</p>
+<p>Artifacts are hosted on Maven Central. If you&rsquo;re using Gradle, ensure <code>mavenCentral()</code> appears in
+your <code>repositories</code> block, and then add dependencies on the following artifacts:</p>
 <table>
   <tr>
     <th>Maven Coordinates</th>
@@ -851,7 +872,8 @@ Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/
   </tr>
   <tr>
     <td nowrap><code>com.squareup.workflow:workflow-core-jvm:x.y.z</code></td>
-    <td>You are writing a library module/project that uses Workflows, but you don't need to interact with the runtime from the outside.</td>
+    <td>You are writing a library module/project that uses Workflows, but you don't need to interact
+    with the runtime from the outside.</td>
   </tr>
   <tr>
     <td nowrap><code>com.squareup.workflow:workflow-rx2:x.y.z</code></td>
@@ -868,7 +890,8 @@ Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/
 </table>
 
 <h4 id="lower-level-artifacts">Lower-level Artifacts<a class="headerlink" href="#lower-level-artifacts" title="Permanent link">&para;</a></h4>
-<p>Most code shouldn&rsquo;t need to depend on these directly. They should generally only be used to build higher-level integrations with UI frameworks.</p>
+<p>Most code shouldn&rsquo;t need to depend on these directly. They should generally only be used to build
+higher-level integrations with UI frameworks.</p>
 <table>
   <tr>
     <th>Maven Coordinates</th>
@@ -880,23 +903,30 @@ Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/
   </tr>
   <tr>
     <td nowrap><code>com.squareup.workflow:workflow-ui-core-jvm:x.y.z</code></td>
-    <td>You are writing workflow-ui-android for another UI framework. Defines the core types used by that artifact.</td>
+    <td>You are writing workflow-ui-android for another UI framework. Defines the core types used by
+    that artifact.</td>
   </tr>
 </table>
 
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=8PlYtfsgDKs">SF Android GDG @ Square 2019 - Hello Workflow</a> (live coding)</li>
+<li><a href="https://www.youtube.com/watch?v=8PlYtfsgDKs">SF Android GDG @ Square 2019 - Hello Workflow</a>
+  (live coding)</li>
 <li><a href="https://twitter.com/chiuki/status/1100810374410956800">Android Dialogs 5-part Coding Series</a></li>
-<li><a href="https://www.youtube.com/watch?v=JJ4-8AR5HhA">1</a>, <a href="https://www.youtube.com/watch?v=XB6frWBGvp0">2</a>, <a href="https://www.youtube.com/watch?v=NdFJMkT-t3c">3</a>, <a href="https://www.youtube.com/watch?v=aRxmyO6fwSs">4</a>, <a href="https://www.youtube.com/watch?v=aKaZa-1KN2M">5</a></li>
+<li><a href="https://www.youtube.com/watch?v=JJ4-8AR5HhA">1</a>,
+    <a href="https://www.youtube.com/watch?v=XB6frWBGvp0">2</a>,
+    <a href="https://www.youtube.com/watch?v=NdFJMkT-t3c">3</a>,
+    <a href="https://www.youtube.com/watch?v=aRxmyO6fwSs">4</a>,
+    <a href="https://www.youtube.com/watch?v=aKaZa-1KN2M">5</a></li>
 <li><a href="https://www.youtube.com/watch?v=cw9ZF9-ilac">Reactive Workflows a Year Later – Droidcon NYC 2018</a></li>
 <li><a href="https://www.youtube.com/watch?v=mUBXgYnT7w0">The Reactive Workflow Pattern – Fragmented Podcast</a></li>
 <li><a href="https://www.youtube.com/watch?v=mvBVkU2mCF4">The Reactive Workflow Pattern Update – Droidcon SF 2017</a></li>
-<li><a href="https://www.youtube.com/watch?v=KjoMnsc2lPo">The Rx Workflow Pattern – Droidcon NYC 2017</a> (<a href="https://speakerdeck.com/rjrjr/reactive-workflows">slides</a>)</li>
+<li><a href="https://www.youtube.com/watch?v=KjoMnsc2lPo">The Rx Workflow Pattern – Droidcon NYC 2017</a>
+  (<a href="https://speakerdeck.com/rjrjr/reactive-workflows">slides</a>)</li>
 </ul>
 <h2 id="releasing-and-deploying">Releasing and Deploying<a class="headerlink" href="#releasing-and-deploying" title="Permanent link">&para;</a></h2>
 <p>See <a href="RELEASING/">RELEASING.md</a>.</p>
-<h1 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h1>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <pre>
 Copyright 2019 Square Inc.
 
@@ -965,6 +995,19 @@ limitations under the License.
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+    
+      <a href="https://square.github.io/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/square" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squareeng" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/joinsquare/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>

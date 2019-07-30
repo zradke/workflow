@@ -13,6 +13,8 @@
         <meta name="description" content="A library for making composable state machines, and UIs driven by those state machines.">
       
       
+        <link rel="canonical" href="https://square.github.io/workflow/swift/building-a-workflow/">
+      
       
         <meta name="author" content="Square, Inc.">
       
@@ -125,7 +127,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Workflow" class="md-header-nav__button md-logo">
+        <a href="https://square.github.io/workflow/" title="Workflow" class="md-header-nav__button md-logo">
           
             <img src="../../images/icon-square.png" width="24" height="24">
           
@@ -217,7 +219,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Workflow" class="md-nav__button md-logo">
+    <a href="https://square.github.io/workflow/" title="Workflow" class="md-nav__button md-logo">
       
         <img src="../../images/icon-square.png" width="48" height="48">
       
@@ -423,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../api/Workflow/index.html" title="Workflow ⏏" class="md-nav__link">
-      Workflow ⏏
+    <a href="../api/Workflow/README.md" title="Workflow" class="md-nav__link">
+      Workflow
     </a>
   </li>
 
@@ -435,8 +437,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../api/WorkflowUI/index.html" title="WorkflowUI ⏏" class="md-nav__link">
-      WorkflowUI ⏏
+    <a href="../api/WorkflowUI/README.md" title="WorkflowUI" class="md-nav__link">
+      WorkflowUI
     </a>
   </li>
 
@@ -447,8 +449,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../api/WorkflowTesting/index.html" title="WorkflowTesting ⏏" class="md-nav__link">
-      WorkflowTesting ⏏
+    <a href="../api/WorkflowTesting/README.md" title="WorkflowTesting" class="md-nav__link">
+      WorkflowTesting
     </a>
   </li>
 
@@ -952,23 +954,34 @@
 </pre></div>
 </td></tr></table>
 
-<p>A type conforming to <code>Workflow</code> represents a single node in the workflow tree. It should contain any values that must be provided by its parent (who is generally responsible for creating child workflows).</p>
-<p>Configuration parameters, strings, network services… If your workflow needs access to a value or object that it cannot create itself, they should be passed into the workflow&rsquo;s initializer.</p>
-<p>Every workflow defines its own <code>State</code> type to contain any data that should persist through subsequent render passes.</p>
+<p>A type conforming to <code>Workflow</code> represents a single node in the workflow tree. It should contain any
+values that must be provided by its parent (who is generally responsible for creating child
+workflows).</p>
+<p>Configuration parameters, strings, network services… If your workflow needs access to a value or
+object that it cannot create itself, they should be passed into the workflow&rsquo;s initializer.</p>
+<p>Every workflow defines its own <code>State</code> type to contain any data that should persist through
+subsequent render passes.</p>
 <h2 id="render">Render<a class="headerlink" href="#render" title="Permanent link">&para;</a></h2>
-<p>Workflows are only useful when they render a value for use by their parent (or, if they are the root workflow, for display). This type is very commonly a view model, or <code>Screen</code>. The <code>render(state:context:)</code> method has a couple of parameters, so we’ll work through them one by one.</p>
+<p>Workflows are only useful when they render a value for use by their parent (or, if they are the root
+workflow, for display). This type is very commonly a view model, or <code>Screen</code>. The
+<code>render(state:context:)</code> method has a couple of parameters, so we’ll work through them one by one.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">render</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">RenderContext</span><span class="p">&lt;</span><span class="n">DemoWorkflow</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">Rendering</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="state"><code>state</code><a class="headerlink" href="#state" title="Permanent link">&para;</a></h3>
-<p>Contains a value of type <code>State</code> to provide access to the current state. Any time the state of workflow changes, <code>render</code> is called again to take into account the change in state.</p>
+<p>Contains a value of type <code>State</code> to provide access to the current state. Any time the state of
+workflow changes, <code>render</code> is called again to take into account the change in state.</p>
 <h3 id="context"><code>context</code><a class="headerlink" href="#context" title="Permanent link">&para;</a></h3>
-<p>The render context:
-- provides a way for a workflow to defer to nested (child) workflows to generate some or all of its rendered output. We’ll walk through that process later on when we cover composition.
-- allows a workflow to request the execution of asynchronous tasks (<code>Worker</code>s)
-- generates event handlers for use in constructing view models.</p>
-<p>In order for us to see the anything in our app, we&rsquo;ll need to return a <code>Screen</code> that can be turned into a view controller:</p>
+<p>The render context:</p>
+<ul>
+<li>provides a way for a workflow to defer to nested (child) workflows to generate some or all of its
+  rendered output. We’ll walk through that process later on when we cover composition.</li>
+<li>allows a workflow to request the execution of asynchronous tasks (<code>Worker</code>s)</li>
+<li>generates event handlers for use in constructing view models.</li>
+</ul>
+<p>In order for us to see the anything in our app, we&rsquo;ll need to return a <code>Screen</code> that can be turned
+into a view controller:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="kd">func</span> <span class="nf">render</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">RenderContext</span><span class="p">&lt;</span><span class="n">DemoWorkflow</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">DemoScreen</span> <span class="p">{</span>
@@ -978,9 +991,15 @@
 </td></tr></table>
 
 <h2 id="actions-or-things-that-advance-a-workflow">Actions, or “Things that advance a workflow”<a class="headerlink" href="#actions-or-things-that-advance-a-workflow" title="Permanent link">&para;</a></h2>
-<p>So far we have only covered workflows that perform simple tasks like generate strings or simple screens with no actions. If our workflows take on a complicated roles like generating view models, however, they will inevitably be required to handle events of some kind – some from UI events such as button taps, others from infrastructure events such as network responses.</p>
-<p>In conventional UIKit code, it is common to deal with each of those event types differently. The common pattern is to implement a method like <code>handleButtonTap(sender:)</code>. Workflows are more strict about events, however. Workflows require that all events be expressed as &ldquo;Workflow Actions.&rdquo;</p>
-<p>These actions should be thought of as the entry point to your workflow. If any action of any kind happens (that your workflow cares about), it should be modeled as an action.</p>
+<p>So far we have only covered workflows that perform simple tasks like generate strings or simple
+screens with no actions. If our workflows take on a complicated roles like generating view models,
+however, they will inevitably be required to handle events of some kind – some from UI events such
+as button taps, others from infrastructure events such as network responses.</p>
+<p>In conventional UIKit code, it is common to deal with each of those event types differently. The
+common pattern is to implement a method like <code>handleButtonTap(sender:)</code>. Workflows are more strict
+about events, however. Workflows require that all events be expressed as &ldquo;Workflow Actions.&rdquo;</p>
+<p>These actions should be thought of as the entry point to your workflow. If any action of any kind
+happens (that your workflow cares about), it should be modeled as an action.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1014,12 +1033,17 @@
 </td></tr></table>
 
 <h2 id="the-update-cycle">The Update Cycle<a class="headerlink" href="#the-update-cycle" title="Permanent link">&para;</a></h2>
-<p>Every time a new action is received, it is applied to the current state of the workflow. If your workflow does more than simply render values, the action&rsquo;s <code>apply</code> is the method where the logic lives.</p>
-<p>There are two things that the <code>apply(toState:)</code> method is responsible for:
-- Transitioning state
-- (Optionally) emitting an output event</p>
-<p>Note that the <code>render(state:context:)</code> method is called after every state change, so you can be sure that any state changes will be reflected.</p>
-<p>Since we have a way of expressing an event from our UI, we can now use the callback on our view model to send that event back to the workflow:</p>
+<p>Every time a new action is received, it is applied to the current state of the workflow. If your
+workflow does more than simply render values, the action&rsquo;s <code>apply</code> is the method where the logic lives.</p>
+<p>There are two things that the <code>apply(toState:)</code> method is responsible for:</p>
+<ul>
+<li>Transitioning state</li>
+<li>(Optionally) emitting an output event</li>
+</ul>
+<p>Note that the <code>render(state:context:)</code> method is called after every state change, so you can be sure
+that any state changes will be reflected.</p>
+<p>Since we have a way of expressing an event from our UI, we can now use the callback on our view
+model to send that event back to the workflow:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1039,7 +1063,11 @@
 </td></tr></table>
 
 <h2 id="state_1">State<a class="headerlink" href="#state_1" title="Permanent link">&para;</a></h2>
-<p>Some workflows do not need state at all – they simply render values based on the values they were initialized with. But for more complicated workflows, state management is critical. For example, a multi-screen flow only functions if we are able to define all of the possible steps (model the state), remember which one we are currently on (persist state), and move to other steps in the future (transition state).</p>
+<p>Some workflows do not need state at all – they simply render values based on the values they were
+initialized with. But for more complicated workflows, state management is critical. For example, a
+multi-screen flow only functions if we are able to define all of the possible steps (model the
+state), remember which one we are currently on (persist state), and move to other steps in the
+future (transition state).</p>
 <p>To define your workflow&rsquo;s state, simply implement the associatedtype <code>State</code> via an enum or struct.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1075,11 +1103,17 @@
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Workflows (and their <code>State</code>) should always be implemented through value types (structs and enums) due to the way the framework handles state changes. This means that you can never capture references to <code>self</code>, but the consistent flow of data pays dividends – try this architecture for a while and we are confident that you will see the benefits.</p>
+<p>Workflows (and their <code>State</code>) should always be implemented through value types (structs and
+enums) due to the way the framework handles state changes. This means that you can never capture
+references to <code>self</code>, but the consistent flow of data pays dividends – try this architecture for
+a while and we are confident that you will see the benefits.</p>
 </div>
 <h2 id="workers-or-asynchronous-work-the-workflow-needs-done">Workers, or &ldquo;Asynchronous work the workflow needs done&rdquo;<a class="headerlink" href="#workers-or-asynchronous-work-the-workflow-needs-done" title="Permanent link">&para;</a></h2>
-<p>A workflow may need to do some amount of asynchronous work (such as a network request, reading from a sqlite database, etc). Workers provide a declarative interface to units of asynchronous work.</p>
-<p>To do something asynchronously, we define a worker that has an Output type and defines a <code>run</code> method that that returns a Reactive Swift <code>SignalProducer</code>. When this worker will be run, the SignalProducer is subscribed to starting the async task.</p>
+<p>A workflow may need to do some amount of asynchronous work (such as a network request, reading from
+a sqlite database, etc). Workers provide a declarative interface to units of asynchronous work.</p>
+<p>To do something asynchronously, we define a worker that has an Output type and defines a <code>run</code>
+method that that returns a Reactive Swift <code>SignalProducer</code>. When this worker will be run, the
+<code>SignalProducer</code> is subscribed to starting the async task.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1114,8 +1148,11 @@
 </pre></div>
 </td></tr></table>
 
-<p>Because a Worker is a declarative representation of work, it also needs to define an <code>isEquivalent</code> to guarantee that we are not running more than one at the same time. For the simple example above, it is always considered equivalent as we want only one of this type of worker running at a time.</p>
-<p>In order to start asynchronous work, the workflow requests it in the render method, looking something like:</p>
+<p>Because a Worker is a declarative representation of work, it also needs to define an <code>isEquivalent</code>
+to guarantee that we are not running more than one at the same time. For the simple example above,
+it is always considered equivalent as we want only one of this type of worker running at a time.</p>
+<p>In order to start asynchronous work, the workflow requests it in the render method, looking
+something like:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1142,25 +1179,41 @@
 </pre></div>
 </td></tr></table>
 
-<p>When the context is told to await a result from a worker, the context will do the following:
-- Check if there is already a worker running of the same type:
-  - If there is not, or <code>isEquivalent</code> is false, call <code>run</code> on the worker and subscribe to the SignalProducer
-  - If there is already a worker running and isEquivalent is true, continue to wait for it to produce an output.
-- When the SignalProducer from the Worker returns an output, it is mapped to an Action and handled the same way as any other action.</p>
+<p>When the context is told to await a result from a worker, the context will do the following:</p>
+<ul>
+<li>Check if there is already a worker running of the same type:</li>
+<li>If there is not, or <code>isEquivalent</code> is false, call <code>run</code> on the worker and subscribe to the
+    <code>SignalProducer</code></li>
+<li>If there is already a worker running and isEquivalent is true, continue to wait for it to
+    produce an output.</li>
+<li>When the SignalProducer from the Worker returns an output, it is mapped to an Action and handled
+  the same way as any other action.</li>
+</ul>
 <h2 id="output-events">Output Events<a class="headerlink" href="#output-events" title="Permanent link">&para;</a></h2>
-<p>The last role of the update cycle is to emit output events. As workflows form a hierarchy, it is common for children to send events up the tree. This may happen when a child workflow finishes or cancels, for example.</p>
+<p>The last role of the update cycle is to emit output events. As workflows form a hierarchy, it is
+common for children to send events up the tree. This may happen when a child workflow finishes or
+cancels, for example.</p>
 <p>Workflows can define an output type, which may then be returned by Actions.</p>
 <h2 id="composition">Composition<a class="headerlink" href="#composition" title="Permanent link">&para;</a></h2>
-<p>Composition is the primary tool that we can use to manage complexity in a growing application. Workflows should always be kept small enough to be understandable – less than 150 lines is a good target. By composing together multiple workflows, complex problems can be broken down into individual pieces that can be quickly understood by other developers (including future you).</p>
-<p>The context provided to the <code>render(state:context:)</code> method defines the API through which composition is made possible.</p>
+<p>Composition is the primary tool that we can use to manage complexity in a growing application.
+Workflows should always be kept small enough to be understandable – less than 150 lines is a good
+target. By composing together multiple workflows, complex problems can be broken down into
+individual pieces that can be quickly understood by other developers (including future you).</p>
+<p>The context provided to the <code>render(state:context:)</code> method defines the API through which
+composition is made possible.</p>
 <h3 id="the-render-context">The Render Context<a class="headerlink" href="#the-render-context" title="Permanent link">&para;</a></h3>
-<p>The useful role of children is ultimately to provide rendered values (typically screen models) via their <code>render(state:context:)</code> implementation. To obtain that value from a child workflow, the <code>rendered(with context:key:)</code> method is invoked on the child workflow.</p>
-<p>When a workflow is rendered with the context, the context will do the following:
-- Check if the child workflow is new or existing:
-  - If a workflow with the same type was used during the last render pass, the existing child workflow will be updated with the new workflow.
-  - Otherwise, a new child workflow node will be initialized.
-- The child workflow&rsquo;s <code>render(state:context:)</code> method is called.
-- The rendered value is returned.</p>
+<p>The useful role of children is ultimately to provide rendered values (typically screen models) via
+their <code>render(state:context:)</code> implementation. To obtain that value from a child workflow, the
+<code>rendered(with context:key:)</code> method is invoked on the child workflow.</p>
+<p>When a workflow is rendered with the context, the context will do the following:</p>
+<ul>
+<li>Check if the child workflow is new or existing:</li>
+<li>If a workflow with the same type was used during the last render pass, the existing child
+    workflow will be updated with the new workflow.</li>
+<li>Otherwise, a new child workflow node will be initialized.</li>
+<li>The child workflow&rsquo;s <code>render(state:context:)</code> method is called.</li>
+<li>The rendered value is returned.</li>
+</ul>
 <p>In practice, this looks something like this:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1268,6 +1321,19 @@
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://square.github.io/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/square" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squareeng" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/joinsquare/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>

@@ -13,6 +13,8 @@
         <meta name="description" content="A library for making composable state machines, and UIs driven by those state machines.">
       
       
+        <link rel="canonical" href="https://square.github.io/workflow/RELEASING/">
+      
       
         <meta name="author" content="Square, Inc.">
       
@@ -125,7 +127,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Workflow" class="md-header-nav__button md-logo">
+        <a href="https://square.github.io/workflow/" title="Workflow" class="md-header-nav__button md-logo">
           
             <img src="../images/icon-square.png" width="24" height="24">
           
@@ -217,7 +219,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href=".." title="Workflow" class="md-nav__button md-logo">
+    <a href="https://square.github.io/workflow/" title="Workflow" class="md-nav__button md-logo">
       
         <img src="../images/icon-square.png" width="48" height="48">
       
@@ -423,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/Workflow/index.html" title="Workflow ⏏" class="md-nav__link">
-      Workflow ⏏
+    <a href="../swift/api/Workflow/README.md" title="Workflow" class="md-nav__link">
+      Workflow
     </a>
   </li>
 
@@ -435,8 +437,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/WorkflowUI/index.html" title="WorkflowUI ⏏" class="md-nav__link">
-      WorkflowUI ⏏
+    <a href="../swift/api/WorkflowUI/README.md" title="WorkflowUI" class="md-nav__link">
+      WorkflowUI
     </a>
   </li>
 
@@ -447,8 +449,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/WorkflowTesting/index.html" title="WorkflowTesting ⏏" class="md-nav__link">
-      WorkflowTesting ⏏
+    <a href="../swift/api/WorkflowTesting/README.md" title="WorkflowTesting" class="md-nav__link">
+      WorkflowTesting
     </a>
   </li>
 
@@ -671,6 +673,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deploying-the-documentation-website" title="Deploying the documentation website" class="md-nav__link">
+    Deploying the documentation website
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-site-generators" title="Setting up the site generators" class="md-nav__link">
+    Setting up the site generators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kotlin-dokka" title="Kotlin: Dokka" class="md-nav__link">
+    Kotlin: Dokka
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift-sourcedocs" title="Swift: Sourcedocs" class="md-nav__link">
+    Swift: Sourcedocs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs" title="mkdocs" class="md-nav__link">
+    mkdocs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-the-website-to-production" title="Deploying the website to production" class="md-nav__link">
+    Deploying the website to production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-markdown" title="Validating Markdown" class="md-nav__link">
+    Validating Markdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kotlin-notes" title="Kotlin Notes" class="md-nav__link">
     Kotlin Notes
   </a>
@@ -739,7 +802,11 @@
                 <h1 id="releasing-workflow">Releasing workflow<a class="headerlink" href="#releasing-workflow" title="Permanent link">&para;</a></h1>
 <h2 id="production-releases">Production Releases<a class="headerlink" href="#production-releases" title="Permanent link">&para;</a></h2>
 <hr />
-<p><strong><em>Before you begin:</em></strong> <em>Please make sure you are set up with <a href="https://guides.cocoapods.org/making/getting-setup-with-trunk.html"><code>pod trunk</code></a> and your CocoaPods account is a contributor to both the Workflow and WorkflowUI pods. If you need to be added as a contributor, please <a href="https://github.com/square/workflow/issues/new">open a ticket requesting access</a>, and assign it to @apgar or @timdonnelly.</em></p>
+<p><strong><em>Before you begin:</em></strong> <em>Please make sure you are set up with 
+<a href="https://guides.cocoapods.org/making/getting-setup-with-trunk.html"><code>pod trunk</code></a> and your CocoaPods
+account is a contributor to both the Workflow and WorkflowUI pods. If you need to be added as a
+contributor, please <a href="https://github.com/square/workflow/issues/new">open a ticket requesting access</a>,
+and assign it to @apgar or @timdonnelly.</em></p>
 <hr />
 <ol>
 <li>
@@ -773,8 +840,8 @@ git tag v0.1.0
 </td></tr></table></p>
 </li>
 </ol>
-<p>Disabling parallelism and daemon sharing is required by the vanniktech maven publish plugin. Without those,
-   the artifacts will be split across multiple (invalid) staging repositories.</p>
+<p>Disabling parallelism and daemon sharing is required by the vanniktech maven publish plugin.
+   Without those, the artifacts will be split across multiple (invalid) staging repositories.</p>
 <ol>
 <li>
 <p>Publish to CocoaPods:
@@ -786,11 +853,11 @@ bundle <span class="nb">exec</span> pod trunk push WorkflowUI.podspec
 </li>
 <li>
 <p>Bump the version</p>
-<ul>
-<li><strong>Kotlin:</strong> Update the <code>VERSION_NAME</code> property in <code>kotlin/gradle.properties</code> to the new snapshot 
-  version, e.g. <code>VERSION_NAME=0.2.0-SNAPSHOT</code>.</li>
-<li><strong>Swift:</strong> Update <code>s.version</code> in <code>*.podspec</code> to the new version, e.g. <code>0.2.0</code>.</li>
-</ul>
+</li>
+<li><strong>Kotlin:</strong> Update the <code>VERSION_NAME</code> property in <code>kotlin/gradle.properties</code> to the new
+     snapshot version, e.g. <code>VERSION_NAME=0.2.0-SNAPSHOT</code>.</li>
+<li>
+<p><strong>Swift:</strong> Update <code>s.version</code> in <code>*.podspec</code> to the new version, e.g. <code>0.2.0</code>.</p>
 </li>
 <li>
 <p>Commit the new snapshot version:
@@ -810,19 +877,20 @@ git push origin v0.1.0
 </li>
 <li>
 <p>Create the release on GitHub:</p>
-<ol>
-<li>Go to the <a href="https://github.com/square/workflow/releases">Releases</a> page for the GitHub project.</li>
+</li>
+<li>Go to the <a href="https://github.com/square/workflow/releases">Releases</a> page for the GitHub
+      project.</li>
 <li>Click &ldquo;Draft a new release&rdquo;.</li>
 <li>Enter the tag name you just pushed.</li>
 <li>Title the release with the same name as the tag.</li>
 <li>Copy &amp; paste the changelog entry for this release into the description.</li>
 <li>If this is a pre-release version, check the pre-release box.</li>
-<li>Hit &ldquo;Publish release&rdquo;.</li>
-</ol>
+<li>
+<p>Hit &ldquo;Publish release&rdquo;.</p>
 </li>
 <li>
 <p>If this was a fix release, merge changes to the master branch:
-    <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+   <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -835,16 +903,116 @@ git push origin master
 </td></tr></table></p>
 </li>
 <li>
-<p>Publish the website:
-    <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># If you haven&#39;t already installed mkdocs, run:</span>
-<span class="c1"># pip install mkdocs mkdocs-material</span>
-./deploy_website.sh
-</pre></div>
-</td></tr></table></p>
+<p>Publish the website. See below.</p>
 </li>
 </ol>
+<h2 id="deploying-the-documentation-website">Deploying the documentation website<a class="headerlink" href="#deploying-the-documentation-website" title="Permanent link">&para;</a></h2>
+<p>Official Workflow documentation lives at <a href="https://squareup.github.io/workflow">https://squareup.github.io/workflow</a>. The website content
+consists of three parts:</p>
+<ol>
+<li>Markdown documentation: Lives in the <code>docs/</code> folder, and consists of a set of hand-written
+   Markdown files that document high-level concepts. The static site generator
+   <a href="https://www.mkdocs.org/">mkdocs</a> (with <a href="https://squidfunk.github.io/mkdocs-material/">Material</a>
+   theming) is used to convert the Markdown to static, styled HTML.</li>
+<li>Kotlin API reference: Kdoc embedded in Kotlin source files is converted to GitHub-flavored
+   Markdown by Dokka and then included in the statically-generated website.</li>
+<li>Swift API reference: Markup comments from Swift files are converted Markdown by
+   <a href="https://github.com/eneko/SourceDocs">Sourcedocs</a> and then included in the statically-generated
+   website.</li>
+</ol>
+<h3 id="setting-up-the-site-generators">Setting up the site generators<a class="headerlink" href="#setting-up-the-site-generators" title="Permanent link">&para;</a></h3>
+<p>If you&rsquo;ve already done this, you can skip to <em>Deploying the website to production</em> below.</p>
+<h4 id="kotlin-dokka">Kotlin: Dokka<a class="headerlink" href="#kotlin-dokka" title="Permanent link">&para;</a></h4>
+<p>Dokka runs as a Gradle plugin, so you need to be able to build the Kotlin source with Gradle, but
+that&rsquo;s it. To generate the docs manually, run:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> kotlin
+./gradlew dokka
+</pre></div>
+</td></tr></table>
+
+<h4 id="swift-sourcedocs">Swift: Sourcedocs<a class="headerlink" href="#swift-sourcedocs" title="Permanent link">&para;</a></h4>
+<p>Sourcedocs generates a Markdown site from Swift files. You need Ruby, rubygems,
+bundler (2.x), Xcode 10.2+, CocoaPods, and of course Sourcedocs itself, to run it. Assuming you&rsquo;ve
+already got Xcode, Ruby, and rubygems set up, install the rest of the dependencies:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gem install bundler cocoapods
+brew install sourcedocs
+</pre></div>
+</td></tr></table>
+
+<p>If that succeeded, you need to generate an Xcode project before running Sourcedocs:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> swift/Samples/SampleApp/
+bundle <span class="nb">exec</span> pod install
+<span class="c1"># If this is your first time running CocoaPods, that will fail and you&#39;ll need to run this instead:</span>
+<span class="c1">#bundle exec pod install --repo-update</span>
+</pre></div>
+</td></tr></table>
+
+<p>You can manually generate the docs to verify everything is working correctly by running:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">#cd swift/Samples/SampleApp/</span>
+sourcedocs generate -- -scheme Workflow -workspace SampleApp.xcworkspace
+sourcedocs generate -- -scheme WorkflowUI -workspace SampleApp.xcworkspace
+sourcedocs generate -- -scheme WorkflowTesting -workspace SampleApp.xcworkspace
+</pre></div>
+</td></tr></table>
+
+<h4 id="mkdocs">mkdocs<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h4>
+<p>Mkdocs is written in Python, so you&rsquo;ll need Python and pip in order to run it. Assuming those are
+set up, run:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install mkdocs mkdocs-material
+</pre></div>
+</td></tr></table>
+
+<p>Generate the site manually with:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs build
+</pre></div>
+</td></tr></table>
+
+<p>While you&rsquo;re working on the documentation files, you can run the site locally with:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs serve
+</pre></div>
+</td></tr></table>
+
+<h3 id="deploying-the-website-to-production">Deploying the website to production<a class="headerlink" href="#deploying-the-website-to-production" title="Permanent link">&para;</a></h3>
+<p>Before deploying the website for real, you need to export our Google Analytics key in an environment
+variable so that it will get added to the HTML. Get the key from one of the project maintainers,
+then add the following to your <code>.bashrc</code> and re-source it:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">WORKFLOW_GOOGLE_ANALYTICS_KEY</span><span class="o">=</span>UA-__________-1
+</pre></div>
+</td></tr></table>
+
+<p>Now you&rsquo;re ready to publish the site! Just choose a tag or SHA to deploy from, and run:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>./deploy_website.sh TAG_OR_SHA
+<span class="c1"># For example:</span>
+<span class="c1">#./deploy_website.sh v0.18.0</span>
+</pre></div>
+</td></tr></table>
+
+<p>This will clone the repo to a temporary directory, checkout the right SHA, build Kotlin and Swift
+API docs, generate HTML, and push the newly-generated content to the <code>gh-pages</code> branch on GitHub.</p>
+<h3 id="validating-markdown">Validating Markdown<a class="headerlink" href="#validating-markdown" title="Permanent link">&para;</a></h3>
+<p>Since all of our high-level documentation is written in Markdown, we run a linter in CI to ensure
+we use consistent formatting. Lint errors will fail your PR builds, so to run locally, install
+<a href="https://github.com/markdownlint/markdownlint">markdownlint</a>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gem install mdl
+</pre></div>
+</td></tr></table>
+
+<p>Run the linter using the <code>lint_docs.sh</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>./lint_docs.sh
+</pre></div>
+</td></tr></table>
+
+<p>Rules can be configured by editing <code>.markdownlint.rb</code>.</p>
 <hr />
 <h2 id="kotlin-notes">Kotlin Notes<a class="headerlink" href="#kotlin-notes" title="Permanent link">&para;</a></h2>
 <h3 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h3>
@@ -855,8 +1023,8 @@ git push origin master
 
 <h3 id="deploying">Deploying<a class="headerlink" href="#deploying" title="Permanent link">&para;</a></h3>
 <h4 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h4>
-<p>In order to deploy artifacts to a Maven repository, you&rsquo;ll need to set 4 properties in your
-private Gradle properties file (<code>~/.gradle/gradle.properties</code>):</p>
+<p>In order to deploy artifacts to a Maven repository, you&rsquo;ll need to set 4 properties in your private
+Gradle properties file (<code>~/.gradle/gradle.properties</code>):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -904,6 +1072,19 @@ SONATYPE_NEXUS_PASSWORD=&lt;password&gt;
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://square.github.io/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/square" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squareeng" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/joinsquare/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>

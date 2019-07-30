@@ -13,6 +13,8 @@
         <meta name="description" content="A library for making composable state machines, and UIs driven by those state machines.">
       
       
+        <link rel="canonical" href="https://square.github.io/workflow/overview/">
+      
       
         <meta name="author" content="Square, Inc.">
       
@@ -125,7 +127,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Workflow" class="md-header-nav__button md-logo">
+        <a href="https://square.github.io/workflow/" title="Workflow" class="md-header-nav__button md-logo">
           
             <img src="../images/icon-square.png" width="24" height="24">
           
@@ -217,7 +219,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href=".." title="Workflow" class="md-nav__button md-logo">
+    <a href="https://square.github.io/workflow/" title="Workflow" class="md-nav__button md-logo">
       
         <img src="../images/icon-square.png" width="48" height="48">
       
@@ -290,13 +292,6 @@
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#this-section-provides-an-overview-of-the-workflow-library-and-the-tools-that-you-will-use-to-build-your-features-and-products" title="This section provides an overview of the Workflow library and the tools that you will use to build your features and products." class="md-nav__link">
-    This section provides an overview of the Workflow library and the tools that you will use to build your features and products.
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#workflows" title="Workflows" class="md-nav__link">
@@ -496,8 +491,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/Workflow/index.html" title="Workflow ⏏" class="md-nav__link">
-      Workflow ⏏
+    <a href="../swift/api/Workflow/README.md" title="Workflow" class="md-nav__link">
+      Workflow
     </a>
   </li>
 
@@ -508,8 +503,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/WorkflowUI/index.html" title="WorkflowUI ⏏" class="md-nav__link">
-      WorkflowUI ⏏
+    <a href="../swift/api/WorkflowUI/README.md" title="WorkflowUI" class="md-nav__link">
+      WorkflowUI
     </a>
   </li>
 
@@ -520,8 +515,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/WorkflowTesting/index.html" title="WorkflowTesting ⏏" class="md-nav__link">
-      WorkflowTesting ⏏
+    <a href="../swift/api/WorkflowTesting/README.md" title="WorkflowTesting" class="md-nav__link">
+      WorkflowTesting
     </a>
   </li>
 
@@ -737,13 +732,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#this-section-provides-an-overview-of-the-workflow-library-and-the-tools-that-you-will-use-to-build-your-features-and-products" title="This section provides an overview of the Workflow library and the tools that you will use to build your features and products." class="md-nav__link">
-    This section provides an overview of the Workflow library and the tools that you will use to build your features and products.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#workflows" title="Workflows" class="md-nav__link">
     Workflows
   </a>
@@ -798,7 +786,6 @@
                 
                 
                 <h1 id="workflow-documentation">Workflow Documentation<a class="headerlink" href="#workflow-documentation" title="Permanent link">&para;</a></h1>
-<h3 id="this-section-provides-an-overview-of-the-workflow-library-and-the-tools-that-you-will-use-to-build-your-features-and-products">This section provides an overview of the Workflow library and the tools that you will use to build your features and products.<a class="headerlink" href="#this-section-provides-an-overview-of-the-workflow-library-and-the-tools-that-you-will-use-to-build-your-features-and-products" title="Permanent link">&para;</a></h3>
 <p>Workflow is a library for building applications in a simple, consistant shape.</p>
 <pre>
 ┌────────────────────────────┐                    ┌────────────────────────────┐
@@ -819,8 +806,8 @@
        ┌─────────────┐                            │                            │
        │ View Models │                            │                            │
        └─────────────┘                            └────────────────────────────┘
-              │                                                  ▲              
-              ▼                                                  │              
+              │                                                  ▲
+              ▼                                                  │
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                                                                              │
 │                                  Container                                   │
@@ -828,16 +815,29 @@
 └──────────────────────────────────────────────────────────────────────────────┘
 </pre>
 
-<h3 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h3>
-<p>The Workflows at the left of the diagram contain all state and business logic for the application. This is where network requests happen, navigation decisions are made, models are saved to or loaded from disk – if it&rsquo;s not UI, it&rsquo;s in this box.</p>
-<h3 id="view-models">View Models<a class="headerlink" href="#view-models" title="Permanent link">&para;</a></h3>
-<p>The primary job of the Workflows is to emit an observable stream of view models representing the current state of the application&rsquo;s UI. You will sometimes hear these view models referred to as &lsquo;screens&rsquo;, which is just another way to refer to a view model that contains the data for an entire screen in the app.</p>
-<h3 id="container">Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h3>
-<p>The container is responsible for plumbing together the two separate halves of the application. It subscribes to the stream of view models that the workflows provide, then implements the logic to update the live UI whenever a new view model is emitted.</p>
-<h3 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
-<p>This is typically conventional platform-specific UI code. One important note is that UI code should never attempt to navigate using system components (navigation controller pushes, modal presentation, etc). In this architecture the workflows are in charge – any navigation that happens outside of the workflow will be disregarded and stomped on during the next update cycle.</p>
-<h3 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h3>
-<p>In order for the application to actually do anything, the workflow needs to receive events from the UI. When the user interacts with the application by, for example, tapping a button, the workflow receives that event – which may trigger a simple state transition, or more complex behavior such as a network request.</p>
+<h2 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h2>
+<p>The Workflows at the left of the diagram contain all state and business logic for the application.
+This is where network requests happen, navigation decisions are made, models are saved to or loaded
+from disk – if it&rsquo;s not UI, it&rsquo;s in this box.</p>
+<h2 id="view-models">View Models<a class="headerlink" href="#view-models" title="Permanent link">&para;</a></h2>
+<p>The primary job of the Workflows is to emit an observable stream of view models representing the
+current state of the application&rsquo;s UI. You will sometimes hear these view models referred to as
+&lsquo;screens&rsquo;, which is just another way to refer to a view model that contains the data for an entire
+screen in the app.</p>
+<h2 id="container">Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h2>
+<p>The container is responsible for plumbing together the two separate halves of the application. It
+subscribes to the stream of view models that the workflows provide, then implements the logic to
+update the live UI whenever a new view model is emitted.</p>
+<h2 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h2>
+<p>This is typically conventional platform-specific UI code. One important note is that UI code should
+never attempt to navigate using system components (navigation controller pushes, modal presentation,
+etc). In this architecture the workflows are in charge – any navigation that happens outside of the
+workflow will be disregarded and stomped on during the next update cycle.</p>
+<h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
+<p>In order for the application to actually do anything, the workflow needs to receive events from the
+UI. When the user interacts with the application by, for example, tapping a button, the workflow
+receives that event – which may trigger a simple state transition, or more complex behavior such as
+a network request.</p>
                 
                   
                 
@@ -905,6 +905,19 @@
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://square.github.io/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/square" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squareeng" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/joinsquare/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>

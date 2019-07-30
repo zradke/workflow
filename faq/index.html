@@ -13,6 +13,8 @@
         <meta name="description" content="A library for making composable state machines, and UIs driven by those state machines.">
       
       
+        <link rel="canonical" href="https://square.github.io/workflow/faq/">
+      
       
         <meta name="author" content="Square, Inc.">
       
@@ -125,7 +127,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Workflow" class="md-header-nav__button md-logo">
+        <a href="https://square.github.io/workflow/" title="Workflow" class="md-header-nav__button md-logo">
           
             <img src="../images/icon-square.png" width="24" height="24">
           
@@ -217,7 +219,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href=".." title="Workflow" class="md-nav__button md-logo">
+    <a href="https://square.github.io/workflow/" title="Workflow" class="md-nav__button md-logo">
       
         <img src="../images/icon-square.png" width="48" height="48">
       
@@ -423,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/Workflow/index.html" title="Workflow ⏏" class="md-nav__link">
-      Workflow ⏏
+    <a href="../swift/api/Workflow/README.md" title="Workflow" class="md-nav__link">
+      Workflow
     </a>
   </li>
 
@@ -435,8 +437,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/WorkflowUI/index.html" title="WorkflowUI ⏏" class="md-nav__link">
-      WorkflowUI ⏏
+    <a href="../swift/api/WorkflowUI/README.md" title="WorkflowUI" class="md-nav__link">
+      WorkflowUI
     </a>
   </li>
 
@@ -447,8 +449,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../swift/api/WorkflowTesting/index.html" title="WorkflowTesting ⏏" class="md-nav__link">
-      WorkflowTesting ⏏
+    <a href="../swift/api/WorkflowTesting/README.md" title="WorkflowTesting" class="md-nav__link">
+      WorkflowTesting
     </a>
   </li>
 
@@ -784,8 +786,12 @@
                 
                 
                 <h1 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h1>
-<h3 id="isnt-this-basically-reactelm">Isn&rsquo;t this basically React/Elm?<a class="headerlink" href="#isnt-this-basically-reactelm" title="Permanent link">&para;</a></h3>
-<p><a href="https://reactjs.org/">React</a> and <a href="https://guide.elm-lang.org/architecture/">the Elm architecture</a> were both strong influences for this library. However both those libraries are written for JavaScript. Workflows are written in and for both Kotlin and Swift, making use of features of those languages, and with usability from those languages as a major design goal. There are also a few architectural differences:</p>
+<h2 id="isnt-this-basically-reactelm">Isn&rsquo;t this basically React/Elm?<a class="headerlink" href="#isnt-this-basically-reactelm" title="Permanent link">&para;</a></h2>
+<p><a href="https://reactjs.org/">React</a> and <a href="https://guide.elm-lang.org/architecture/">the Elm architecture</a>
+were both strong influences for this library. However both those libraries are written for
+JavaScript. Workflows are written in and for both Kotlin and Swift, making use of features of those
+languages, and with usability from those languages as a major design goal. There are also a few
+architectural differences:</p>
 <table>
 <thead>
 <tr>
@@ -834,22 +840,31 @@
 </tr>
 </tbody>
 </table>
-<h3 id="how-is-this-different-than-mvrx">How is this different than MvRx?<a class="headerlink" href="#how-is-this-different-than-mvrx" title="Permanent link">&para;</a></h3>
+<h2 id="how-is-this-different-than-mvrx">How is this different than MvRx?<a class="headerlink" href="#how-is-this-different-than-mvrx" title="Permanent link">&para;</a></h2>
 <p>Besides being very Android and Rx specific, MvRx solves view modeling problems only
 per screen. Workflow was mainly inspired by the need to manage and compose
 navigation in apps with dozens or hundreds of screens.</p>
-<h3 id="how-do-i-get-involved-andor-contribute">How do I get involved and/or contribute?<a class="headerlink" href="#how-do-i-get-involved-andor-contribute" title="Permanent link">&para;</a></h3>
+<h2 id="how-do-i-get-involved-andor-contribute">How do I get involved and/or contribute?<a class="headerlink" href="#how-do-i-get-involved-andor-contribute" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/square/workflow">Workflow is open source!</a></li>
-<li>See our <a href="https://github.com/square/workflow/blob/master/CONTRIBUTING.md">CONTRIBUTING</a> doc to get started.</li>
+<li>See our <a href="https://github.com/square/workflow/blob/master/CONTRIBUTING.md">CONTRIBUTING</a> doc to get
+  started.</li>
 <li>Stay tuned! We&rsquo;re considering hosting a public Slack channel for open source contributors.</li>
 </ul>
-<h3 id="this-seems-clever-can-i-stick-with-a-traditional-development-approach">This seems clever. Can I stick with a traditional development approach?<a class="headerlink" href="#this-seems-clever-can-i-stick-with-a-traditional-development-approach" title="Permanent link">&para;</a></h3>
-<p>Of course! Workflow was designed to make complex application architecture predictable and safe for large development teams. We&rsquo;re confident that it brings benefits even to smaller projects, but there is never only one right way to build software. We recommend to <a href="https://www.thoughtworks.com/insights/blog/write-quality-mobile-apps-any-architecture">follow good practices and use an architecture that makes sense for your project</a>.</p>
-<h3 id="why-do-we-need-another-architecture">Why do we need another architecture?<a class="headerlink" href="#why-do-we-need-another-architecture" title="Permanent link">&para;</a></h3>
-<p>Architectural patterns with weak access controls and heavy use of shared mutable state make it incredibly difficult to fully understand the behavior of the code that we are writing. This quickly devolves into an arms race as the codebase grows: if every feature or component in the codebase might change anything at any time, bug fixes turn into a really sad game of whack-a-mole.</p>
-<p>We have seen this pattern occur repeatedly in traditional mobile applications using patterns like MVC.</p>
-<p>Workflow defines strong boundaries and contracts between separate parts of the application to ensure that our code remains predictable and maintainable as the size and complexity of the codebase grows.</p>
+<h2 id="this-seems-clever-can-i-stick-with-a-traditional-development-approach">This seems clever. Can I stick with a traditional development approach?<a class="headerlink" href="#this-seems-clever-can-i-stick-with-a-traditional-development-approach" title="Permanent link">&para;</a></h2>
+<p>Of course! Workflow was designed to make complex application architecture predictable and safe for
+large development teams. We&rsquo;re confident that it brings benefits even to smaller projects, but there
+is never only one right way to build software. We recommend to <a href="https://www.thoughtworks.com/insights/blog/write-quality-mobile-apps-any-architecture">follow good practices and use an
+architecture that makes sense for your project</a>.</p>
+<h2 id="why-do-we-need-another-architecture">Why do we need another architecture?<a class="headerlink" href="#why-do-we-need-another-architecture" title="Permanent link">&para;</a></h2>
+<p>Architectural patterns with weak access controls and heavy use of shared mutable state make it
+incredibly difficult to fully understand the behavior of the code that we are writing. This quickly
+devolves into an arms race as the codebase grows: if every feature or component in the codebase
+might change anything at any time, bug fixes turn into a really sad game of whack-a-mole.</p>
+<p>We have seen this pattern occur repeatedly in traditional mobile applications using patterns like
+MVC.</p>
+<p>Workflow defines strong boundaries and contracts between separate parts of the application to ensure
+that our code remains predictable and maintainable as the size and complexity of the codebase grows.</p>
                 
                   
                 
@@ -917,6 +932,19 @@ navigation in apps with dozens or hundreds of screens.</p>
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://square.github.io/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/square" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squareeng" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/joinsquare/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>

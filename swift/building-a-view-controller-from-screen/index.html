@@ -13,6 +13,8 @@
         <meta name="description" content="A library for making composable state machines, and UIs driven by those state machines.">
       
       
+        <link rel="canonical" href="https://square.github.io/workflow/swift/building-a-view-controller-from-screen/">
+      
       
         <meta name="author" content="Square, Inc.">
       
@@ -125,7 +127,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Workflow" class="md-header-nav__button md-logo">
+        <a href="https://square.github.io/workflow/" title="Workflow" class="md-header-nav__button md-logo">
           
             <img src="../../images/icon-square.png" width="24" height="24">
           
@@ -217,7 +219,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Workflow" class="md-nav__button md-logo">
+    <a href="https://square.github.io/workflow/" title="Workflow" class="md-nav__button md-logo">
       
         <img src="../../images/icon-square.png" width="48" height="48">
       
@@ -423,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../api/Workflow/index.html" title="Workflow ⏏" class="md-nav__link">
-      Workflow ⏏
+    <a href="../api/Workflow/README.md" title="Workflow" class="md-nav__link">
+      Workflow
     </a>
   </li>
 
@@ -435,8 +437,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../api/WorkflowUI/index.html" title="WorkflowUI ⏏" class="md-nav__link">
-      WorkflowUI ⏏
+    <a href="../api/WorkflowUI/README.md" title="WorkflowUI" class="md-nav__link">
+      WorkflowUI
     </a>
   </li>
 
@@ -447,8 +449,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../api/WorkflowTesting/index.html" title="WorkflowTesting ⏏" class="md-nav__link">
-      WorkflowTesting ⏏
+    <a href="../api/WorkflowTesting/README.md" title="WorkflowTesting" class="md-nav__link">
+      WorkflowTesting
     </a>
   </li>
 
@@ -758,7 +760,8 @@
                 <h1 id="building-a-view-controller-from-a-screen">Building a View Controller from a Screen<a class="headerlink" href="#building-a-view-controller-from-a-screen" title="Permanent link">&para;</a></h1>
 <p>Now that we have a workflow, we need a way to map our screen to an actual view controller.</p>
 <h2 id="screenviewcontroller"><code>ScreenViewController</code><a class="headerlink" href="#screenviewcontroller" title="Permanent link">&para;</a></h2>
-<p>The <code>ScreenViewController</code> provides a base class that hides the plumbing of updating a view controller from a view model update.</p>
+<p>The <code>ScreenViewController</code> provides a base class that hides the plumbing of updating a view
+controller from a view model update.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -853,10 +856,15 @@
 
 <h3 id="lifecycle">Lifecycle<a class="headerlink" href="#lifecycle" title="Permanent link">&para;</a></h3>
 <ol>
-<li>When the view controller is first created, it is given the initial screen value. In the example, we create the button and set the title for it via the <code>update</code> method.</li>
-<li>The view loads as normal, adding the button the hierarchy and setting up the <code>target:action</code> for the button being pressed.</li>
-<li>The button is tapped. When the callback is called, we call the <code>onTap</code> closure passed into the screen. The workflow will handle this event, update its state, and a new screen will be rendered.</li>
-<li>The updated screen is passed to the view controller via the <code>screenDidChange(from previousScreen:)</code> method. Again, the view controller updates the title of the button based on what was passed in the screen.</li>
+<li>When the view controller is first created, it is given the initial screen value. In the example,
+   we create the button and set the title for it via the <code>update</code> method.</li>
+<li>The view loads as normal, adding the button the hierarchy and setting up the <code>target:action</code> for
+   the button being pressed.</li>
+<li>The button is tapped. When the callback is called, we call the <code>onTap</code> closure passed into the
+   screen. The workflow will handle this event, update its state, and a new screen will be rendered.</li>
+<li>The updated screen is passed to the view controller via the
+   <code>screenDidChange(from previousScreen:)</code> method. Again, the view controller updates the title of
+   the button based on what was passed in the screen.</li>
 </ol>
                 
                   
@@ -925,6 +933,19 @@
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://square.github.io/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/square" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squareeng" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/joinsquare/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>
