@@ -46,18 +46,18 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://square.github.io/workflow/swift/api/Workflow/</loc>
+     <lastmod>2019-07-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://square.github.io/workflow/swift/api/WorkflowUI/</loc>
+     <lastmod>2019-07-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://square.github.io/workflow/swift/api/WorkflowTesting/</loc>
+     <lastmod>2019-07-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
