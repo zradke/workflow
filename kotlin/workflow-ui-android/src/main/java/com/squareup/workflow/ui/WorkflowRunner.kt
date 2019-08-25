@@ -19,6 +19,7 @@ package com.squareup.workflow.ui
 
 import android.os.Bundle
 import androidx.annotation.CheckResult
+import androidx.core.app.ComponentActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
@@ -171,13 +172,13 @@ fun <PropsT, OutputT : Any> FragmentActivity.setContentWorkflow(
 }
 
 @UseExperimental(ExperimentalCoroutinesApi::class)
-fun <PropsT> FragmentActivity.setContentWorkflow(
+fun <PropsT> ComponentActivity.setContentWorkflow(
   savedInstanceState: Bundle?,
   configure: () -> Config<PropsT, Nothing>
 ): WorkflowRunner<Nothing> = setContentWorkflow(savedInstanceState, configure) {}
 
 /**
- * If your workflow needs to manage the back button, override [FragmentActivity.onBackPressed]
+ * If your workflow needs to manage the back button, override [androidx.core.app.ComponentActivity.onBackPressed]
  * and call this method, and have its views or [LayoutRunner]s use [HandlesBack].
  *
  * e.g.:
@@ -186,11 +187,11 @@ fun <PropsT> FragmentActivity.setContentWorkflow(
  *      if (!workflowOnBackPressed()) super.onBackPressed()
  *    }
  *
- * **Only for use by activities driven via [FragmentActivity.setContentWorkflow].**
+ * **Only for use by activities driven via [androidx.core.app.ComponentActivity.setContentWorkflow].**
  *
  * @see WorkflowFragment.onBackPressed
  */
 @CheckResult
-fun FragmentActivity.workflowOnBackPressed(): Boolean {
+fun ComponentActivity.workflowOnBackPressed(): Boolean {
   return HandlesBack.Helper.onBackPressed(this.findViewById(R.id.workflow_layout))
 }
