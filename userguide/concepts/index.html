@@ -118,7 +118,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#workflow-documentation" tabindex="1" class="md-skip">
+      <a href="#core-concepts" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -403,37 +403,90 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#architectural-concepts" title="Architectural Concepts" class="md-nav__link">
+    Architectural Concepts
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unidirectional-data-flow" title="Unidirectional Data Flow" class="md-nav__link">
+    Unidirectional Data Flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declarative-vs-imperative" title="Declarative vs Imperative" class="md-nav__link">
+    Declarative vs Imperative
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-note-about-functional-programming" title="A note about functional programming" class="md-nav__link">
+    A note about functional programming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" title="Core Components" class="md-nav__link">
+    Core Components
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#workflows" title="Workflows" class="md-nav__link">
     Workflows
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#view-models" title="View Models" class="md-nav__link">
     View Models
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#container" title="Container" class="md-nav__link">
     Container
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ui" title="UI" class="md-nav__link">
     UI
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#events" title="Events" class="md-nav__link">
     Events
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -942,37 +995,90 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#architectural-concepts" title="Architectural Concepts" class="md-nav__link">
+    Architectural Concepts
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unidirectional-data-flow" title="Unidirectional Data Flow" class="md-nav__link">
+    Unidirectional Data Flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declarative-vs-imperative" title="Declarative vs Imperative" class="md-nav__link">
+    Declarative vs Imperative
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-note-about-functional-programming" title="A note about functional programming" class="md-nav__link">
+    A note about functional programming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" title="Core Components" class="md-nav__link">
+    Core Components
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#workflows" title="Workflows" class="md-nav__link">
     Workflows
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#view-models" title="View Models" class="md-nav__link">
     View Models
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#container" title="Container" class="md-nav__link">
     Container
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ui" title="UI" class="md-nav__link">
     UI
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#events" title="Events" class="md-nav__link">
     Events
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -995,59 +1101,83 @@
                   <a href="https://github.com/square/workflow/edit/master/docs/userguide/concepts.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="workflow-documentation">Workflow Documentation<a class="headerlink" href="#workflow-documentation" title="Permanent link">&para;</a></h1>
-<p>Workflow is a library for building applications in a simple, consistant shape.</p>
-<pre>
-┌────────────────────────────┐                    ┌────────────────────────────┐
-│                            │                    │                            │
-│                            │                    │                            │
-│                            │                    │                            │
-│                            │  ◀ ─ ─ ─ ─ ─ ─ ─   │                            │
-│                            │                    │                            │
-│         Workflows          │  ◀ ─ ─ ─ ─ ─ ─ ─   │                            │
-│                            │                    │                            │
-│                            │  ◀ ─ ─ ─ ─ ─ ─ ─   │             UI             │
-│                            │                    │                            │
-│                            │      Events        │                            │
-│                            │                    │                            │
-└────────────────────────────┘                    │                            │
-              │                                   │                            │
-              ▼                                   │                            │
-       ┌─────────────┐                            │                            │
-       │ View Models │                            │                            │
-       └─────────────┘                            └────────────────────────────┘
-              │                                                  ▲
-              ▼                                                  │
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                                                                              │
-│                                  Container                                   │
-│                                                                              │
-└──────────────────────────────────────────────────────────────────────────────┘
-</pre>
-
-<h2 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h2>
+                <h1 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h1>
+<h2 id="architectural-concepts">Architectural Concepts<a class="headerlink" href="#architectural-concepts" title="Permanent link">&para;</a></h2>
+<h3 id="unidirectional-data-flow">Unidirectional Data Flow<a class="headerlink" href="#unidirectional-data-flow" title="Permanent link">&para;</a></h3>
+<p>There is a wealth of information on the web about <a href="https://www.google.com/search?q=unidirectional+data+flow">Unidirectional Data Flow</a>,
+but it very simply means that there is a single path along which data travel <em>from</em> your business
+logic to your UI, and events travel <em>to</em> your business logic from your UI, and they always and only
+travel in one direction along that path. For Workflow, this also implies that the UI is (almost)
+stateless, and that the interesting state for your app is centralized and not duplicated.</p>
+<p>In practice, this makes program flow much easier to reason about because anytime something happens
+in an app, it removes the questions of where the state came from that caused it, which components
+got which events, and which sequences of cause and effect actually occurred. It makes unit testing
+easier because state and events are explicit, and always live in the same place and flow through the
+same APIs, so unit tests only need to test state transitions, for the most part.</p>
+<h3 id="declarative-vs-imperative">Declarative vs Imperative<a class="headerlink" href="#declarative-vs-imperative" title="Permanent link">&para;</a></h3>
+<p>Traditionally, most mobile code is <a href="https://en.wikipedia.org/wiki/Imperative_programming">“imperative”</a>
+– it consists of instructions for how to build and display the UI. These instructions can include
+control flow like loops. Imperative code is usually stateful, state is usually sprinkled all over
+the place, and tends to care about instances and identity. When reading imperative code, you almost
+have to run an interpreter and keep all the pieces of state in your head to figure out what it does.</p>
+<p>Web UI is traditionally <a href="https://en.wikipedia.org/wiki/Declarative_programming">declarative</a> – it
+describes what to render, and some aspects of how to render it (style), but doesn’t say how to
+actually draw it. Declarative code is usually easier to read than imperative code. It
+describes what it produces, not how to generate it. Declarative code usually cares more about pure
+values than instance identities. However, since computers still need actual instructions at some
+point, declarative code requires something else, usually imperative, either a compiler or
+interpreter, to actually do something with it.</p>
+<p>Workflow code is written in regular Kotlin or Swift, which are both imperative languages, but the
+library encourages you to write your logic in a declarative and functional style. The library
+manages state and wiring up event handling for you, so the only code you need to write is code that
+is actually interesting for your particular problem.</p>
+<h4 id="a-note-about-functional-programming">A note about functional programming<a class="headerlink" href="#a-note-about-functional-programming" title="Permanent link">&para;</a></h4>
+<p>Kotlin and Swift are not strictly functional programming languages, but both have features that
+allow you to write <a href="https://en.wikipedia.org/wiki/Functional_programming">functional</a>-style code.
+Functional code discourages side effects and is generally much easier to test than object-oriented
+code. Functional and declarative programming go very well together, and Workflow encourages you to
+write such code.</p>
+<h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
+<p><img alt="workflow component diagram" src="../../images/workflow_components_diagram.png" /></p>
+<h3 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h3>
 <p>The Workflows at the left of the diagram contain all state and business logic for the application.
 This is where network requests happen, navigation decisions are made, models are saved to or loaded
 from disk – if it&rsquo;s not UI, it&rsquo;s in this box.</p>
-<h2 id="view-models">View Models<a class="headerlink" href="#view-models" title="Permanent link">&para;</a></h2>
+<p>For more information, see <a href="../core-workflow/">Workflow Core Concepts</a>.</p>
+<h3 id="view-models">View Models<a class="headerlink" href="#view-models" title="Permanent link">&para;</a></h3>
 <p>The primary job of the Workflows is to emit an observable stream of view models representing the
 current state of the application&rsquo;s UI. You will sometimes hear these view models referred to as
 &lsquo;screens&rsquo;, which is just another way to refer to a view model that contains the data for an entire
 screen in the app.</p>
-<h2 id="container">Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h2>
+<p>For more information, see <a href="../ui-concepts/">Workflow UI Concepts</a>.</p>
+<h3 id="container">Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h3>
 <p>The container is responsible for plumbing together the two separate halves of the application. It
 subscribes to the stream of view models that the workflows provide, then implements the logic to
 update the live UI whenever a new view model is emitted.</p>
-<h2 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h2>
+<p>For more information, see <a href="../ui-concepts/">Workflow UI Concepts</a>.</p>
+<h3 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
 <p>This is typically conventional platform-specific UI code. One important note is that UI code should
 never attempt to navigate using system components (navigation controller pushes, modal presentation,
 etc). In this architecture the workflows are in charge – any navigation that happens outside of the
 workflow will be disregarded and stomped on during the next update cycle.</p>
-<h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
+<p>For more information, see <a href="../ui-concepts/">Workflow UI Concepts</a>.</p>
+<h3 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h3>
 <p>In order for the application to actually do anything, the workflow needs to receive events from the
 UI. When the user interacts with the application by, for example, tapping a button, the workflow
 receives that event – which may trigger a simple state transition, or more complex behavior such as
 a network request.</p>
+<p>For more information, see <a href="../core-workflow/">Workflow Core Concepts</a>.</p>
+<hr />
+<div class="admonition info swift vs kotlin">
+<p class="admonition-title">Info</p>
+<p>While the core shape of the libraries is shared by Swift and Kotlin implementations, some of the
+naming and types differ slightly to accommodate each language’s particular type system and
+naming conventions. Where those differences occur in this document, they are noted in &ldquo;Swift vs
+Kotlin&rdquo; blurbs. See <a href="4_where_swift_and_kotlin_libraries_differ.md">Where Swift and Kotlin Libraries Differ</a>
+for an overall summary.</p>
+<p>In general, any time a generic type is referred to as <code>Foo</code>, in source code the Swift associated
+type is called <code>Foo</code> and the Kotlin type parameter is called <code>FooT</code>.</p>
+</div>
                 
                   
                 

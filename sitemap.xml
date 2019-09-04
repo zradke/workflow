@@ -2,157 +2,157 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://square.github.io/workflow/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/concepts/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/core-workflow/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/core-worker/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/core-patterns/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/ui-concepts/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/testing-concepts/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/motivation/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/comparison/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/userguide/implementation/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/tutorial/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/tutorial/adding-workflow-to-a-project/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/tutorial/tooling/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/tutorial/building-a-workflow/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/tutorial/building-a-view-controller-from-screen/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/tutorial/using-a-workflow-for-ui/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/code-recipes/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/development-process/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/kotlin/api/workflow-core/com.squareup.workflow/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/kotlin/api/workflow-runtime/com.squareup.workflow/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/kotlin/api/workflow-ui-core/com.squareup.workflow.ui/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/kotlin/api/workflow-ui-android/com.squareup.workflow.ui/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/kotlin/api/workflow-testing/com.squareup.workflow.testing/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/kotlin/api/workflow-rx2/com.squareup.workflow.rx2/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/swift/api/Workflow/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/swift/api/WorkflowUI/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/swift/api/WorkflowTesting/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/faq/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/CHANGELOG/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/CONTRIBUTING/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://square.github.io/workflow/CODE_OF_CONDUCT/</loc>
-     <lastmod>2019-08-21</lastmod>
+     <lastmod>2019-09-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

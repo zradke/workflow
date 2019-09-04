@@ -1018,7 +1018,7 @@ architectural differences:</p>
 <td><strong>State</strong></td>
 <td>Each <code>Component</code> has a <code>state</code> property that is read directly and updated via a <code>setState</code> method.</td>
 <td>State is called <code>Model</code> in Elm.</td>
-<td><code>Workflow</code>s have an associated state type. The state can only be updated when the input changes, or with a <code>WorkflowAction</code>.</td>
+<td><code>Workflow</code>s have an associated state type. The state can only be updated when the props change, or with a <code>WorkflowAction</code>.</td>
 </tr>
 <tr>
 <td><strong>Views</strong></td>
@@ -1030,7 +1030,7 @@ architectural differences:</p>
 <td><strong>Dependencies</strong></td>
 <td>React allows parent components to pass &ldquo;props&rdquo; down to their children.</td>
 <td>TK</td>
-<td>In Swift, <code>Workflow</code>s are often structs that need to be initialized with their dependencies and configuration data from their parent. In Kotlin, they have a separate type parameter (<code>InputT</code>) that is always passed down from the parent. <code>Workflow</code> instances can also inject dependencies, and play nicely with dependency injection frameworks.</td>
+<td>In Swift, <code>Workflow</code>s are often structs that need to be initialized with their dependencies and configuration data from their parent. In Kotlin, they have a separate type parameter (<code>PropsT</code>) that is always passed down from the parent. <code>Workflow</code> instances can also inject dependencies, and play nicely with dependency injection frameworks.</td>
 </tr>
 <tr>
 <td><strong>Composability</strong></td>

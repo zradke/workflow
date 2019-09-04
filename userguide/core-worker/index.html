@@ -429,9 +429,87 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Worker
+      </label>
+    
     <a href="./" title="Worker" class="md-nav__link md-nav__link--active">
       Worker
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-role-of-a-worker" title="The Role of a Worker" class="md-nav__link">
+    The Role of a Worker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-provide-a-declarative-window-into-the-imperative-world" title="Workers provide a declarative window into the imperative world" class="md-nav__link">
+    Workers provide a declarative window into the imperative world
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-can-perform-side-effects" title="Workers can perform side effects" class="md-nav__link">
+    Workers can perform side effects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-are-cold-reactive-streams" title="Workers are cold reactive streams" class="md-nav__link">
+    Workers are cold reactive streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worker-subscriptions-are-managed-automatically" title="Worker subscriptions are managed automatically" class="md-nav__link">
+    Worker subscriptions are managed automatically
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-manage-their-own-internal-state" title="Workers manage their own internal state" class="md-nav__link">
+    Workers manage their own internal state
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-define-their-own-equivalence" title="Workers define their own equivalence" class="md-nav__link">
+    Workers define their own equivalence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-are-lifecycle-aware" title="Workers are lifecycle-aware" class="md-nav__link">
+    Workers are lifecycle-aware
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -883,6 +961,71 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-role-of-a-worker" title="The Role of a Worker" class="md-nav__link">
+    The Role of a Worker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-provide-a-declarative-window-into-the-imperative-world" title="Workers provide a declarative window into the imperative world" class="md-nav__link">
+    Workers provide a declarative window into the imperative world
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-can-perform-side-effects" title="Workers can perform side effects" class="md-nav__link">
+    Workers can perform side effects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-are-cold-reactive-streams" title="Workers are cold reactive streams" class="md-nav__link">
+    Workers are cold reactive streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worker-subscriptions-are-managed-automatically" title="Worker subscriptions are managed automatically" class="md-nav__link">
+    Worker subscriptions are managed automatically
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-manage-their-own-internal-state" title="Workers manage their own internal state" class="md-nav__link">
+    Workers manage their own internal state
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-define-their-own-equivalence" title="Workers define their own equivalence" class="md-nav__link">
+    Workers define their own equivalence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workers-are-lifecycle-aware" title="Workers are lifecycle-aware" class="md-nav__link">
+    Workers are lifecycle-aware
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -897,7 +1040,61 @@
                 
                 
                 <h1 id="workflow-core-worker">Workflow Core: Worker<a class="headerlink" href="#workflow-core-worker" title="Permanent link">&para;</a></h1>
-<p><em>Coming soon!</em></p>
+<h2 id="the-role-of-a-worker">The Role of a Worker<a class="headerlink" href="#the-role-of-a-worker" title="Permanent link">&para;</a></h2>
+<p><code>Worker</code> is a protocol (in Swift) and interface (in Kotlin) that defines an asynchronous task that
+can be performed by a <code>Workflow</code>. <code>Worker</code>s only emit outputs, they do not have a <code>Rendering</code> type.
+They are similar to child workflows with <code>Void</code>/<code>Unit</code> rendering types.</p>
+<p>A workflow can ask the infrastructure to await the result of a worker by passing that worker to the
+<code>RenderContext.runningWorker</code> method within a call to the <code>render</code> method. A workflow can handle
+outputs from a <code>Worker</code>.</p>
+<h2 id="workers-provide-a-declarative-window-into-the-imperative-world">Workers provide a declarative window into the imperative world<a class="headerlink" href="#workers-provide-a-declarative-window-into-the-imperative-world" title="Permanent link">&para;</a></h2>
+<p>As nice as it is to write declarative code, real apps need to interact with imperative APIs. Workers
+allow wrapping imperative APIs so that Workflows can interact with them in a declarative fashion.
+Instead of making imperative &ldquo;start this, do that, now stop&rdquo; calls, a Workflow can say &ldquo;I declare
+that this task should now be running&rdquo; and let the infrastructure worry about ensuring the task is
+actually started when necessary, continues running if it was already in flight, and torn down when
+it&rsquo;s not needed anymore.</p>
+<h2 id="workers-can-perform-side-effects">Workers can perform side effects<a class="headerlink" href="#workers-can-perform-side-effects" title="Permanent link">&para;</a></h2>
+<p>Unlike workflows&rsquo; <code>render</code> method, which can be called many times and must be idempotent, workers
+are started and then ran until completion (or cancellation) – independently of how many times the
+workflow running them is actually rendered. This means that side effects that should be performed
+only once when a workflow enters a particular state, for example, should be placed into a <code>Worker</code>
+that the workflow runs while in that state.</p>
+<h2 id="workers-are-cold-reactive-streams">Workers are cold reactive streams<a class="headerlink" href="#workers-are-cold-reactive-streams" title="Permanent link">&para;</a></h2>
+<p>Workers are effectively simple wrappers around asynchronous streams with explicit equivalence. In
+Swift, workers are backed by ReactiveSwift <a href="http://reactivecocoa.io/reactiveswift/docs/latest/SignalProducer.html#/s:13ReactiveSwift14SignalProducerV"><code>SignalProducer</code>s</a>.
+In Kotlin, they&rsquo;re backed by Kotlin <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/"><code>Flow</code>s</a>.
+They are also easily derived from <a href="https://www.reactive-streams.org">Reactive Streams Publishers</a>,
+including RxJava <code>Observable</code>, <code>Flowable</code>, or <code>Single</code> instances.</p>
+<h2 id="worker-subscriptions-are-managed-automatically">Worker subscriptions are managed automatically<a class="headerlink" href="#worker-subscriptions-are-managed-automatically" title="Permanent link">&para;</a></h2>
+<p>While Workers are <em>backed</em> by reactive streams with library-specific subscription APIs, you never
+actually subscribe directly to a worker yourself. Instead, a Workflow asks the infrastructure to
+run a worker, and the infrastructure will take care of initializing and tearing down the
+subscription as appropriate – much like how child workflows&rsquo; lifetimes are automatically managed by
+the runtime. This makes it impossible to accidentally leak a subscription to a worker.</p>
+<h2 id="workers-manage-their-own-internal-state">Workers manage their <em>own</em> internal state<a class="headerlink" href="#workers-manage-their-own-internal-state" title="Permanent link">&para;</a></h2>
+<p>Unlike Workflows, which are effectively collections of functions defining state transitions, Workers
+represent long-running tasks. For example, Workers commonly execute network requests. The worker&rsquo;s
+stream will open a socket and, either blocking on a background thread or asynchronously, read from
+that socket and eventually emit data to the workflow that is running it.</p>
+<h2 id="workers-define-their-own-equivalence">Workers define their own equivalence<a class="headerlink" href="#workers-define-their-own-equivalence" title="Permanent link">&para;</a></h2>
+<p>Since Workers represent ongoing tasks, the infrastructure needs to be able to tell when two workers
+represent the same task (so it doesn&rsquo;t perform the task twice), or when a worker has changed between
+render passes such that it needs to be torn down and re-started for the new work.</p>
+<p>For these reasons, any time a workflow requests that a worker be run in sequential render passes, it
+is asked to compare itself with its last instance and determine if they are equivalent. In Swift,
+this is determined by the <code>Worker</code> <code>isEquivalent:to:</code> method. <code>Worker</code>s that conform to <code>Equatable</code>
+will automatically get an <code>isEquivalent:to:</code> method based on the <code>Equatable</code> implementation. In
+Kotlin, the <code>Worker</code> interface defines the <code>doesSameWorkAs</code> method which is passed the previous worker.</p>
+<div class="admonition faq">
+<p class="admonition-title">Kotlin: Why don&rsquo;t Workers use <code>equals</code>?</p>
+<p>Worker equivalence is a key part of the Worker API. The default implementation of <code>equals</code>,
+which just compares object identity, is almost always incorrect for workers. Defining a separate
+method forces implementers to think about how equivalence is defined.</p>
+</div>
+<h2 id="workers-are-lifecycle-aware">Workers are lifecycle-aware<a class="headerlink" href="#workers-are-lifecycle-aware" title="Permanent link">&para;</a></h2>
+<p>Workers are aware of when they&rsquo;re started (just like Workflows), but they are also aware of when
+they are torn down. This makes them handy for managing resources as well.</p>
                 
                   
                 
