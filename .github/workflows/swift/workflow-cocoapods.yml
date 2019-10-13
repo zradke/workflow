@@ -1,0 +1,25 @@
+name: Swift - Workflow - Cocoapods (Xcode 10.3)
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Bundler
+      run: |
+        gem update --system
+        gem install bundler
+    - name: Bundle Install
+      run: bundle install
+    - name: Pod Install
+      run: |
+        cd swift/Samples/SampleApp
+        bundle exec pod install || bundle exec pod install --repo-update
+    - name: Switch Xcode
+      run: xcodeselect -s /Applications/Xcode_10.3.app
+    - name: Build & Test
+      run: set -o pipefail && xcodebuild -workspace SampleApp.xcworkspace -scheme Workflow-Unit-Tests -destination platform\=iOS\ Simulator,OS\=12.2,name\=iPad\ Pro\ \(9.7-inch\) build test | xcpretty
