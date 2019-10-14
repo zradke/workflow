@@ -24,4 +24,4 @@ jobs:
     - name: Build & Test
       run: |
         cd swift/Samples/SampleApp
-        set -o pipefail && xcodebuild -workspace SampleApp.xcworkspace -scheme Workflow-Unit-Tests -destination platform\=iOS\ Simulator,OS\=12.2,name\=iPad\ Pro\ \(9.7-inch\) build test | xcpretty
+        set -o pipefail && xcodebuild -workspace SampleApp.xcworkspace -scheme Workflow-Unit-Tests -destination platform\=iOS\ Simulator,OS\=12.4,name\=iPad\ Pro\ \(9.7-inch\) build test | xcpretty
