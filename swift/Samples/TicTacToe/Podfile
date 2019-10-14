@@ -3,6 +3,8 @@ project 'TicTacToe.xcodeproj'
 platform :ios, '9.3'
 
 target 'TicTacToe' do
+    pod 'ReactiveSwift', git: 'https://github.com/ReactiveCocoa/ReactiveSwift.git', :tag => '6.0.0'
+
     pod 'Workflow', path: '../../../Workflow.podspec', :testspecs => ['Tests']
     pod 'WorkflowUI', path: '../../../WorkflowUI.podspec', :testspecs => ['Tests']
     pod 'BackStackContainer', path: '../BackStackContainer/BackStackContainer.podspec'
