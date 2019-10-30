@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -908,24 +932,28 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="back-pressed-handler/">backPressedHandler</a></td>
+<td><code>var</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.backPressedHandler:</code><a href="../-back-press-handler/"><code>BackPressHandler</code></a><code>?</code><br>A function to be called if the device back button is pressed while this view is attached to a window.</td>
+</tr>
+<tr>
 <td><a href="bind-show-rendering/">bindShowRendering</a></td>
-<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.bindShowRendering(initialRendering:</code><a href="bind-show-rendering/#RenderingT"><code>RenderingT</code></a><code>, showRendering:</code><a href="../-view-show-rendering/"><code>ViewShowRendering</code></a><code>&lt;</code><a href="bind-show-rendering/#RenderingT"><code>RenderingT</code></a><code>&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Establishes <a href="bind-show-rendering/#com.squareup.workflow.ui$bindShowRendering(android.view.View, com.squareup.workflow.ui.bindShowRendering.RenderingT, kotlin.Function1((com.squareup.workflow.ui.bindShowRendering.RenderingT, kotlin.Unit)))/showRendering">showRendering</a> as the implementation of <a href="show-rendering/">View.showRendering</a> for the receiver, possibly replacing the existing one. Calls <a href="bind-show-rendering/#com.squareup.workflow.ui$bindShowRendering(android.view.View, com.squareup.workflow.ui.bindShowRendering.RenderingT, kotlin.Function1((com.squareup.workflow.ui.bindShowRendering.RenderingT, kotlin.Unit)))/showRendering">showRendering</a> to display <a href="bind-show-rendering/#com.squareup.workflow.ui$bindShowRendering(android.view.View, com.squareup.workflow.ui.bindShowRendering.RenderingT, kotlin.Function1((com.squareup.workflow.ui.bindShowRendering.RenderingT, kotlin.Unit)))/initialRendering">initialRendering</a>.</td>
+<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.bindShowRendering(initialRendering:</code><a href="bind-show-rendering/#RenderingT"><code>RenderingT</code></a><code>, initialContainerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>, showRendering:</code><a href="../-view-show-rendering/"><code>ViewShowRendering</code></a><code>&lt;</code><a href="bind-show-rendering/#RenderingT"><code>RenderingT</code></a><code>&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>It is usually more convenient to use <a href="../-workflow-view-stub/">WorkflowViewStub</a> than to call this method directly.</td>
 </tr>
 <tr>
 <td><a href="can-show-rendering/">canShowRendering</a></td>
-<td><code>fun</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.canShowRendering(rendering:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><br>True if this view is able to show <a href="can-show-rendering/#com.squareup.workflow.ui$canShowRendering(android.view.View, kotlin.Any)/rendering">rendering</a>.</td>
+<td><code>fun</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.canShowRendering(rendering:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><br>It is usually more convenient to use <a href="../-workflow-view-stub/">WorkflowViewStub</a> than to call this method directly.</td>
 </tr>
 <tr>
-<td><a href="set-back-handler/">setBackHandler</a></td>
-<td><code>fun</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.setBackHandler(handler: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Sets a <a href="../-handles-back/">handler</a> that always consumes the back event. Convenient for use with method references.</td>
+<td><a href="get-rendering/">getRendering</a></td>
+<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.getRendering():</code><a href="get-rendering/#RenderingT"><code>RenderingT</code></a><code>?</code><br>Returns the most recent rendering shown by this view, or null if <a href="bind-show-rendering/">bindShowRendering</a> has never been called.</td>
+</tr>
+<tr>
+<td><a href="get-show-rendering/">getShowRendering</a></td>
+<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.getShowRendering():</code><a href="../-view-show-rendering/"><code>ViewShowRendering</code></a><code>&lt;</code><a href="get-show-rendering/#RenderingT"><code>RenderingT</code></a><code>&gt;?</code><br>Returns the function set by the most recent call to <a href="bind-show-rendering/">bindShowRendering</a>, or null if that method has never been called.</td>
 </tr>
 <tr>
 <td><a href="show-rendering/">showRendering</a></td>
-<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.showRendering(rendering:</code><a href="show-rendering/#RenderingT"><code>RenderingT</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Shows <a href="show-rendering/#com.squareup.workflow.ui$showRendering(android.view.View, com.squareup.workflow.ui.showRendering.RenderingT)/rendering">rendering</a> in a view that has been initialized by <a href="bind-show-rendering/">bindShowRendering</a>.</td>
-</tr>
-<tr>
-<td><a href="show-rendering-tag/">showRenderingTag</a></td>
-<td><code>val</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.showRenderingTag:</code><a href="../-show-rendering-tag/"><code>ShowRenderingTag</code></a><code>&lt;*&gt;?</code><br>Returns the <a href="../-show-rendering-tag/">ShowRenderingTag</a> established by the last call to <a href="bind-show-rendering/">View.bindShowRendering</a>, or null if none has been set.</td>
+<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.showRendering(rendering:</code><a href="show-rendering/#RenderingT"><code>RenderingT</code></a><code>, containerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>It is usually more convenient to use <a href="../-workflow-view-stub/">WorkflowViewStub</a> than to call this method directly.</td>
 </tr>
 </tbody>
 </table>

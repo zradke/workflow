@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -913,7 +937,7 @@
                 
                 <p><a href="../../">workflow-ui-android</a> / <a href="../">com.squareup.workflow.ui</a> / <a href="./">WorkflowFragment</a></p>
 <h1 id="workflowfragment">WorkflowFragment<a class="headerlink" href="#workflowfragment" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi abstract class WorkflowFragment&lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; : Fragment</code></p>
+<p><code>abstract class WorkflowFragment&lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; : Fragment</code></p>
 <p>A <a href="#">Fragment</a> that can run a workflow. Subclasses implement <a href="on-create-workflow/">onCreateWorkflow</a>
 to configure themselves with a <a href="#">Workflow</a>, <a href="../-view-registry/">ViewRegistry</a> and <a href="#">inputs</a>.</p>
 <p>For a workflow with no inputs, or a static configuration, that&rsquo;s as simple as:</p>
@@ -1006,20 +1030,12 @@ provide a method like this:</p>
 <td><code>open fun onActivityCreated(savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></td>
 </tr>
 <tr>
-<td><a href="on-back-pressed/">onBackPressed</a></td>
-<td><code>fun onBackPressed():</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><br>If your workflow needs to manage the back button, override <a href="https://developer.android.com/reference/android/app/Activity.html#onBackPressed()">android.app.Activity.onBackPressed</a> and call this method, and have its views or <a href="../-layout-runner/">LayoutRunner</a>s use <a href="../-handles-back/">HandlesBack</a>.</td>
-</tr>
-<tr>
 <td><a href="on-create-view/">onCreateView</a></td>
 <td><code>fun onCreateView(inflater:</code><a href="https://developer.android.com/reference/android/view/LayoutInflater.html"><code>LayoutInflater</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>?, savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>?</code></td>
 </tr>
 <tr>
 <td><a href="on-create-workflow/">onCreateWorkflow</a></td>
 <td><code>abstract fun onCreateWorkflow():</code><a href="../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Called from <a href="on-activity-created/">onActivityCreated</a>, so it should be safe for implementations to call <a href="#">getActivity</a>.</td>
-</tr>
-<tr>
-<td><a href="on-save-instance-state/">onSaveInstanceState</a></td>
-<td><code>open fun onSaveInstanceState(outState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></td>
 </tr>
 </tbody>
 </table>

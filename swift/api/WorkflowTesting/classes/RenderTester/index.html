@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../kotlin/api/trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../kotlin/api/workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -934,6 +958,8 @@
 <p>Testing helper for validating the behavior of calls to <code>render</code>.</p>
 <p>Usage: Set up a set of <code>RenderExpectations</code> and then validate with a call to <code>render</code>.
 Side-effects may be performed against the rendering to validate the behavior of actions.</p>
+<p>There is also a convenience <code>render</code> method where each expectation
+is an individual parameter.</p>
 <p>Child workflows will always be rendered based upon their initial state.</p>
 <p>To directly test actions and their effects, use the <code>WorkflowActionTester</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -956,11 +982,15 @@ Side-effects may be performed against the rendering to validate the behavior of 
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>workflow
+21
+22
+23
+24</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>workflow
     .renderTester(initialState: TestWorkflow.State())
     .render(
         with: RenderExpectations(
         expectedState: ExpectedState(state: TestWorkflow.State()),
+        expectedOutput: ExpectedOutput(output: TestWorkflow.Output.finished),
         expectedWorkers: [
             ExpectedWorker(
                 worker: TestWorker(),
@@ -970,8 +1000,10 @@ Side-effects may be performed against the rendering to validate the behavior of 
         expectedWorkflows: [
             ExpectedWorkflow(
                 type: ChildWorkflow.self,
+                key: &quot;key&quot;,
                 rendering: &quot;rendering&quot;,
-                output: ChildWorkflow.Output.success
+                output: ChildWorkflow.Output.success),
+            ...,
         ]),
         assertions: { rendering in
             XCTAssertEqual(&quot;expected text on rendering&quot;, rendering.text)
@@ -980,6 +1012,54 @@ Side-effects may be performed against the rendering to validate the behavior of 
 </pre></div>
 </td></tr></table>
 
+<p>Using the convenience API
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>workflow
+    .renderTester(initialState: TestWorkflow.State())
+    .render(
+        expectedState: ExpectedState(state: TestWorkflow.State()),
+        expectedOutput: ExpectedOutput(output: TestWorkflow.Output.finished),
+        expectedWorkers: [
+            ExpectedWorker(
+                worker: TestWorker(),
+                output: TestWorker.Output.success),
+            ...,
+        ]
+        expectedWorkflows: [
+            ExpectedWorkflow(
+                type: ChildWorkflow.self,
+                key: &quot;key&quot;,
+                rendering: &quot;rendering&quot;,
+                output: ChildWorkflow.Output.success)
+            ...,
+        ],
+        assertions: { rendering in
+            XCTAssertEqual(&quot;expected text on rendering&quot;, rendering.text)
+        }
+    .render(...) // continue testing. The state will be updated based on actions or outputs.
+</pre></div>
+</td></tr></table></p>
 <p>Validating the rendering only from the initial state provided by the workflow:
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2

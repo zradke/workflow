@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -920,7 +944,7 @@
                 
                 <p><a href="../../">workflow-ui-android</a> / <a href="../">com.squareup.workflow.ui.backstack</a> / <a href="./">ViewStateCache</a></p>
 <h1 id="viewstatecache">ViewStateCache<a class="headerlink" href="#viewstatecache" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi class ViewStateCache :</code><a href="https://developer.android.com/reference/android/os/Parcelable.html"><code>Parcelable</code></a></p>
+<p><code>class ViewStateCache :</code><a href="https://developer.android.com/reference/android/os/Parcelable.html"><code>Parcelable</code></a></p>
 <p>Handles persistence chores for container views that manage a set of <a href="#">Named</a> renderings,
 showing a view for one at a time &ndash; think back stacks or tab sets.</p>
 <p>This class implements <a href="https://developer.android.com/reference/android/os/Parcelable.html">Parcelable</a> so that it can be preserved from
@@ -983,7 +1007,7 @@ return <a href="-saved-state/">SavedState</a> from that method rather than creat
 </tr>
 <tr>
 <td><a href="update/">update</a></td>
-<td><code>fun update(retainedRenderings:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html"><code>Collection</code></a><code>&lt;Named&lt;*&gt;&gt;, oldViewMaybe:</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>?, newView:</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a></td>
+<td><code>fun update(retainedRenderings:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html"><code>Collection</code></a><code>&lt;Named&lt;*&gt;&gt;, oldViewMaybe:</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>?, newView:</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></td>
 </tr>
 <tr>
 <td><a href="write-to-parcel/">writeToParcel</a></td>

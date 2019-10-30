@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -907,28 +931,36 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../com.squareup.workflow.ui/-back-press-handler/">com.squareup.workflow.ui.BackPressHandler</a></td>
+<td>A function passed to <a href="../com.squareup.workflow.ui/android.view.-view/back-pressed-handler/">View.backPressedHandler</a>, to be called if the back button is pressed while that view is attached to a window.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.ui.backstack/-back-stack-config/">com.squareup.workflow.ui.backstack.BackStackConfig</a></td>
+<td>Informs views whether they&rsquo;re children of a <a href="../com.squareup.workflow.ui.backstack/-back-stack-container/">BackStackContainer</a>, and if so whether they&rsquo;re the <a href="../com.squareup.workflow.ui.backstack/-back-stack-config/-first/">first frame</a> or <a href="../com.squareup.workflow.ui.backstack/-back-stack-config/-other/">not</a>.</td>
+</tr>
+<tr>
 <td><a href="../com.squareup.workflow.ui.backstack/-back-stack-container/">com.squareup.workflow.ui.backstack.BackStackContainer</a></td>
 <td>A container view that can display a stream of <a href="#">BackStackScreen</a> instances.</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.ui/-builder-binding/">com.squareup.workflow.ui.BuilderBinding</a></td>
-<td>A <a href="../com.squareup.workflow.ui/-view-binding/">ViewBinding</a> that allows <a href="../com.squareup.workflow.ui/-view-registry/build-view/">ViewRegistry.buildView</a> to dispense <a href="https://developer.android.com/reference/android/view/View.html">View</a>s that need to be generated from code. (Use <a href="../com.squareup.workflow.ui/-layout-runner/">LayoutRunner</a> to work with XML layout resources.)</td>
+<td>A <a href="../com.squareup.workflow.ui/-view-binding/">ViewBinding</a> that allows a <a href="../com.squareup.workflow.ui/-view-registry/">ViewRegistry</a> to create <a href="https://developer.android.com/reference/android/view/View.html">View</a>s that need to be generated from code. (Use <a href="../com.squareup.workflow.ui/-layout-runner/">LayoutRunner</a> to work with XML layout resources.)</td>
 </tr>
 <tr>
-<td><a href="../com.squareup.workflow.ui/-experimental-workflow-ui/">com.squareup.workflow.ui.ExperimentalWorkflowUi</a></td>
-<td>The Workflow UI classes for Android are still experimental. They are in more flux than the rest of the code, and have not yet seen production use. Proceed with caution, and be ready to have the rug pulled out from under you.</td>
+<td><a href="../com.squareup.workflow.ui/-container-hint-key/">com.squareup.workflow.ui.ContainerHintKey</a></td>
+<td>Defines a value that can be provided by a <a href="../com.squareup.workflow.ui/-container-hints/">ContainerHints</a> map, specifying its <a href="#">type</a> and <a href="../com.squareup.workflow.ui/-container-hint-key/default/">default</a> value.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.ui/-container-hints/">com.squareup.workflow.ui.ContainerHints</a></td>
+<td>Immutable, append-only map of values that a parent view can pass down to its children via <a href="../com.squareup.workflow.ui/android.view.-view/show-rendering/">android.view.View.showRendering</a> et al. Allows container views to give descendants information about the context in which they&rsquo;re drawing.</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.ui/androidx.fragment.app.-fragment-activity/">androidx.fragment.app.FragmentActivity</a> (extensions in package com.squareup.workflow.ui)</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="../com.squareup.workflow.ui/-handles-back/">com.squareup.workflow.ui.HandlesBack</a></td>
-<td>Implemented by objects that want the option to intercept back button taps. Can be implemented by <a href="https://developer.android.com/reference/android/view/View.html">View</a> subclasses, or can be attached to a stock view via <a href="../com.squareup.workflow.ui/-handles-back/-helper/set-back-handler/">Helper.setBackHandler</a>.</td>
-</tr>
-<tr>
 <td><a href="../com.squareup.workflow.ui/-layout-runner/">com.squareup.workflow.ui.LayoutRunner</a></td>
-<td>An object that handles <a href="../com.squareup.workflow.ui/android.view.-view/show-rendering/">View.showRendering</a> calls for a view inflated from a layout resource in response to <a href="../com.squareup.workflow.ui/-view-registry/build-view/">ViewRegistry.buildView</a>. (Use <a href="../com.squareup.workflow.ui/-builder-binding/">BuilderBinding</a> if you want to build views from code rather than layouts.)</td>
+<td>A delegate that implements a <a href="../com.squareup.workflow.ui/-layout-runner/show-rendering/">showRendering</a> method to be called when a workflow rendering of type <a href="../com.squareup.workflow.ui/-layout-runner/#RenderingT">RenderingT</a> is ready to be displayed in a view inflated from a layout resource by a <a href="../com.squareup.workflow.ui/-view-registry/">ViewRegistry</a>. (Use <a href="../com.squareup.workflow.ui/-builder-binding/">BuilderBinding</a> if you want to build views from code rather than layouts.)</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.ui/-modal-container/">com.squareup.workflow.ui.ModalContainer</a></td>
@@ -936,7 +968,7 @@
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.ui/-show-rendering-tag/">com.squareup.workflow.ui.ShowRenderingTag</a></td>
-<td></td>
+<td>` * View tag that holds the function to make the view show instances of <a href="../com.squareup.workflow.ui/-show-rendering-tag/#RenderingT">RenderingT</a>, and the <a href="../com.squareup.workflow.ui/-show-rendering-tag/showing/">current rendering</a>.</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.ui/android.view.-view/">android.view.View</a> (extensions in package com.squareup.workflow.ui)</td>
@@ -969,6 +1001,10 @@
 <tr>
 <td><a href="../com.squareup.workflow.ui/-workflow-runner/">com.squareup.workflow.ui.WorkflowRunner</a></td>
 <td>Uses a <a href="#">Workflow</a> and a <a href="../com.squareup.workflow.ui/-view-registry/">ViewRegistry</a> to drive a <a href="../com.squareup.workflow.ui/-workflow-layout/">WorkflowLayout</a>.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.ui/-workflow-view-stub/">com.squareup.workflow.ui.WorkflowViewStub</a></td>
+<td>A placeholder <a href="https://developer.android.com/reference/android/view/View.html">View</a> that can replace itself with ones driven by workflow renderings, similar to <a href="https://developer.android.com/reference/android/view/ViewStub.html">android.view.ViewStub</a>.</td>
 </tr>
 </tbody>
 </table>

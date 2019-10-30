@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -884,14 +908,30 @@
                 <p><a href="../../../">workflow-core</a> / <a href="../../">com.squareup.workflow</a> / <a href="../">Worker</a> / <a href="./">doesSameWorkAs</a></p>
 <h1 id="doessameworkas">doesSameWorkAs<a class="headerlink" href="#doessameworkas" title="Permanent link">&para;</a></h1>
 <p><code>abstract fun doesSameWorkAs(otherWorker:</code><a href="../"><code>Worker</code></a><code>&lt;*&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a></p>
-<p>Override this method to define equivalence between <a href="../">Worker</a>s. At the end of every render pass,
-the set of <a href="../">Worker</a>s that were requested by the workflow are compared to the set from the last
-render pass using this method. Equivalent workers are allowed to keep running. New workers
-are started (<a href="../run/">run</a> is called and the returned <a href="#">Flow</a> is collected). Old workers are cancelled
-by cancelling their collecting coroutines.</p>
+<p>Override this method to define equivalence between <a href="../">Worker</a>s.</p>
+<p>At the end of every render pass, the set of <a href="../">Worker</a>s that were requested by the workflow are
+compared to the set from the last render pass using this method. Equivalent workers are allowed
+to keep running. New workers are started (<a href="../run/">run</a> is called and the returned <a href="#">Flow</a> is
+collected). Old workers are cancelled by cancelling their collecting coroutines.</p>
 <p>Implementations of this method should not be based on object identity. For example, a <a href="../">Worker</a>
 that performs a network request might check that two workers are requests to the same endpoint
 and have the same request data.</p>
+<p>Most implementations of this method will check for concrete type equality, and then match
+on constructor parameters.</p>
+<p>E.g:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>class SearchWorker(private val query: String): Worker&lt;SearchResult&gt; {
+  // run omitted for example.
+
+  override fun doesSameWorkAs(otherWorker: Worker&lt;*&gt;): Boolean =
+    otherWorker is SearchWorker &amp;&amp; otherWorker.query == query
+}
+</pre></div>
+</td></tr></table>
                 
                   
                 

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../kotlin/api/trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../kotlin/api/workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1242,10 +1266,14 @@ SONATYPE_NEXUS_PASSWORD=&lt;password&gt;
 </td></tr></table>
 
 <h4 id="snapshot-releases">Snapshot Releases<a class="headerlink" href="#snapshot-releases" title="Permanent link">&para;</a></h4>
-<p>To deploy a new snapshot release, you don&rsquo;t need to update any properties. Just run:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>./gradlew clean uploadArchives
+<p>Double-check that <code>gradle.properties</code> correctly contains the <code>-SNAPSHOT</code> suffix, then upload
+snapshot artifacts to Sonatype just like you would for a production release:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>./gradlew clean build <span class="o">&amp;&amp;</span> ./gradlew uploadArchives --no-parallel --no-daemon
 </pre></div>
 </td></tr></table>
+
+<p>You can verify the artifacts are available by visiting
+<a href="https://oss.sonatype.org/content/repositories/snapshots/com/squareup/workflow/">https://oss.sonatype.org/content/repositories/snapshots/com/squareup/workflow/</a>.</p>
                 
                   
                 

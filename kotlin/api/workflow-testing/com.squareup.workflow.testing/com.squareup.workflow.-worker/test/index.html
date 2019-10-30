@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -883,11 +907,8 @@
                 
                 <p><a href="../../../">workflow-testing</a> / <a href="../../">com.squareup.workflow.testing</a> / <a href="../">com.squareup.workflow.Worker</a> / <a href="./">test</a></p>
 <h1 id="test">test<a class="headerlink" href="#test" title="Permanent link">&para;</a></h1>
-<p><code>fun &lt;T&gt; Worker&lt;</code><a href="./#T"><code>T</code></a><code>&gt;.test(timeoutMs:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><code>Long</code></a><code>= DEFAULT_TIMEOUT_MS, context:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/index.html"><code>CoroutineContext</code></a><code>= EmptyCoroutineContext, block: suspend</code><a href="../../-worker-tester/"><code>WorkerTester</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;.() -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
-<p>Test a <a href="#">Worker</a> by defining assertions on its output within <a href="./#com.squareup.workflow.testing$test(com.squareup.workflow.Worker((com.squareup.workflow.testing.test.T)), kotlin.Long, kotlin.coroutines.CoroutineContext, kotlin.coroutines.SuspendFunction1((com.squareup.workflow.testing.WorkerTester((com.squareup.workflow.testing.test.T)), kotlin.Unit)))/block">block</a>.</p>
-<p>If you need to control time (e.g. your worker uses <code>delay()</code>), create a
-<a href="#">TestCoroutineDispatcher</a> and pass it as
-<a href="./#com.squareup.workflow.testing$test(com.squareup.workflow.Worker((com.squareup.workflow.testing.test.T)), kotlin.Long, kotlin.coroutines.CoroutineContext, kotlin.coroutines.SuspendFunction1((com.squareup.workflow.testing.WorkerTester((com.squareup.workflow.testing.test.T)), kotlin.Unit)))/context">context</a>.</p>
+<p><code>fun &lt;T&gt; Worker&lt;</code><a href="./#T"><code>T</code></a><code>&gt;.test(timeoutMs:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><code>Long</code></a><code>= DEFAULT_TIMEOUT_MS, block: suspend</code><a href="../../-worker-tester/"><code>WorkerTester</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;.() -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
+<p>Test a <a href="#">Worker</a> by defining assertions on its output within <a href="./#com.squareup.workflow.testing$test(com.squareup.workflow.Worker((com.squareup.workflow.testing.test.T)), kotlin.Long, kotlin.coroutines.SuspendFunction1((com.squareup.workflow.testing.WorkerTester((com.squareup.workflow.testing.test.T)), kotlin.Unit)))/block">block</a>.</p>
                 
                   
                 

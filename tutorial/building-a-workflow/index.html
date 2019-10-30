@@ -864,6 +864,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/api/trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/api/workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1346,7 +1370,7 @@ method that that returns a Reactive Swift <code>SignalProducer</code>. When this
         <span class="k">case</span> <span class="n">error</span><span class="p">(</span><span class="n">Error</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">run</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">SignalProducer</span><span class="p">&lt;</span><span class="n">RefreshWorker</span><span class="p">.</span><span class="n">Output</span><span class="p">,</span> <span class="n">NoError</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">run</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">SignalProducer</span><span class="p">&lt;</span><span class="n">RefreshWorker</span><span class="p">.</span><span class="n">Output</span><span class="p">,</span> <span class="n">Never</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">SignalProducer</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">&quot;We did it!&quot;</span><span class="p">))</span>
             <span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="n">QueueScheduler</span><span class="p">.</span><span class="n">main</span><span class="p">)</span>
     <span class="p">}</span>

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -913,11 +937,11 @@
                 
                 <p><a href="../../">workflow-ui-android</a> / <a href="../">com.squareup.workflow.ui</a> / <a href="./">LayoutRunner</a></p>
 <h1 id="layoutrunner">LayoutRunner<a class="headerlink" href="#layoutrunner" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi interface LayoutRunner&lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code></p>
-<p>An object that handles <a href="../android.view.-view/show-rendering/">View.showRendering</a> calls for a view inflated
-from a layout resource in response to <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>.
-(Use <a href="../-builder-binding/">BuilderBinding</a> if you want to build views from code rather than
-layouts.)</p>
+<p><code>interface LayoutRunner&lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code></p>
+<p>A delegate that implements a <a href="show-rendering/">showRendering</a> method to be called when a workflow rendering
+of type <a href="./#RenderingT">RenderingT</a> is ready to be displayed in a view inflated from a layout resource
+by a <a href="../-view-registry/">ViewRegistry</a>. (Use <a href="../-builder-binding/">BuilderBinding</a> if you want to build views from code rather
+than layouts.)</p>
 <p>Typical usage is to have a <a href="./">LayoutRunner</a>&lsquo;s <code>companion object</code> implement
 <a href="../-view-binding/">ViewBinding</a> by delegating to <a href="bind/">LayoutRunner.bind</a>, specifying the layout resource
 it expects to drive.</p>
@@ -952,10 +976,12 @@ it expects to drive.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Also note that two flavors of <a href="#">contructor</a>
-are accepted by <a href="bind/">bind</a>. Every <a href="./">LayoutRunner</a> constructor must accept an <a href="https://developer.android.com/reference/android/view/View.html">View</a>.
-Optionally, they can also have a second <a href="../-view-registry/">ViewRegistry</a> argument, to allow
-nested renderings to be displayed via nested calls to <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>.</p>
+<p>Every <a href="./">LayoutRunner</a> must have a constructor that accepts a <a href="https://developer.android.com/reference/android/view/View.html">View</a> as its first argument.
+The constructor may also have a second <a href="../-view-registry/">ViewRegistry</a> argument, to allow
+nested renderings to be displayed in nested views.</p>
+<p>It&rsquo;s simplest, and most typical, to pass the <a href="../-view-registry/">ViewRegistry</a> to <a href="../-workflow-view-stub/update/">WorkflowViewStub.update</a> to
+show nested renderings. When that&rsquo;s too constraining, more complex containers can
+call <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>, <a href="../android.view.-view/can-show-rendering/">View.canShowRendering</a> and <a href="../android.view.-view/show-rendering/">View.showRendering</a> directly.</p>
 <h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -982,7 +1008,7 @@ nested renderings to be displayed via nested calls to <a href="../-view-registry
 <tbody>
 <tr>
 <td><a href="show-rendering/">showRendering</a></td>
-<td><code>abstract fun showRendering(rendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></td>
+<td><code>abstract fun showRendering(rendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>, containerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></td>
 </tr>
 </tbody>
 </table>

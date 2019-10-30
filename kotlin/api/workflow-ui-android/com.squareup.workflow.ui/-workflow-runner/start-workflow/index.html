@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -906,16 +930,16 @@
                 
                 <p><a href="../../../">workflow-ui-android</a> / <a href="../../">com.squareup.workflow.ui</a> / <a href="../">WorkflowRunner</a> / <a href="./">startWorkflow</a></p>
 <h1 id="startworkflow">startWorkflow<a class="headerlink" href="#startworkflow" title="Permanent link">&para;</a></h1>
-<p><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(activity: FragmentActivity, savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?, configure: () -&gt;</code><a href="../-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="../"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
+<p><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(activity: FragmentActivity, configure: () -&gt;</code><a href="../-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="../"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
 <p>Returns an instance of <a href="../">WorkflowRunner</a> tied to the
-<a href="#">Lifecycle</a> of the given <a href="./#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.FragmentActivity, android.os.Bundle, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/activity">activity</a>.</p>
+<a href="#">Lifecycle</a> of the given <a href="./#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.FragmentActivity, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/activity">activity</a>.</p>
 <p>It&rsquo;s probably more convenient to use <a href="../../androidx.fragment.app.-fragment-activity/set-content-workflow/">FragmentActivity.setContentWorkflow</a>
 rather than calling this method directly.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p><code>configure</code> - function defining the root workflow and its environment. Called only
-once per <a href="#">lifecycle</a>, and always called from the UI thread.<code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(fragment: Fragment, savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?, configure: () -&gt;</code><a href="../-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="../"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
+once per <a href="#">lifecycle</a>, and always called from the UI thread.<code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(fragment: Fragment, configure: () -&gt;</code><a href="../-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="../"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
 <p>Returns an instance of <a href="../">WorkflowRunner</a> tied to the
-<a href="#">Lifecycle</a> of the given <a href="./#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.Fragment, android.os.Bundle, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/fragment">fragment</a>.</p>
+<a href="#">Lifecycle</a> of the given <a href="./#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.Fragment, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/fragment">fragment</a>.</p>
 <p>It&rsquo;s probably more convenient to subclass <a href="../../-workflow-fragment/">WorkflowFragment</a> rather than calling
 this method directly.</p>
 <h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>

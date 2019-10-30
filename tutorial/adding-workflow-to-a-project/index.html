@@ -782,6 +782,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/api/trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/api/workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -947,11 +971,9 @@
 <p>You&rsquo;ll need the following four libraries:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">import</span> <span class="nc">Workflow</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">import</span> <span class="nc">Workflow</span>
 <span class="kd">import</span> <span class="nc">WorkflowUI</span>
 <span class="kd">import</span> <span class="nc">ReactiveSwift</span>
-<span class="kd">import</span> <span class="nc">Result</span>
 </pre></div>
 </td></tr></table>
 
@@ -966,15 +988,13 @@ simply add the dependencies to your <code>.podspec</code>.</p>
  7
  8
  9
-10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># MySoftware.podspec</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># MySoftware.podspec</span>
 <span class="no">Pod</span><span class="o">::</span><span class="no">Spec</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
     <span class="c1"># ...</span>
 
     <span class="n">s</span><span class="o">.</span><span class="n">dependency</span> <span class="s1">&#39;Workflow&#39;</span>
     <span class="n">s</span><span class="o">.</span><span class="n">dependency</span> <span class="s1">&#39;WorkflowUI&#39;</span>
     <span class="n">s</span><span class="o">.</span><span class="n">dependency</span> <span class="s1">&#39;ReactiveSwift&#39;</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">dependency</span> <span class="s1">&#39;Result&#39;</span>
 
     <span class="c1"># ...</span>
 <span class="k">end</span>

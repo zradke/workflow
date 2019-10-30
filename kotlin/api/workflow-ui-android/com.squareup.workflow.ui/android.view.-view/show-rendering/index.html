@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -868,6 +892,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -883,8 +923,12 @@
                 
                 <p><a href="../../../">workflow-ui-android</a> / <a href="../../">com.squareup.workflow.ui</a> / <a href="../">android.view.View</a> / <a href="./">showRendering</a></p>
 <h1 id="showrendering">showRendering<a class="headerlink" href="#showrendering" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.showRendering(rendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
-<p>Shows <a href="./#com.squareup.workflow.ui$showRendering(android.view.View, com.squareup.workflow.ui.showRendering.RenderingT)/rendering">rendering</a> in a view that has been initialized by <a href="../bind-show-rendering/">bindShowRendering</a>.</p>
+<p><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>.showRendering(rendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>, containerHints:</code><a href="../../-container-hints/"><code>ContainerHints</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
+<p>It is usually more convenient to use <a href="../../-workflow-view-stub/">WorkflowViewStub</a> than to call this method directly.</p>
+<p>Sets the workflow rendering associated with this view, and displays it by
+invoking the <a href="../../-view-show-rendering/">ViewShowRendering</a> function previously set by <a href="../bind-show-rendering/">bindShowRendering</a>.</p>
+<h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h3>
+<p><code>IllegalStateException</code> - if <a href="../bind-show-rendering/">bindShowRendering</a> has not been called.</p>
                 
                   
                 

@@ -768,6 +768,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -792,6 +799,30 @@
   <li class="md-nav__item">
     <a href="../../workflow-rx2/com.squareup.workflow.rx2/" title="workflow-rx2" class="md-nav__link">
       workflow-rx2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
     </a>
   </li>
 
@@ -949,6 +980,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -999,6 +1037,10 @@
 <td><code>class TestRenderResult&lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, RenderingT&gt;</code><br>Represents the result of running a single render pass on a workflow.</td>
 </tr>
 <tr>
+<td><a href="-worker-sink/">WorkerSink</a></td>
+<td><code>class WorkerSink&lt;T&gt; : Worker&lt;</code><a href="-worker-sink/#T"><code>T</code></a><code>&gt;</code><br>Implementation of <a href="#">Worker</a> for integration tests (using <a href="com.squareup.workflow.-workflow/test-from-start/">testFromStart</a> or <a href="#">testFromState</a>) that need to simply push values into the worker from the test.</td>
+</tr>
+<tr>
 <td><a href="-worker-tester/">WorkerTester</a></td>
 <td><code>interface WorkerTester&lt;T&gt;</code></td>
 </tr>
@@ -1032,6 +1074,21 @@
 <tr>
 <td><a href="com.squareup.workflow.-workflow/">com.squareup.workflow.Workflow</a></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="-worker-sink/">WorkerSink</a></td>
+<td><code>fun &lt;T&gt; WorkerSink(name:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>):</code><a href="-worker-sink/"><code>WorkerSink</code></a><code>&lt;</code><a href="-worker-sink/#T"><code>T</code></a><code>&gt;</code></td>
 </tr>
 </tbody>
 </table>

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -886,7 +910,7 @@
 <p><code>fun run(): Flow&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></p>
 <p>Overrides <a href="../../-worker/run/">Worker.run</a></p>
 <p>Returns a <a href="#">Flow</a> to execute the work represented by this worker.</p>
-<p>The <a href="#">Flow</a> is invoked in the context of the workflow runtime. When this <a href="../../-worker/">Worker</a>, its parent
+<p>The <a href="#">Flow</a> is collected in the context of the workflow runtime. When this <a href="../../-worker/">Worker</a>, its parent
 <a href="../../-workflow/">Workflow</a>, or any ancestor <a href="../../-workflow/">Workflow</a>s are torn down, the coroutine in which this <a href="#">Flow</a> is
 being collected will be cancelled.</p>
                 

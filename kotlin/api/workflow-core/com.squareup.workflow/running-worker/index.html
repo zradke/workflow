@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -878,13 +902,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#parameters_1" title="Parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-      
       
       
       
@@ -906,16 +923,11 @@
                 
                 <p><a href="../../">workflow-core</a> / <a href="../">com.squareup.workflow</a> / <a href="./">runningWorker</a></p>
 <h1 id="runningworker">runningWorker<a class="headerlink" href="#runningworker" title="Permanent link">&para;</a></h1>
-<p><code>fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, T&gt;</code><a href="../-render-context/"><code>RenderContext</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;.runningWorker(worker:</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;, key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", handler: (</code><a href="./#T"><code>T</code></a><code>) -&gt;</code><a href="../-workflow-action/"><code>WorkflowAction</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
-<p>Ensures <a href="./#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((com.squareup.workflow.runningWorker.T)), kotlin.String, kotlin.Function1((com.squareup.workflow.runningWorker.T, com.squareup.workflow.WorkflowAction((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)))))/worker">worker</a> is running. When the <a href="../-worker/">Worker</a> emits an output, <a href="./#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((com.squareup.workflow.runningWorker.T)), kotlin.String, kotlin.Function1((com.squareup.workflow.runningWorker.T, com.squareup.workflow.WorkflowAction((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)))))/handler">handler</a> is called
-to determine the <a href="../-workflow-action/">WorkflowAction</a> to take. When the worker finishes, nothing happens (although
-another render pass may be triggered).</p>
-<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
-<p><code>key</code> - An optional string key that is used to distinguish between identical <a href="../-worker/">Worker</a>s.<code>fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="../-render-context/"><code>RenderContext</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;.runningWorker(worker:</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;, key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= ""):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
+<p><code>fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="../-render-context/"><code>RenderContext</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;.runningWorker(worker:</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;, key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= ""):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a></p>
 <p>Ensures a <a href="../-worker/">Worker</a> that never emits anything is running. Since <a href="./#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((kotlin.Nothing)), kotlin.String)/worker">worker</a> can&rsquo;t emit anything,
 it can&rsquo;t trigger any <a href="../-workflow-action/">WorkflowAction</a>s.</p>
 <p>A simple way to create workers that don&rsquo;t output anything is using <a href="../-worker/create-side-effect/">Worker.createSideEffect</a>.</p>
-<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p><code>key</code> - An optional string key that is used to distinguish between identical <a href="../-worker/">Worker</a>s.</p>
                 
                   

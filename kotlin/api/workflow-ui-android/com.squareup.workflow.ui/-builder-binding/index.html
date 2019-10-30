@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -913,8 +937,8 @@
                 
                 <p><a href="../../">workflow-ui-android</a> / <a href="../">com.squareup.workflow.ui</a> / <a href="./">BuilderBinding</a></p>
 <h1 id="builderbinding">BuilderBinding<a class="headerlink" href="#builderbinding" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi class BuilderBinding&lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; :</code><a href="../-view-binding/"><code>ViewBinding</code></a><code>&lt;</code><a href="./#RenderingT"><code>RenderingT</code></a><code>&gt;</code></p>
-<p>A <a href="../-view-binding/">ViewBinding</a> that allows <a href="../-view-registry/build-view/">ViewRegistry.buildView</a> to dispense <a href="https://developer.android.com/reference/android/view/View.html">View</a>s that need
+<p><code>class BuilderBinding&lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; :</code><a href="../-view-binding/"><code>ViewBinding</code></a><code>&lt;</code><a href="./#RenderingT"><code>RenderingT</code></a><code>&gt;</code></p>
+<p>A <a href="../-view-binding/">ViewBinding</a> that allows a <a href="../-view-registry/">ViewRegistry</a> to create <a href="https://developer.android.com/reference/android/view/View.html">View</a>s that need
 to be generated from code. (Use <a href="../-layout-runner/">LayoutRunner</a> to work with XML layout resources.)</p>
 <p>Typical usage is to have a custom builder or view&rsquo;s <code>companion object</code> implement
 <a href="../-view-binding/">ViewBinding</a> by delegating to a <a href="./">BuilderBinding</a>, like this:</p>
@@ -963,7 +987,10 @@ custom classes themselves.</p>
 </td></tr></table>
 
 <p>Note in particular the <a href="../-view-registry/">ViewRegistry</a> argument to the <a href="#">viewConstructor</a> lambda. This allows
-nested renderings to be displayed via nested calls to <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>.</p>
+nested renderings to be displayed.</p>
+<p>It&rsquo;s simplest, and most typical, to pass the <a href="../-view-registry/">ViewRegistry</a> to <a href="../-workflow-view-stub/update/">WorkflowViewStub.update</a> to
+show nested renderings. When that&rsquo;s too constraining, more complex containers can
+call <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>, <a href="../android.view.-view/can-show-rendering/">View.canShowRendering</a> and <a href="../android.view.-view/show-rendering/">View.showRendering</a> directly.</p>
 <h3 id="constructors">Constructors<a class="headerlink" href="#constructors" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -975,7 +1002,7 @@ nested renderings to be displayed via nested calls to <a href="../-view-registry
 <tbody>
 <tr>
 <td><a href="-init-/">&lt;init&gt;</a></td>
-<td><code>BuilderBinding(type:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><code>KClass</code></a><code>&lt;</code><a href="./#RenderingT"><code>RenderingT</code></a><code>&gt;, viewConstructor: (viewRegistry:</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>, initialRendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>, contextForNewView:</code><a href="https://developer.android.com/reference/android/content/Context.html"><code>Context</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>?) -&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>)</code><br>A <a href="../-view-binding/">ViewBinding</a> that allows <a href="../-view-registry/build-view/">ViewRegistry.buildView</a> to dispense <a href="https://developer.android.com/reference/android/view/View.html">View</a>s that need to be generated from code. (Use <a href="../-layout-runner/">LayoutRunner</a> to work with XML layout resources.)</td>
+<td><code>BuilderBinding(type:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><code>KClass</code></a><code>&lt;</code><a href="./#RenderingT"><code>RenderingT</code></a><code>&gt;, viewConstructor: (viewRegistry:</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>, initialRendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>, initialContainerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>, contextForNewView:</code><a href="https://developer.android.com/reference/android/content/Context.html"><code>Context</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>?) -&gt;</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>)</code><br>A <a href="../-view-binding/">ViewBinding</a> that allows a <a href="../-view-registry/">ViewRegistry</a> to create <a href="https://developer.android.com/reference/android/view/View.html">View</a>s that need to be generated from code. (Use <a href="../-layout-runner/">LayoutRunner</a> to work with XML layout resources.)</td>
 </tr>
 </tbody>
 </table>
@@ -1005,7 +1032,7 @@ nested renderings to be displayed via nested calls to <a href="../-view-registry
 <tbody>
 <tr>
 <td><a href="build-view/">buildView</a></td>
-<td><code>fun buildView(registry:</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>, initialRendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>, contextForNewView:</code><a href="https://developer.android.com/reference/android/content/Context.html"><code>Context</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>?):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><br>Returns a View ready to display <a href="../-view-binding/build-view/#com.squareup.workflow.ui.ViewBinding$buildView(com.squareup.workflow.ui.ViewRegistry, com.squareup.workflow.ui.ViewBinding.RenderingT, android.content.Context, android.view.ViewGroup)/initialRendering">initialRendering</a> (and any succeeding values) via <a href="../android.view.-view/show-rendering/">View.showRendering</a>.</td>
+<td><code>fun buildView(registry:</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>, initialRendering:</code><a href="./#RenderingT"><code>RenderingT</code></a><code>, initialContainerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>, contextForNewView:</code><a href="https://developer.android.com/reference/android/content/Context.html"><code>Context</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>?):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><br>Returns a View ready to display <a href="../-view-binding/build-view/#com.squareup.workflow.ui.ViewBinding$buildView(com.squareup.workflow.ui.ViewRegistry, com.squareup.workflow.ui.ViewBinding.RenderingT, com.squareup.workflow.ui.ContainerHints, android.content.Context, android.view.ViewGroup)/initialRendering">initialRendering</a> (and any succeeding values) via <a href="../android.view.-view/show-rendering/">View.showRendering</a>.</td>
 </tr>
 </tbody>
 </table>

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -883,16 +907,16 @@
                 
                 <p><a href="../../../">workflow-core</a> / <a href="../../">com.squareup.workflow</a> / <a href="../">Worker</a> / <a href="./">createSideEffect</a></p>
 <h1 id="createsideeffect">createSideEffect<a class="headerlink" href="#createsideeffect" title="Permanent link">&para;</a></h1>
-<p><code>fun createSideEffect(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>, block: suspend () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></p>
+<p><code>fun createSideEffect(block: suspend () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></p>
 <p>Creates a <a href="../">Worker</a> that just performs some side effects and doesn&rsquo;t emit anything. Run the
-worker from your <code>render</code> method using <a href="../../running-worker/">RenderContext.runningWorker</a>.</p>
+worker from your <code>render</code> method using <a href="../../-render-context/running-worker/">RenderContext.runningWorker</a>.</p>
 <p>The returned <a href="../">Worker</a> will equate to any other workers created with this function that have
 the same key. The key is required for this builder because there is no type information
 available to distinguish workers.</p>
 <p>E.g.:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>fun logOnEntered(message: String) = Worker.createSideEffect(&quot;logOnEntered&quot;) {
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>fun logOnEntered(message: String) = Worker.createSideEffect() {
   println(&quot;Entered state: $message&quot;)
 }
 </pre></div>

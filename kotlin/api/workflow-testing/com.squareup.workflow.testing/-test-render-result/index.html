@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -918,7 +942,8 @@
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p><code>rendering</code> - The actual <a href="./#RenderingT">RenderingT</a> value returned from the workflow&rsquo;s <code>render</code> method.</p>
 <p><code>state</code> - The <a href="./#StateT">StateT</a> passed into the <code>render</code> method.</p>
-<p><code>behavior</code> - The <a href="#">Behavior</a> generated from the <a href="#">RenderContext</a>.</p>
+<p><code>behavior</code> - The <a href="#">Behavior</a> generated from the
+<a href="#">RenderContext</a>.</p>
 <h3 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -962,10 +987,6 @@
 <tr>
 <td><a href="get-event-result/">getEventResult</a></td>
 <td><code>fun getEventResult():</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html"><code>Pair</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>?&gt;</code><br>Call this after invoking one of the <a href="#">event handlers</a> on your rendering to get the result of handling that event.</td>
-</tr>
-<tr>
-<td><a href="handle-finish/">handleFinish</a></td>
-<td><code>fun &lt;T :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; Worker&lt;</code><a href="handle-finish/#T"><code>T</code></a><code>&gt;.handleFinish(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= ""):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html"><code>Pair</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>?&gt;</code><br>Asserts that this worker was ran with the given <a href="handle-finish/#com.squareup.workflow.testing.TestRenderResult$handleFinish(com.squareup.workflow.Worker((com.squareup.workflow.testing.TestRenderResult.handleFinish.T)), kotlin.String)/key">key</a> and then executes the output handler with <a href="#">Finished</a>. Returns the new state and output returned by the output handler.</td>
 </tr>
 <tr>
 <td><a href="handle-output/">handleOutput</a></td>

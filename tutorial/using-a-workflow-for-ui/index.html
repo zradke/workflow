@@ -782,6 +782,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/api/trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/api/workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -957,7 +981,7 @@ Workflows and the UI that is ultimately displayed. On iOS, the container is impl
 <span class="kd">public</span> <span class="kr">final</span> <span class="kd">class</span> <span class="nc">ContainerViewController</span><span class="p">&lt;</span><span class="n">Output</span><span class="p">,</span> <span class="n">ScreenType</span><span class="p">&gt;:</span> <span class="bp">UIViewController</span> <span class="k">where</span> <span class="n">ScreenType</span><span class="p">:</span> <span class="n">Screen</span> <span class="p">{</span>
 
     <span class="c1">/// Emits output events from the bound workflow.</span>
-    <span class="kd">public</span> <span class="kd">let</span> <span class="nv">output</span><span class="p">:</span> <span class="n">Signal</span><span class="p">&lt;</span><span class="n">Output</span><span class="p">,</span> <span class="n">NoError</span><span class="p">&gt;</span>
+    <span class="kd">public</span> <span class="kd">let</span> <span class="nv">output</span><span class="p">:</span> <span class="n">Signal</span><span class="p">&lt;</span><span class="n">Output</span><span class="p">,</span> <span class="n">Never</span><span class="p">&gt;</span>
 
     <span class="kd">public</span> <span class="kr">convenience</span> <span class="kd">init</span><span class="p">&lt;</span><span class="n">W</span><span class="p">:</span> <span class="n">Workflow</span><span class="p">&gt;(</span><span class="n">workflow</span><span class="p">:</span> <span class="n">W</span><span class="p">,</span> <span class="n">viewRegistry</span><span class="p">:</span> <span class="n">ViewRegistry</span><span class="p">)</span> <span class="k">where</span> <span class="n">W</span><span class="p">.</span><span class="n">Rendering</span> <span class="p">==</span> <span class="n">ScreenType</span><span class="p">,</span> <span class="n">W</span><span class="p">.</span><span class="n">Output</span> <span class="p">==</span> <span class="n">Output</span>
 <span class="p">}</span>

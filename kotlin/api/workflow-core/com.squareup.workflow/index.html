@@ -817,6 +817,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1046,7 +1070,7 @@
 </tr>
 <tr>
 <td><a href="-stateful-workflow/">StatefulWorkflow</a></td>
-<td><code>abstract class StatefulWorkflow&lt;in PropsT, StateT, out OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, out RenderingT&gt; :</code><a href="-workflow/"><code>Workflow</code></a><code>&lt;</code><a href="-stateful-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="-stateful-workflow/#OutputT"><code>OutputT</code></a><code>,</code><a href="-stateful-workflow/#RenderingT"><code>RenderingT</code></a><code>&gt;</code><br>A composable, stateful object that can <a href="#">handle events</a>, <a href="-render-context/render-child/">delegate to children</a>, <a href="#">subscribe</a> to arbitrary asynchronous events from the outside world, and be <a href="-stateful-workflow/snapshot-state/">saved</a> to a serialized form to be restored later.</td>
+<td><code>abstract class StatefulWorkflow&lt;in PropsT, StateT, out OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, out RenderingT&gt; :</code><a href="-workflow/"><code>Workflow</code></a><code>&lt;</code><a href="-stateful-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="-stateful-workflow/#OutputT"><code>OutputT</code></a><code>,</code><a href="-stateful-workflow/#RenderingT"><code>RenderingT</code></a><code>&gt;</code><br>A composable, stateful object that can <a href="-render-context/make-action-sink/">handle events</a>, <a href="-render-context/render-child/">delegate to children</a>, <a href="-render-context/running-worker/">subscribe</a> to arbitrary asynchronous events from the outside world, and be <a href="-stateful-workflow/snapshot-state/">saved</a> to a serialized form to be restored later.</td>
 </tr>
 <tr>
 <td><a href="-stateless-workflow/">StatelessWorkflow</a></td>
@@ -1054,7 +1078,7 @@
 </tr>
 <tr>
 <td><a href="-worker/">Worker</a></td>
-<td><code>interface Worker&lt;out T&gt;</code><br>Represents a unit of asynchronous work that can have zero, one, or multiple outputs.</td>
+<td><code>interface Worker&lt;out OutputT&gt;</code><br>Represents a unit of asynchronous work that can have zero, one, or multiple outputs.</td>
 </tr>
 <tr>
 <td><a href="-workflow/">Workflow</a></td>
@@ -1155,11 +1179,15 @@
 </tr>
 <tr>
 <td><a href="running-worker/">runningWorker</a></td>
-<td><code>fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, T&gt;</code><a href="-render-context/"><code>RenderContext</code></a><code>&lt;</code><a href="running-worker/#StateT"><code>StateT</code></a><code>,</code><a href="running-worker/#OutputT"><code>OutputT</code></a><code>&gt;.runningWorker(worker:</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="running-worker/#T"><code>T</code></a><code>&gt;, key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", handler: (</code><a href="running-worker/#T"><code>T</code></a><code>) -&gt;</code><a href="-workflow-action/"><code>WorkflowAction</code></a><code>&lt;</code><a href="running-worker/#StateT"><code>StateT</code></a><code>,</code><a href="running-worker/#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Ensures <a href="running-worker/#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((com.squareup.workflow.runningWorker.T)), kotlin.String, kotlin.Function1((com.squareup.workflow.runningWorker.T, com.squareup.workflow.WorkflowAction((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)))))/worker">worker</a> is running. When the <a href="-worker/">Worker</a> emits an output, <a href="running-worker/#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((com.squareup.workflow.runningWorker.T)), kotlin.String, kotlin.Function1((com.squareup.workflow.runningWorker.T, com.squareup.workflow.WorkflowAction((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)))))/handler">handler</a> is called to determine the <a href="-workflow-action/">WorkflowAction</a> to take. When the worker finishes, nothing happens (although another render pass may be triggered).<code>fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="-render-context/"><code>RenderContext</code></a><code>&lt;</code><a href="running-worker/#StateT"><code>StateT</code></a><code>,</code><a href="running-worker/#OutputT"><code>OutputT</code></a><code>&gt;.runningWorker(worker:</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;, key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= ""):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Ensures a <a href="-worker/">Worker</a> that never emits anything is running. Since <a href="running-worker/#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((kotlin.Nothing)), kotlin.String)/worker">worker</a> can&rsquo;t emit anything, it can&rsquo;t trigger any <a href="-workflow-action/">WorkflowAction</a>s.</td>
+<td><code>fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code><a href="-render-context/"><code>RenderContext</code></a><code>&lt;</code><a href="running-worker/#StateT"><code>StateT</code></a><code>,</code><a href="running-worker/#OutputT"><code>OutputT</code></a><code>&gt;.runningWorker(worker:</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;, key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= ""):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Ensures a <a href="-worker/">Worker</a> that never emits anything is running. Since <a href="running-worker/#com.squareup.workflow$runningWorker(com.squareup.workflow.RenderContext((com.squareup.workflow.runningWorker.StateT, com.squareup.workflow.runningWorker.OutputT)), com.squareup.workflow.Worker((kotlin.Nothing)), kotlin.String)/worker">worker</a> can&rsquo;t emit anything, it can&rsquo;t trigger any <a href="-workflow-action/">WorkflowAction</a>s.</td>
 </tr>
 <tr>
 <td><a href="transform/">transform</a></td>
-<td><code>fun &lt;T, R&gt;</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="transform/#T"><code>T</code></a><code>&gt;.transform(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", transform: (Flow&lt;</code><a href="transform/#T"><code>T</code></a><code>&gt;) -&gt; Flow&lt;</code><a href="transform/#R"><code>R</code></a><code>&gt;):</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="transform/#R"><code>R</code></a><code>&gt;</code><br>Returns a <a href="-worker/">Worker</a> that transforms this <a href="-worker/">Worker</a>&lsquo;s <a href="#">Flow</a> by calling <a href="transform/#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.String, kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/transform">transform</a>.</td>
+<td><code>fun &lt;T, R&gt;</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="transform/#T"><code>T</code></a><code>&gt;.transform(transform: (Flow&lt;</code><a href="transform/#T"><code>T</code></a><code>&gt;) -&gt; Flow&lt;</code><a href="transform/#R"><code>R</code></a><code>&gt;):</code><a href="-worker/"><code>Worker</code></a><code>&lt;</code><a href="transform/#R"><code>R</code></a><code>&gt;</code><br>Returns a <a href="-worker/">Worker</a> that transforms this <a href="-worker/">Worker</a>&lsquo;s <a href="#">Flow</a> by calling <a href="transform/#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/transform">transform</a>.</td>
+</tr>
+<tr>
+<td><a href="workflow-action/">workflowAction</a></td>
+<td><code>fun &lt;PropsT, StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, RenderingT&gt;</code><a href="-stateful-workflow/"><code>StatefulWorkflow</code></a><code>&lt;</code><a href="workflow-action/#PropsT"><code>PropsT</code></a><code>,</code><a href="workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="workflow-action/#OutputT"><code>OutputT</code></a><code>,</code><a href="workflow-action/#RenderingT"><code>RenderingT</code></a><code>&gt;.workflowAction(name:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", block:</code><a href="-workflow-action/-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="workflow-action/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="workflow-action/#OutputT"><code>OutputT</code></a><code>?):</code><a href="-workflow-action/"><code>WorkflowAction</code></a><code>&lt;</code><a href="workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="workflow-action/#OutputT"><code>OutputT</code></a><code>&gt;</code><br><code>fun &lt;PropsT, StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, RenderingT&gt;</code><a href="-stateful-workflow/"><code>StatefulWorkflow</code></a><code>&lt;</code><a href="workflow-action/#PropsT"><code>PropsT</code></a><code>,</code><a href="workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="workflow-action/#OutputT"><code>OutputT</code></a><code>,</code><a href="workflow-action/#RenderingT"><code>RenderingT</code></a><code>&gt;.workflowAction(name: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>, block:</code><a href="-workflow-action/-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="workflow-action/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="workflow-action/#OutputT"><code>OutputT</code></a><code>?):</code><a href="-workflow-action/"><code>WorkflowAction</code></a><code>&lt;</code><a href="workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="workflow-action/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Convenience to create a <a href="-workflow-action/">WorkflowAction</a> with parameter types matching those of the receiving <a href="-stateful-workflow/">StatefulWorkflow</a>. The action will invoke the given <a href="workflow-action/#com.squareup.workflow$workflowAction(com.squareup.workflow.StatefulWorkflow((com.squareup.workflow.workflowAction.PropsT, com.squareup.workflow.workflowAction.StateT, com.squareup.workflow.workflowAction.OutputT, com.squareup.workflow.workflowAction.RenderingT)), kotlin.String, kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.workflowAction.StateT)), com.squareup.workflow.workflowAction.OutputT)))/block">lambda</a> when it is <a href="-workflow-action/apply/">applied</a>.</td>
 </tr>
 </tbody>
 </table>

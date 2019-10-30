@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -923,8 +947,7 @@
 <p><code>class MockWorker&lt;T&gt; : Worker&lt;</code><a href="./#T"><code>T</code></a><code>&gt;</code></p>
 <p>A mock implementation of <a href="#">Worker</a> for use in tests with <code>testRender</code> and <a href="../-test-render-result/">TestRenderResult</a>.</p>
 <p>Note this <a href="#">Worker</a> can not actually emit any output itself. Use
-<a href="../-test-render-result/handle-output/">TestRenderResult.handleOutput</a> or
-<a href="../-test-render-result/handle-finish/">TestRenderResult.handleFinish</a> to evaluate output handlers.</p>
+<a href="../-test-render-result/handle-output/">TestRenderResult.handleOutput</a> to evaluate output handlers.</p>
 <p><strong>See Also</strong></p>
 <p><a href="../com.squareup.workflow.-stateful-workflow/test-render/">com.squareup.workflow.StatefulWorkflow.testRender</a></p>
 <p><a href="../com.squareup.workflow.-stateless-workflow/test-render/">com.squareup.workflow.StatelessWorkflow.testRender</a></p>
@@ -988,7 +1011,7 @@
 <tbody>
 <tr>
 <td><a href="../com.squareup.workflow.-worker/test/">test</a></td>
-<td><code>fun &lt;T&gt; Worker&lt;</code><a href="../com.squareup.workflow.-worker/test/#T"><code>T</code></a><code>&gt;.test(timeoutMs:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><code>Long</code></a><code>= DEFAULT_TIMEOUT_MS, context:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/index.html"><code>CoroutineContext</code></a><code>= EmptyCoroutineContext, block: suspend</code><a href="../-worker-tester/"><code>WorkerTester</code></a><code>&lt;</code><a href="../com.squareup.workflow.-worker/test/#T"><code>T</code></a><code>&gt;.() -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Test a <a href="#">Worker</a> by defining assertions on its output within <a href="../com.squareup.workflow.-worker/test/#com.squareup.workflow.testing$test(com.squareup.workflow.Worker((com.squareup.workflow.testing.test.T)), kotlin.Long, kotlin.coroutines.CoroutineContext, kotlin.coroutines.SuspendFunction1((com.squareup.workflow.testing.WorkerTester((com.squareup.workflow.testing.test.T)), kotlin.Unit)))/block">block</a>.</td>
+<td><code>fun &lt;T&gt; Worker&lt;</code><a href="../com.squareup.workflow.-worker/test/#T"><code>T</code></a><code>&gt;.test(timeoutMs:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><code>Long</code></a><code>= DEFAULT_TIMEOUT_MS, block: suspend</code><a href="../-worker-tester/"><code>WorkerTester</code></a><code>&lt;</code><a href="../com.squareup.workflow.-worker/test/#T"><code>T</code></a><code>&gt;.() -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>Test a <a href="#">Worker</a> by defining assertions on its output within <a href="../com.squareup.workflow.-worker/test/#com.squareup.workflow.testing$test(com.squareup.workflow.Worker((com.squareup.workflow.testing.test.T)), kotlin.Long, kotlin.coroutines.SuspendFunction1((com.squareup.workflow.testing.WorkerTester((com.squareup.workflow.testing.test.T)), kotlin.Unit)))/block">block</a>.</td>
 </tr>
 </tbody>
 </table>

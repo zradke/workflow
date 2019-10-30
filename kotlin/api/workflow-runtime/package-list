@@ -2,3 +2,5 @@ $dokka.format:gfm
 $dokka.linkExtension:md
 
 com.squareup.workflow
+com.squareup.workflow.diagnostic
+com.squareup.workflow.testing

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -919,10 +943,10 @@
                 
                 <p><a href="../../">workflow-core</a> / <a href="../">com.squareup.workflow</a> / <a href="./">transform</a></p>
 <h1 id="transform">transform<a class="headerlink" href="#transform" title="Permanent link">&para;</a></h1>
-<p><code>fun &lt;T, R&gt;</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;.transform(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", transform: (Flow&lt;</code><a href="./#T"><code>T</code></a><code>&gt;) -&gt; Flow&lt;</code><a href="./#R"><code>R</code></a><code>&gt;):</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="./#R"><code>R</code></a><code>&gt;</code></p>
-<p>Returns a <a href="../-worker/">Worker</a> that transforms this <a href="../-worker/">Worker</a>&lsquo;s <a href="#">Flow</a> by calling <a href="./#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.String, kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/transform">transform</a>.</p>
+<p><code>fun &lt;T, R&gt;</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;.transform(transform: (Flow&lt;</code><a href="./#T"><code>T</code></a><code>&gt;) -&gt; Flow&lt;</code><a href="./#R"><code>R</code></a><code>&gt;):</code><a href="../-worker/"><code>Worker</code></a><code>&lt;</code><a href="./#R"><code>R</code></a><code>&gt;</code></p>
+<p>Returns a <a href="../-worker/">Worker</a> that transforms this <a href="../-worker/">Worker</a>&lsquo;s <a href="#">Flow</a> by calling <a href="./#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/transform">transform</a>.</p>
 <p>The returned worker is considered equivalent with any other worker returned by this function
-with the same receiver and the same <a href="./#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.String, kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/key">key</a>.</p>
+with the same receiver.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <h3 id="same-source-and-key-are-equivalent">Same source and key are equivalent<a class="headerlink" href="#same-source-and-key-are-equivalent" title="Permanent link">&para;</a></h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1

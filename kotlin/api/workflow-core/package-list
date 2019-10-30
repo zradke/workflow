@@ -1,9 +1,9 @@
 $dokka.format:gfm
 $dokka.linkExtension:md
-$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.Deferred((com.squareup.workflow.asWorker.T)), kotlin.String)com.squareup.workflow/kotlinx.coroutines.-deferred/as-worker.md
-$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.channels.BroadcastChannel((com.squareup.workflow.asWorker.T)), kotlin.String)com.squareup.workflow/kotlinx.coroutines.channels.-broadcast-channel/as-worker.md
-$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.channels.ReceiveChannel((com.squareup.workflow.asWorker.T)), kotlin.String, kotlin.Boolean)com.squareup.workflow/kotlinx.coroutines.channels.-receive-channel/as-worker.md
-$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.flow.Flow((com.squareup.workflow.asWorker.T)), kotlin.String)com.squareup.workflow/kotlinx.coroutines.flow.-flow/as-worker.md
+$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.Deferred((com.squareup.workflow.asWorker.OutputT)))com.squareup.workflow/kotlinx.coroutines.-deferred/as-worker.md
+$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.channels.BroadcastChannel((com.squareup.workflow.asWorker.OutputT)))com.squareup.workflow/kotlinx.coroutines.channels.-broadcast-channel/as-worker.md
+$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.channels.ReceiveChannel((com.squareup.workflow.asWorker.OutputT)), kotlin.Boolean)com.squareup.workflow/kotlinx.coroutines.channels.-receive-channel/as-worker.md
+$dokka.location:com.squareup.workflow$asWorker(kotlinx.coroutines.flow.Flow((com.squareup.workflow.asWorker.OutputT)))com.squareup.workflow/kotlinx.coroutines.flow.-flow/as-worker.md
 $dokka.location:com.squareup.workflow$parse(okio.ByteString, kotlin.Function1((okio.BufferedSource, com.squareup.workflow.parse.T)))com.squareup.workflow/okio.-byte-string/parse.md
 $dokka.location:com.squareup.workflow$readBooleanFromInt(okio.BufferedSource)com.squareup.workflow/okio.-buffered-source/read-boolean-from-int.md
 $dokka.location:com.squareup.workflow$readByteStringWithLength(okio.BufferedSource)com.squareup.workflow/okio.-buffered-source/read-byte-string-with-length.md

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -883,7 +907,7 @@
                 
                 <p><a href="../../../">workflow-core</a> / <a href="../../">com.squareup.workflow</a> / <a href="../">Worker</a> / <a href="./">fromNullable</a></p>
 <h1 id="fromnullable">fromNullable<a class="headerlink" href="#fromnullable" title="Permanent link">&para;</a></h1>
-<p><code>inline fun &lt;reified T :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; fromNullable(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", noinline block: suspend () -&gt;</code><a href="./#T"><code>T</code></a><code>?):</code><a href="../"><code>Worker</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;</code></p>
+<p><code>inline fun &lt;reified OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; fromNullable(noinline block: suspend () -&gt;</code><a href="./#OutputT"><code>OutputT</code></a><code>?):</code><a href="../"><code>Worker</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
 <p>Creates a <a href="../">Worker</a> from a function that returns a single value.
 The worker will emit the value <strong>if and only if the value is not null</strong>, then finish.</p>
 <p>The returned <a href="../">Worker</a> will equate to any other workers created with any of the <a href="../">Worker</a>

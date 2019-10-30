@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -886,13 +910,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions" title="Functions" class="md-nav__link">
-    Functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#companion-object-functions" title="Companion Object Functions" class="md-nav__link">
     Companion Object Functions
   </a>
@@ -920,7 +937,7 @@
                 
                 <p><a href="../../">workflow-ui-android</a> / <a href="../">com.squareup.workflow.ui</a> / <a href="./">WorkflowRunner</a></p>
 <h1 id="workflowrunner">WorkflowRunner<a class="headerlink" href="#workflowrunner" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi interface WorkflowRunner&lt;out OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code></p>
+<p><code>interface WorkflowRunner&lt;out OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;</code></p>
 <p>Uses a <a href="#">Workflow</a> and a <a href="../-view-registry/">ViewRegistry</a> to drive a <a href="../-workflow-layout/">WorkflowLayout</a>.</p>
 <p>It is simplest to use <a href="../androidx.fragment.app.-fragment-activity/set-content-workflow/">Activity.setContentWorkflow</a>
 or subclass <a href="../-workflow-fragment/">WorkflowFragment</a> rather than instantiate a <a href="./">WorkflowRunner</a> directly.</p>
@@ -962,21 +979,6 @@ or subclass <a href="../-workflow-fragment/">WorkflowFragment</a> rather than in
 </tr>
 </tbody>
 </table>
-<h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="on-save-instance-state/">onSaveInstanceState</a></td>
-<td><code>abstract fun onSaveInstanceState(outState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><br>To be called from <a href="#">FragmentActivity.onSaveInstanceState</a> or <a href="#">Fragment.onSaveInstanceState</a>.</td>
-</tr>
-</tbody>
-</table>
 <h3 id="companion-object-functions">Companion Object Functions<a class="headerlink" href="#companion-object-functions" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -988,11 +990,11 @@ or subclass <a href="../-workflow-fragment/">WorkflowFragment</a> rather than in
 <tbody>
 <tr>
 <td><a href="-config/">Config</a></td>
-<td><code>fun &lt;OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; Config(workflow: Workflow&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>,</code><a href="-config/#OutputT"><code>OutputT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;, viewRegistry:</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>, dispatcher: CoroutineDispatcher = Dispatchers.Main.immediate):</code><a href="-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>,</code><a href="-config/#OutputT"><code>OutputT</code></a><code>&gt;</code></td>
+<td><code>fun &lt;OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; Config(workflow: Workflow&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>,</code><a href="-config/#OutputT"><code>OutputT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;, viewRegistry:</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>, dispatcher: CoroutineDispatcher = Dispatchers.Main.immediate, diagnosticListener: WorkflowDiagnosticListener? = null):</code><a href="-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>,</code><a href="-config/#OutputT"><code>OutputT</code></a><code>&gt;</code></td>
 </tr>
 <tr>
 <td><a href="start-workflow/">startWorkflow</a></td>
-<td><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(activity: FragmentActivity, savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?, configure: () -&gt;</code><a href="-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="start-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="./"><code>WorkflowRunner</code></a><code>&lt;</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Returns an instance of <a href="./">WorkflowRunner</a> tied to the <a href="#">Lifecycle</a> of the given <a href="start-workflow/#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.FragmentActivity, android.os.Bundle, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/activity">activity</a>.<code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(fragment: Fragment, savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?, configure: () -&gt;</code><a href="-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="start-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="./"><code>WorkflowRunner</code></a><code>&lt;</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Returns an instance of <a href="./">WorkflowRunner</a> tied to the <a href="#">Lifecycle</a> of the given <a href="start-workflow/#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.Fragment, android.os.Bundle, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/fragment">fragment</a>.</td>
+<td><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(activity: FragmentActivity, configure: () -&gt;</code><a href="-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="start-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="./"><code>WorkflowRunner</code></a><code>&lt;</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Returns an instance of <a href="./">WorkflowRunner</a> tied to the <a href="#">Lifecycle</a> of the given <a href="start-workflow/#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.FragmentActivity, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/activity">activity</a>.<code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; startWorkflow(fragment: Fragment, configure: () -&gt;</code><a href="-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="start-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;):</code><a href="./"><code>WorkflowRunner</code></a><code>&lt;</code><a href="start-workflow/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Returns an instance of <a href="./">WorkflowRunner</a> tied to the <a href="#">Lifecycle</a> of the given <a href="start-workflow/#com.squareup.workflow.ui.WorkflowRunner.Companion$startWorkflow(androidx.fragment.app.Fragment, kotlin.Function0((com.squareup.workflow.ui.WorkflowRunner.Config((com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.PropsT, com.squareup.workflow.ui.WorkflowRunner.Companion.startWorkflow.OutputT)))))/fragment">fragment</a>.</td>
 </tr>
 </tbody>
 </table>

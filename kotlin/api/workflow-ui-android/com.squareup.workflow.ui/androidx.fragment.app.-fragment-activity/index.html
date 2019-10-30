@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -909,11 +933,7 @@
 <tbody>
 <tr>
 <td><a href="set-content-workflow/">setContentWorkflow</a></td>
-<td><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; FragmentActivity.setContentWorkflow(savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?, configure: () -&gt;</code><a href="../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="set-content-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="set-content-workflow/#OutputT"><code>OutputT</code></a><code>&gt;, onResult: (</code><a href="set-content-workflow/#OutputT"><code>OutputT</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="set-content-workflow/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Call this method from <a href="#">FragmentActivity.onCreate</a>, instead of <a href="#">FragmentActivity.setContentView</a>. It creates a <a href="../-workflow-runner/">WorkflowRunner</a> for this activity, if one doesn&rsquo;t already exist, and sets a view driven by that model as the content view.<code>fun &lt;PropsT&gt; FragmentActivity.setContentWorkflow(savedInstanceState:</code><a href="https://developer.android.com/reference/android/os/Bundle.html"><code>Bundle</code></a><code>?, configure: () -&gt;</code><a href="../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="set-content-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;):</code><a href="../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></td>
-</tr>
-<tr>
-<td><a href="workflow-on-back-pressed/">workflowOnBackPressed</a></td>
-<td><code>fun FragmentActivity.workflowOnBackPressed():</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><br>If your workflow needs to manage the back button, override <a href="#">FragmentActivity.onBackPressed</a> and call this method, and have its views or <a href="../-layout-runner/">LayoutRunner</a>s use <a href="../-handles-back/">HandlesBack</a>.</td>
+<td><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; FragmentActivity.setContentWorkflow(configure: () -&gt;</code><a href="../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="set-content-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="set-content-workflow/#OutputT"><code>OutputT</code></a><code>&gt;, onResult: (</code><a href="set-content-workflow/#OutputT"><code>OutputT</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="set-content-workflow/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Call this method from <a href="#">FragmentActivity.onCreate</a>, instead of <a href="#">FragmentActivity.setContentView</a>. It creates a <a href="../-workflow-runner/">WorkflowRunner</a> for this activity, if one doesn&rsquo;t already exist, and sets a view driven by that model as the content view.<code>fun &lt;PropsT&gt; FragmentActivity.setContentWorkflow(configure: () -&gt;</code><a href="../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="set-content-workflow/#PropsT"><code>PropsT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;):</code><a href="../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></td>
 </tr>
 </tbody>
 </table>

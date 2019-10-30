@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -906,8 +930,11 @@ the actual <a href="../../-test-render-result/rendering/">rendering</a>, assert 
 run, and execute the output handlers for rendered children and workers to assert on their
 state transitions and emitted output.</p>
 <h2 id="mocking-child-workflows-and-workers">Mocking Child Workflows and Workers<a class="headerlink" href="#mocking-child-workflows-and-workers" title="Permanent link">&para;</a></h2>
-<p>All child <a href="#">Workflow</a>s must be instances of <a href="../../-mock-child-workflow/">MockChildWorkflow</a>, as they are not given a working
-<a href="#">RenderContext</a>. This function only allows you to test a single workflow&rsquo;s render method.</p>
+<p>Child <a href="#">Workflow</a>s should be stateless and not try to do anything with their <a href="#">RenderContext</a> in
+their render method. The <a href="#">RenderContext</a> they get is not a real one, and will throw an exception
+if it is used. In other words, the only thing child workflows can do is return a rendering. The
+<a href="../../-mock-child-workflow/">MockChildWorkflow</a> abstract class makes it easy to write fake workflows that meet these
+requirements, however you may use the normal ways of creating workflows too.</p>
 <p>Child <a href="#">Worker</a>s should be instances of <a href="../../-mock-worker/">MockWorker</a>.</p>
                 
                   

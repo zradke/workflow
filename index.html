@@ -391,6 +391,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-artifacts" title="Maven Artifacts" class="md-nav__link">
+    Maven Artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#lower-level-artifacts" title="Lower-level Artifacts" class="md-nav__link">
     Lower-level Artifacts
   </a>
@@ -411,6 +425,19 @@
   <a href="#resources" title="Resources" class="md-nav__link">
     Resources
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#support-contact" title="Support &amp; Contact" class="md-nav__link">
+    Support &amp; Contact
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -830,6 +857,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="kotlin/api/trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="kotlin/api/workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -987,6 +1038,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-artifacts" title="Maven Artifacts" class="md-nav__link">
+    Maven Artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#lower-level-artifacts" title="Lower-level Artifacts" class="md-nav__link">
     Lower-level Artifacts
   </a>
@@ -1007,6 +1072,19 @@
   <a href="#resources" title="Resources" class="md-nav__link">
     Resources
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#support-contact" title="Support &amp; Contact" class="md-nav__link">
+    Support &amp; Contact
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1047,15 +1125,20 @@
 <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img alt="GitHub license" src="https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat" /></a>
 <a href="https://cocoapods.org/pods/Workflow"><img alt="CocoaPods compatible" src="https://img.shields.io/cocoapods/v/Workflow.svg" /></a>
 <a href="https://search.maven.org/search?q=g:%22com.squareup.workflow%22"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.squareup.workflow/workflow-core-jvm.svg?label=Maven%20Central" /></a></p>
-<p>An architecture that allows composable state machines to drive UI navigation and content, where the
- state machines are cleanly separated from UI code.</p>
+<p>A unidirectional data flow library for Kotlin and Swift, emphasizing:</p>
+<ul>
+<li>Strong support for state-machine driven UI and navigation.</li>
+<li>Composition and scaling.</li>
+<li>Effortless separation of business and UI concerns.</li>
+</ul>
 <p><em><strong>This project is currently experimental and the API subject to breaking changes without notice.</strong>
 Follow Square&rsquo;s engineering blog, <a href="https://developer.squareup.com/blog/">The Corner</a>, to see when
 this project becomes stable.</em></p>
-<p>Workflow is a library for making composable state machines, and UIs driven by those state machines.</p>
-<p>This project is under active development. The workflow code is being piloted in production apps. The
-view code is not (yet).</p>
-<p>More documentation and samples will be coming soon!</p>
+<p>While the API is not yet stable, this code is in heavy production use in Android and iOS
+apps with millions of users.</p>
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/362741019" width="640" height="360"
+frameborder="0" allowfullscreen></iframe>
+
 <h2 id="using-workflows-in-your-project">Using Workflows in your project<a class="headerlink" href="#using-workflows-in-your-project" title="Permanent link">&para;</a></h2>
 <h3 id="swift">Swift<a class="headerlink" href="#swift" title="Permanent link">&para;</a></h3>
 <p><a href="https://cocoapods.org/pods/Workflow"><img alt="CocoaPods compatible" src="https://img.shields.io/cocoapods/v/Workflow.svg" /></a></p>
@@ -1069,6 +1152,11 @@ Podfile:</p>
 
 <h3 id="kotlin">Kotlin<a class="headerlink" href="#kotlin" title="Permanent link">&para;</a></h3>
 <p><a href="https://search.maven.org/search?q=g:%22com.squareup.workflow%22"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.squareup.workflow/workflow-core-jvm.svg?label=Maven%20Central" /></a></p>
+<h4 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h4>
+<p>To get started with a fresh, barebones, Workflow-based Android app, we&rsquo;ve created a template
+repository – just click &ldquo;Use this template&rdquo; to create a new repository with a simple but runnable
+app: <a href="https://github.com/square/workflow-android-template">github.com/square/workflow-android-template</a></p>
+<h4 id="maven-artifacts">Maven Artifacts<a class="headerlink" href="#maven-artifacts" title="Permanent link">&para;</a></h4>
 <p>Artifacts are hosted on Maven Central. If you&rsquo;re using Gradle, ensure <code>mavenCentral()</code> appears in
 your <code>repositories</code> block, and then add dependencies on the following artifacts:</p>
 <table>
@@ -1116,6 +1204,7 @@ higher-level integrations with UI frameworks.</p>
 
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="https://www.droidcon.com/media-detail?video=362741019">Square Workflow – Droidcon NYC 2019</a> (<a href="https://docs.google.com/presentation/d/19-DkVCn-XawssyHQ_cboIX_s-Lf6rNg-ryAehA9xBVs">slides</a>)</li>
 <li><a href="https://www.youtube.com/watch?v=8PlYtfsgDKs">SF Android GDG @ Square 2019 - Hello Workflow</a>
   (live coding)</li>
 <li><a href="https://twitter.com/chiuki/status/1100810374410956800">Android Dialogs 5-part Coding Series</a></li>
@@ -1130,6 +1219,11 @@ higher-level integrations with UI frameworks.</p>
 <li><a href="https://www.youtube.com/watch?v=KjoMnsc2lPo">The Rx Workflow Pattern – Droidcon NYC 2017</a>
   (<a href="https://speakerdeck.com/rjrjr/reactive-workflows">slides</a>)</li>
 </ul>
+<h3 id="support-contact">Support &amp; Contact<a class="headerlink" href="#support-contact" title="Permanent link">&para;</a></h3>
+<p>Workflow maintainers hang out in the <a href="https://kotlinlang.slack.com/messages/C5HT9AL7Q">#squarelibraries</a>
+channel on the <a href="https://surveys.jetbrains.com/s3/kotlin-slack-sign-up?_ga=2.93235285.916482233.1570572671-654176432.1527183673">Kotlin Slack</a>
+and the <a href="https://androidstudygroup.slack.com/messages/C03NYGB45">#square-libraries-wtf</a> channel on
+the Android Study Group Slack.</p>
 <h2 id="releasing-and-deploying">Releasing and Deploying<a class="headerlink" href="#releasing-and-deploying" title="Permanent link">&para;</a></h2>
 <p>See <a href="RELEASING/">RELEASING.md</a>.</p>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>

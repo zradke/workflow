@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -868,22 +892,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -899,12 +907,17 @@
                 
                 <p><a href="../../../">workflow-ui-core</a> / <a href="../../">com.squareup.workflow.ui</a> / <a href="../">BackStackScreen</a> / <a href="./">&lt;init&gt;</a></p>
 <h1 id="init">&lt;init&gt;<a class="headerlink" href="#init" title="Permanent link">&para;</a></h1>
-<p><code>BackStackScreen(only:</code><a href="../#StackedT"><code>StackedT</code></a><code>, onGoBack: ((</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>)? = null)</code>
-<code>BackStackScreen(vararg stack:</code><a href="../#StackedT"><code>StackedT</code></a><code>, onGoBack: ((</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>)? = null)``BackStackScreen(stack:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><code>List</code></a><code>&lt;</code><a href="../#StackedT"><code>StackedT</code></a><code>&gt;, onGoBack: ((</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>)? = null)</code></p>
-<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
-<p><code>stack</code> - : screens that have are / have been displayed, ending in the current screen</p>
-<p><code>onGoBack</code> - : function to call for a &ldquo;go back&rdquo; gesture. Null indicates such gestures
-should be disabled.</p>
+<p><code>BackStackScreen(bottom:</code><a href="../#StackedT"><code>StackedT</code></a><code>, vararg rest:</code><a href="../#StackedT"><code>StackedT</code></a><code>)</code></p>
+<p>Creates a screen with elements listed from the <a href="./#com.squareup.workflow.ui.BackStackScreen$&lt;init&gt;(com.squareup.workflow.ui.BackStackScreen.StackedT, kotlin.Array((com.squareup.workflow.ui.BackStackScreen.StackedT)))/bottom">bottom</a> to the top.</p>
+<p><code>BackStackScreen(backStack:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><code>List</code></a><code>&lt;</code><a href="../#StackedT"><code>StackedT</code></a><code>&gt;, top:</code><a href="../#StackedT"><code>StackedT</code></a><code>)</code></p>
+<p>Creates a screen with the frames of the given <a href="./#com.squareup.workflow.ui.BackStackScreen$&lt;init&gt;(kotlin.collections.List((com.squareup.workflow.ui.BackStackScreen.StackedT)), com.squareup.workflow.ui.BackStackScreen.StackedT)/backStack">backStack</a>, capped with <a href="./#com.squareup.workflow.ui.BackStackScreen$&lt;init&gt;(kotlin.collections.List((com.squareup.workflow.ui.BackStackScreen.StackedT)), com.squareup.workflow.ui.BackStackScreen.StackedT)/top">top</a>.
+<a href="./#com.squareup.workflow.ui.BackStackScreen$&lt;init&gt;(kotlin.collections.List((com.squareup.workflow.ui.BackStackScreen.StackedT)), com.squareup.workflow.ui.BackStackScreen.StackedT)/backStack">backStack</a> may be empty.</p>
+<p><code>BackStackScreen(bottom:</code><a href="../#StackedT"><code>StackedT</code></a><code>, rest:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><code>List</code></a><code>&lt;</code><a href="../#StackedT"><code>StackedT</code></a><code>&gt;)</code></p>
+<p>Represents an active screen (<a href="../top/">top</a>), and a set of previously visited
+screens to which we may return (<a href="../back-stack/">backStack</a>). By rendering the entire
+history we allow the UI to do things like maintain cached view state,
+implement drag-back gestures without waiting for the workflow, etc.</p>
+<p>Effectively a list that can never be empty.</p>
                 
                   
                 

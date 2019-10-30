@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -883,7 +907,7 @@
                 
                 <p><a href="../../../">workflow-core</a> / <a href="../../">com.squareup.workflow</a> / <a href="../">Worker</a> / <a href="./">from</a></p>
 <h1 id="from">from<a class="headerlink" href="#from" title="Permanent link">&para;</a></h1>
-<p><code>inline fun &lt;reified T&gt; from(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", noinline block: suspend () -&gt;</code><a href="./#T"><code>T</code></a><code>):</code><a href="../"><code>Worker</code></a><code>&lt;</code><a href="./#T"><code>T</code></a><code>&gt;</code></p>
+<p><code>inline fun &lt;reified OutputT&gt; from(noinline block: suspend () -&gt;</code><a href="./#OutputT"><code>OutputT</code></a><code>):</code><a href="../"><code>Worker</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
 <p>Creates a <a href="../">Worker</a> from a function that returns a single value.</p>
 <p>Shorthand for <code>flow { emit(block()) }.asWorker(key)</code>.</p>
 <p>The returned <a href="../">Worker</a> will equate to any other workers created with any of the <a href="../">Worker</a>

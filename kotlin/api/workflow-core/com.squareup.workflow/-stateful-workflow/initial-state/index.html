@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -903,7 +927,9 @@
 <p>Called from <a href="../../-render-context/render-child/">RenderContext.renderChild</a> when the state machine is first started, to get the
 initial state.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
-<p><code>snapshot</code> - If the workflow is being created fresh, <a href="./#com.squareup.workflow.StatefulWorkflow$initialState(com.squareup.workflow.StatefulWorkflow.PropsT, com.squareup.workflow.Snapshot)/snapshot">snapshot</a> will be null.
+<p><code>snapshot</code> - If the workflow is being created fresh, OR the workflow is being restored from an empty
+<a href="../../-snapshot/">Snapshot</a>, <a href="./#com.squareup.workflow.StatefulWorkflow$initialState(com.squareup.workflow.StatefulWorkflow.PropsT, com.squareup.workflow.Snapshot)/snapshot">snapshot</a> will be null. A snapshot is considered &ldquo;empty&rdquo; if <a href="../../-snapshot/bytes/">Snapshot.bytes</a>
+returns an empty <code>ByteString</code>, probably because <a href="../snapshot-state/">snapshotState</a> returned <a href="../../-snapshot/-e-m-p-t-y/">Snapshot.EMPTY</a>.
 If the workflow is being restored from a <a href="../../-snapshot/">Snapshot</a>, <a href="./#com.squareup.workflow.StatefulWorkflow$initialState(com.squareup.workflow.StatefulWorkflow.PropsT, com.squareup.workflow.Snapshot)/snapshot">snapshot</a> will be the last value
 returned from <a href="../snapshot-state/">snapshotState</a>, and implementations that return something other than
 <a href="../../-snapshot/-e-m-p-t-y/">Snapshot.EMPTY</a> should create their initial state by parsing their snapshot.</p>

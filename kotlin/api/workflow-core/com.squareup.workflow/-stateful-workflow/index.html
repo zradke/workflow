@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -921,16 +945,19 @@
                 <p><a href="../../">workflow-core</a> / <a href="../">com.squareup.workflow</a> / <a href="./">StatefulWorkflow</a></p>
 <h1 id="statefulworkflow">StatefulWorkflow<a class="headerlink" href="#statefulworkflow" title="Permanent link">&para;</a></h1>
 <p><code>abstract class StatefulWorkflow&lt;in PropsT, StateT, out OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, out RenderingT&gt; :</code><a href="../-workflow/"><code>Workflow</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>,</code><a href="./#RenderingT"><code>RenderingT</code></a><code>&gt;</code></p>
-<p>A composable, stateful object that can <a href="#">handle events</a>,
-<a href="../-render-context/render-child/">delegate to children</a>, <a href="#">subscribe</a> to
+<p>A composable, stateful object that can <a href="../-render-context/make-action-sink/">handle events</a>,
+<a href="../-render-context/render-child/">delegate to children</a>, <a href="../-render-context/running-worker/">subscribe</a> to
 arbitrary asynchronous events from the outside world, and be <a href="snapshot-state/">saved</a> to a
 serialized form to be restored later.</p>
 <p>The basic purpose of a <code>Workflow</code> is to take some <a href="./#PropsT">props</a> and return a
-<a href="./#RenderingT">rendering</a>. To that end, a workflow may keep track of internal <a href="./#StateT">state</a>,
+<a href="./#RenderingT">rendering</a> that serves as a public representation of its current state,
+and which can be used to update that state. A rendering typically serves as a view  model,
+though this is not assumed, and is not the only use case.</p>
+<p>To that end, a workflow may keep track of internal <a href="./#StateT">state</a>,
 recursively ask other workflows to render themselves, subscribe to data streams from the outside
-world, and handle events both from its <a href="#">renderings</a> and from workflows
-it&rsquo;s delegated to (its &ldquo;children&rdquo;). A <code>Workflow</code> may also emit <a href="./#OutputT">output events</a> up to its
-parent <code>Workflow</code>.</p>
+world, and handle events both from its <a href="../-render-context/make-action-sink/">renderings</a> and from
+workflows it&rsquo;s delegated to (its &ldquo;children&rdquo;). A <code>Workflow</code> may also emit
+<a href="./#OutputT">output events</a> up to its parent <code>Workflow</code>.</p>
 <p>Workflows form a tree, where each workflow can have zero or more child workflows. Child workflows
 are started as necessary whenever another workflow asks for them, and are cleaned up automatically
 when they&rsquo;re no longer needed. <a href="./#PropsT">Props</a> propagate down the tree, <a href="./#OutputT">outputs</a> and
@@ -965,7 +992,7 @@ A workflow that represents a UI component may use a view model as its rendering 
 <tbody>
 <tr>
 <td><a href="-init-/">&lt;init&gt;</a></td>
-<td><code>StatefulWorkflow()</code><br>A composable, stateful object that can <a href="#">handle events</a>, <a href="../-render-context/render-child/">delegate to children</a>, <a href="#">subscribe</a> to arbitrary asynchronous events from the outside world, and be <a href="snapshot-state/">saved</a> to a serialized form to be restored later.</td>
+<td><code>StatefulWorkflow()</code><br>A composable, stateful object that can <a href="../-render-context/make-action-sink/">handle events</a>, <a href="../-render-context/render-child/">delegate to children</a>, <a href="../-render-context/running-worker/">subscribe</a> to arbitrary asynchronous events from the outside world, and be <a href="snapshot-state/">saved</a> to a serialized form to be restored later.</td>
 </tr>
 </tbody>
 </table>
@@ -1012,6 +1039,10 @@ A workflow that represents a UI component may use a view model as its rendering 
 <tr>
 <td><a href="../map-rendering/">mapRendering</a></td>
 <td><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, FromRenderingT, ToRenderingT&gt;</code><a href="../-workflow/"><code>Workflow</code></a><code>&lt;</code><a href="../map-rendering/#PropsT"><code>PropsT</code></a><code>,</code><a href="../map-rendering/#OutputT"><code>OutputT</code></a><code>,</code><a href="../map-rendering/#FromRenderingT"><code>FromRenderingT</code></a><code>&gt;.mapRendering(transform: (</code><a href="../map-rendering/#FromRenderingT"><code>FromRenderingT</code></a><code>) -&gt;</code><a href="../map-rendering/#ToRenderingT"><code>ToRenderingT</code></a><code>):</code><a href="../-workflow/"><code>Workflow</code></a><code>&lt;</code><a href="../map-rendering/#PropsT"><code>PropsT</code></a><code>,</code><a href="../map-rendering/#OutputT"><code>OutputT</code></a><code>,</code><a href="../map-rendering/#ToRenderingT"><code>ToRenderingT</code></a><code>&gt;</code><br>Uses the given <a href="../map-rendering/#com.squareup.workflow$mapRendering(com.squareup.workflow.Workflow((com.squareup.workflow.mapRendering.PropsT, com.squareup.workflow.mapRendering.OutputT, com.squareup.workflow.mapRendering.FromRenderingT)), kotlin.Function1((com.squareup.workflow.mapRendering.FromRenderingT, com.squareup.workflow.mapRendering.ToRenderingT)))/transform">function</a> to transform a <a href="../-workflow/">Workflow</a> that renders <a href="../map-rendering/#FromRenderingT">FromRenderingT</a> to one renders <a href="../map-rendering/#ToRenderingT">ToRenderingT</a>,</td>
+</tr>
+<tr>
+<td><a href="../workflow-action/">workflowAction</a></td>
+<td><code>fun &lt;PropsT, StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, RenderingT&gt;</code><a href="./"><code>StatefulWorkflow</code></a><code>&lt;</code><a href="../workflow-action/#PropsT"><code>PropsT</code></a><code>,</code><a href="../workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="../workflow-action/#OutputT"><code>OutputT</code></a><code>,</code><a href="../workflow-action/#RenderingT"><code>RenderingT</code></a><code>&gt;.workflowAction(name:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", block:</code><a href="../-workflow-action/-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="../workflow-action/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="../workflow-action/#OutputT"><code>OutputT</code></a><code>?):</code><a href="../-workflow-action/"><code>WorkflowAction</code></a><code>&lt;</code><a href="../workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="../workflow-action/#OutputT"><code>OutputT</code></a><code>&gt;</code><br><code>fun &lt;PropsT, StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>, RenderingT&gt;</code><a href="./"><code>StatefulWorkflow</code></a><code>&lt;</code><a href="../workflow-action/#PropsT"><code>PropsT</code></a><code>,</code><a href="../workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="../workflow-action/#OutputT"><code>OutputT</code></a><code>,</code><a href="../workflow-action/#RenderingT"><code>RenderingT</code></a><code>&gt;.workflowAction(name: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>, block:</code><a href="../-workflow-action/-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="../workflow-action/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="../workflow-action/#OutputT"><code>OutputT</code></a><code>?):</code><a href="../-workflow-action/"><code>WorkflowAction</code></a><code>&lt;</code><a href="../workflow-action/#StateT"><code>StateT</code></a><code>,</code><a href="../workflow-action/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Convenience to create a <a href="../-workflow-action/">WorkflowAction</a> with parameter types matching those of the receiving <a href="./">StatefulWorkflow</a>. The action will invoke the given <a href="../workflow-action/#com.squareup.workflow$workflowAction(com.squareup.workflow.StatefulWorkflow((com.squareup.workflow.workflowAction.PropsT, com.squareup.workflow.workflowAction.StateT, com.squareup.workflow.workflowAction.OutputT, com.squareup.workflow.workflowAction.RenderingT)), kotlin.String, kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.workflowAction.StateT)), com.squareup.workflow.workflowAction.OutputT)))/block">lambda</a> when it is <a href="../-workflow-action/apply/">applied</a>.</td>
 </tr>
 </tbody>
 </table>

@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -964,7 +988,7 @@ also optionally emit an output.</p>
 <tbody>
 <tr>
 <td><a href="invoke/">invoke</a></td>
-<td><code>operator fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; invoke(name: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= { "" }, apply:</code><a href="-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="invoke/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="invoke/#OutputT"><code>OutputT</code></a><code>?):</code><a href="./"><code>WorkflowAction</code></a><code>&lt;</code><a href="invoke/#StateT"><code>StateT</code></a><code>,</code><a href="invoke/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Convenience to create a <a href="./">WorkflowAction</a> from the <a href="invoke/#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.Function0((kotlin.String)), kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/apply">apply</a> lambda. The returned object will include the string returned from <a href="invoke/#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.Function0((kotlin.String)), kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/name">name</a> in its <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/to-string.html">toString</a>.</td>
+<td><code>operator fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; invoke(name:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", apply:</code><a href="-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="invoke/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="invoke/#OutputT"><code>OutputT</code></a><code>?):</code><a href="./"><code>WorkflowAction</code></a><code>&lt;</code><a href="invoke/#StateT"><code>StateT</code></a><code>,</code><a href="invoke/#OutputT"><code>OutputT</code></a><code>&gt;</code><br><code>operator fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; invoke(name: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>, apply:</code><a href="-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="invoke/#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="invoke/#OutputT"><code>OutputT</code></a><code>?):</code><a href="./"><code>WorkflowAction</code></a><code>&lt;</code><a href="invoke/#StateT"><code>StateT</code></a><code>,</code><a href="invoke/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Creates a <a href="./">WorkflowAction</a> from the <a href="invoke/#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.String, kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/apply">apply</a> lambda. The returned object will include the string returned from <a href="invoke/#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.String, kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/name">name</a> in its <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/to-string.html">toString</a>.</td>
 </tr>
 <tr>
 <td><a href="no-action/">noAction</a></td>

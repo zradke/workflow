@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -878,6 +902,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
       
       
       
@@ -899,13 +930,19 @@
                 
                 <p><a href="../../../">workflow-core</a> / <a href="../../">com.squareup.workflow</a> / <a href="../">WorkflowAction</a> / <a href="./">invoke</a></p>
 <h1 id="invoke">invoke<a class="headerlink" href="#invoke" title="Permanent link">&para;</a></h1>
-<p><code>inline operator fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; invoke(crossinline name: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= { "" }, crossinline apply:</code><a href="../-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="./#OutputT"><code>OutputT</code></a><code>?):</code><a href="../"><code>WorkflowAction</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
-<p>Convenience to create a <a href="../">WorkflowAction</a> from the <a href="./#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.Function0((kotlin.String)), kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/apply">apply</a> lambda.
-The returned object will include the string returned from <a href="./#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.Function0((kotlin.String)), kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/name">name</a> in its <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/to-string.html">toString</a>.</p>
-<p>Particularly useful in smaller workflows with few actions, especially those that never call
-<a href="../../-render-context/make-action-sink/">RenderContext.makeActionSink</a>. Most workflows are better served with a sealed class
-hierarchy implementing the <a href="../">WorkflowAction</a> interface directly.</p>
+<p><code>inline operator fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; invoke(name:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", crossinline apply:</code><a href="../-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="./#OutputT"><code>OutputT</code></a><code>?):</code><a href="../"><code>WorkflowAction</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
+<p>Creates a <a href="../">WorkflowAction</a> from the <a href="./#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.String, kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/apply">apply</a> lambda.
+The returned object will include the string returned from <a href="./#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.String, kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/name">name</a> in its <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/to-string.html">toString</a>.</p>
+<p>If defining actions within a <a href="../../-stateful-workflow/">StatefulWorkflow</a>, use the <a href="../../workflow-action/">StatefulWorkflow.workflowAction</a>
+extension instead, to do this without being forced to repeat its parameter types.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<p><code>name</code> - A string describing the update for debugging.</p>
+<p><code>apply</code> - Function that defines the workflow update.<code>inline operator fun &lt;StateT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; invoke(crossinline name: () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>, crossinline apply:</code><a href="../-mutator/"><code>WorkflowAction.Mutator</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>&gt;.() -&gt;</code><a href="./#OutputT"><code>OutputT</code></a><code>?):</code><a href="../"><code>WorkflowAction</code></a><code>&lt;</code><a href="./#StateT"><code>StateT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
+<p>Creates a <a href="../">WorkflowAction</a> from the <a href="./#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.Function0((kotlin.String)), kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/apply">apply</a> lambda.
+The returned object will include the string returned from <a href="./#com.squareup.workflow.WorkflowAction.Companion$invoke(kotlin.Function0((kotlin.String)), kotlin.Function1((com.squareup.workflow.WorkflowAction.Mutator((com.squareup.workflow.WorkflowAction.Companion.invoke.StateT)), com.squareup.workflow.WorkflowAction.Companion.invoke.OutputT)))/name">name</a> in its <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/to-string.html">toString</a>.</p>
+<p>If defining actions within a <a href="../../-stateful-workflow/">StatefulWorkflow</a>, use the <a href="../../workflow-action/">StatefulWorkflow.workflowAction</a>
+extension instead, to do this without being forced to repeat its parameter types.</p>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>
 <p><code>name</code> - Function that returns a string describing the update for debugging.</p>
 <p><code>apply</code> - Function that defines the workflow update.</p>
                 

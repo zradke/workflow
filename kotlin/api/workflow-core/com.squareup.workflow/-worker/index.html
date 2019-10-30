@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -880,13 +904,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#types" title="Types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#functions" title="Functions" class="md-nav__link">
     Functions
   </a>
@@ -940,22 +957,22 @@
                 
                 <p><a href="../../">workflow-core</a> / <a href="../">com.squareup.workflow</a> / <a href="./">Worker</a></p>
 <h1 id="worker">Worker<a class="headerlink" href="#worker" title="Permanent link">&para;</a></h1>
-<p><code>interface Worker&lt;out T&gt;</code></p>
+<p><code>interface Worker&lt;out OutputT&gt;</code></p>
 <p>Represents a unit of asynchronous work that can have zero, one, or multiple outputs.</p>
 <p><a href="./">Worker</a>s are effectively <a href="#">Flow</a>s that can be compared to determine equivalence.</p>
 <p>A <a href="../-workflow/">Workflow</a> uses <a href="./">Worker</a>s to perform asynchronous work during the render pass by calling
-<a href="#">RenderContext.onWorkerOutput</a> or <a href="../running-worker/">RenderContext.runningWorker</a>. When equivalent <a href="./">Worker</a>s are
+<a href="#">RenderContext.onWorkerOutput</a> or <a href="../-render-context/running-worker/">RenderContext.runningWorker</a>. When equivalent <a href="./">Worker</a>s are
 passed in subsequent render passes, <a href="does-same-work-as/">doesSameWorkAs</a> is used to calculate which <a href="./">Worker</a>s are
 new and should be started, and which ones are continuations from the last render pass and
 should be allowed to continue working. <a href="./">Worker</a>s that are not included in a render pass are
 cancelled.</p>
 <h2 id="example-network-request">Example: Network request<a class="headerlink" href="#example-network-request" title="Permanent link">&para;</a></h2>
-<p>Let&rsquo;s say you have a network service with an API that returns a <a href="#">Deferred</a>, and you want to
+<p>Let&rsquo;s say you have a network service with an API that returns a number, and you want to
 call that service from a <a href="../-workflow/">Workflow</a>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>interface TimeService {
-  fun getTime(timezone: String): Deferred&lt;Long&gt;
+  suspend fun getTime(timezone: String): Long
 }
 </pre></div>
 </td></tr></table>
@@ -980,9 +997,9 @@ private class TimeWorker(
   val service: TimeService
 ): Worker&lt;Long&gt; {
 
-  override suspend fun performWork(emitter: Emitter&lt;Long&gt;) {
-    val timeDeferred = service.getTime(timezone)
-    emitter.emitOutput(timeDeferred.await())
+  override fun run(): Flow&lt;Long&gt; = flow {
+    val time = service.getTime(timezone)
+    emit(time)
   }
 }
 </pre></div>
@@ -1033,21 +1050,6 @@ fun TimeService.getTimeWorker(timezone: String): Worker&lt;TimeResponse&gt; =
 <p><a href="from-nullable/">fromNullable</a></p>
 <p><a href="../kotlinx.coroutines.-deferred/as-worker/">Deferred.asWorker</a></p>
 <p><a href="../kotlinx.coroutines.channels.-broadcast-channel/as-worker/">BroadcastChannel.asWorker</a></p>
-<h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="-output-or-finished/">OutputOrFinished</a></td>
-<td><code>sealed class OutputOrFinished&lt;out T&gt;</code><br>Used by <a href="../-render-context/running-worker-until-finished/">RenderContext.runningWorkerUntilFinished</a> to distinguish between the two events of a <a href="./">Worker</a> emitting an output and finishing.</td>
-</tr>
-</tbody>
-</table>
 <h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1059,11 +1061,11 @@ fun TimeService.getTimeWorker(timezone: String): Worker&lt;TimeResponse&gt; =
 <tbody>
 <tr>
 <td><a href="does-same-work-as/">doesSameWorkAs</a></td>
-<td><code>abstract fun doesSameWorkAs(otherWorker:</code><a href="./"><code>Worker</code></a><code>&lt;*&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><br>Override this method to define equivalence between <a href="./">Worker</a>s. At the end of every render pass, the set of <a href="./">Worker</a>s that were requested by the workflow are compared to the set from the last render pass using this method. Equivalent workers are allowed to keep running. New workers are started (<a href="run/">run</a> is called and the returned <a href="#">Flow</a> is collected). Old workers are cancelled by cancelling their collecting coroutines.</td>
+<td><code>abstract fun doesSameWorkAs(otherWorker:</code><a href="./"><code>Worker</code></a><code>&lt;*&gt;):</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><br>Override this method to define equivalence between <a href="./">Worker</a>s.</td>
 </tr>
 <tr>
 <td><a href="run/">run</a></td>
-<td><code>abstract fun run(): Flow&lt;</code><a href="./#T"><code>T</code></a><code>&gt;</code><br>Returns a <a href="#">Flow</a> to execute the work represented by this worker.</td>
+<td><code>abstract fun run(): Flow&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Returns a <a href="#">Flow</a> to execute the work represented by this worker.</td>
 </tr>
 </tbody>
 </table>
@@ -1078,23 +1080,23 @@ fun TimeService.getTimeWorker(timezone: String): Worker&lt;TimeResponse&gt; =
 <tbody>
 <tr>
 <td><a href="create/">create</a></td>
-<td><code>fun &lt;T&gt; create(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", block: suspend FlowCollector&lt;</code><a href="create/#T"><code>T</code></a><code>&gt;.() -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="create/#T"><code>T</code></a><code>&gt;</code><br>Shorthand for <code>flow { block() }.asWorker(key)</code>.</td>
+<td><code>fun &lt;OutputT&gt; create(block: suspend FlowCollector&lt;</code><a href="create/#OutputT"><code>OutputT</code></a><code>&gt;.() -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="create/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Shorthand for <code>flow { block() }.asWorker(key)</code>.</td>
 </tr>
 <tr>
 <td><a href="create-side-effect/">createSideEffect</a></td>
-<td><code>fun createSideEffect(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>, block: suspend () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code><br>Creates a <a href="./">Worker</a> that just performs some side effects and doesn&rsquo;t emit anything. Run the worker from your <code>render</code> method using <a href="../running-worker/">RenderContext.runningWorker</a>.</td>
+<td><code>fun createSideEffect(block: suspend () -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code><br>Creates a <a href="./">Worker</a> that just performs some side effects and doesn&rsquo;t emit anything. Run the worker from your <code>render</code> method using <a href="../-render-context/running-worker/">RenderContext.runningWorker</a>.</td>
 </tr>
 <tr>
 <td><a href="finished/">finished</a></td>
-<td><code>fun &lt;T&gt; finished():</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="finished/#T"><code>T</code></a><code>&gt;</code><br>Returns a <a href="./">Worker</a> that finishes immediately without emitting anything.</td>
+<td><code>fun finished():</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code><br>Returns a <a href="./">Worker</a> that finishes immediately without emitting anything.</td>
 </tr>
 <tr>
 <td><a href="from/">from</a></td>
-<td><code>fun &lt;T&gt; from(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", block: suspend () -&gt;</code><a href="from/#T"><code>T</code></a><code>):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="from/#T"><code>T</code></a><code>&gt;</code><br>Creates a <a href="./">Worker</a> from a function that returns a single value.</td>
+<td><code>fun &lt;OutputT&gt; from(block: suspend () -&gt;</code><a href="from/#OutputT"><code>OutputT</code></a><code>):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="from/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Creates a <a href="./">Worker</a> from a function that returns a single value.</td>
 </tr>
 <tr>
 <td><a href="from-nullable/">fromNullable</a></td>
-<td><code>fun &lt;T :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; fromNullable(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", block: suspend () -&gt;</code><a href="from-nullable/#T"><code>T</code></a><code>?):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="from-nullable/#T"><code>T</code></a><code>&gt;</code><br>Creates a <a href="./">Worker</a> from a function that returns a single value. The worker will emit the value <strong>if and only if the value is not null</strong>, then finish.</td>
+<td><code>fun &lt;OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; fromNullable(block: suspend () -&gt;</code><a href="from-nullable/#OutputT"><code>OutputT</code></a><code>?):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="from-nullable/#OutputT"><code>OutputT</code></a><code>&gt;</code><br>Creates a <a href="./">Worker</a> from a function that returns a single value. The worker will emit the value <strong>if and only if the value is not null</strong>, then finish.</td>
 </tr>
 <tr>
 <td><a href="timer/">timer</a></td>
@@ -1113,7 +1115,7 @@ fun TimeService.getTimeWorker(timezone: String): Worker&lt;TimeResponse&gt; =
 <tbody>
 <tr>
 <td><a href="../transform/">transform</a></td>
-<td><code>fun &lt;T, R&gt;</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="../transform/#T"><code>T</code></a><code>&gt;.transform(key:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><code>String</code></a><code>= "", transform: (Flow&lt;</code><a href="../transform/#T"><code>T</code></a><code>&gt;) -&gt; Flow&lt;</code><a href="../transform/#R"><code>R</code></a><code>&gt;):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="../transform/#R"><code>R</code></a><code>&gt;</code><br>Returns a <a href="./">Worker</a> that transforms this <a href="./">Worker</a>&lsquo;s <a href="#">Flow</a> by calling <a href="../transform/#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.String, kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/transform">transform</a>.</td>
+<td><code>fun &lt;T, R&gt;</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="../transform/#T"><code>T</code></a><code>&gt;.transform(transform: (Flow&lt;</code><a href="../transform/#T"><code>T</code></a><code>&gt;) -&gt; Flow&lt;</code><a href="../transform/#R"><code>R</code></a><code>&gt;):</code><a href="./"><code>Worker</code></a><code>&lt;</code><a href="../transform/#R"><code>R</code></a><code>&gt;</code><br>Returns a <a href="./">Worker</a> that transforms this <a href="./">Worker</a>&lsquo;s <a href="#">Flow</a> by calling <a href="../transform/#com.squareup.workflow$transform(com.squareup.workflow.Worker((com.squareup.workflow.transform.T)), kotlin.Function1((kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.T)), kotlinx.coroutines.flow.Flow((com.squareup.workflow.transform.R)))))/transform">transform</a>.</td>
 </tr>
 </tbody>
 </table>

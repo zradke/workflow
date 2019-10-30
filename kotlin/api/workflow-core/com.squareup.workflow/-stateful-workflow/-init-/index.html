@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -900,16 +924,19 @@
                 <p><a href="../../../">workflow-core</a> / <a href="../../">com.squareup.workflow</a> / <a href="../">StatefulWorkflow</a> / <a href="./">&lt;init&gt;</a></p>
 <h1 id="init">&lt;init&gt;<a class="headerlink" href="#init" title="Permanent link">&para;</a></h1>
 <p><code>StatefulWorkflow()</code></p>
-<p>A composable, stateful object that can <a href="#">handle events</a>,
-<a href="../../-render-context/render-child/">delegate to children</a>, <a href="#">subscribe</a> to
+<p>A composable, stateful object that can <a href="../../-render-context/make-action-sink/">handle events</a>,
+<a href="../../-render-context/render-child/">delegate to children</a>, <a href="../../-render-context/running-worker/">subscribe</a> to
 arbitrary asynchronous events from the outside world, and be <a href="../snapshot-state/">saved</a> to a
 serialized form to be restored later.</p>
 <p>The basic purpose of a <code>Workflow</code> is to take some <a href="../#PropsT">props</a> and return a
-<a href="../#RenderingT">rendering</a>. To that end, a workflow may keep track of internal <a href="../#StateT">state</a>,
+<a href="../#RenderingT">rendering</a> that serves as a public representation of its current state,
+and which can be used to update that state. A rendering typically serves as a view  model,
+though this is not assumed, and is not the only use case.</p>
+<p>To that end, a workflow may keep track of internal <a href="../#StateT">state</a>,
 recursively ask other workflows to render themselves, subscribe to data streams from the outside
-world, and handle events both from its <a href="#">renderings</a> and from workflows
-it&rsquo;s delegated to (its &ldquo;children&rdquo;). A <code>Workflow</code> may also emit <a href="../#OutputT">output events</a> up to its
-parent <code>Workflow</code>.</p>
+world, and handle events both from its <a href="../../-render-context/make-action-sink/">renderings</a> and from
+workflows it&rsquo;s delegated to (its &ldquo;children&rdquo;). A <code>Workflow</code> may also emit
+<a href="../#OutputT">output events</a> up to its parent <code>Workflow</code>.</p>
 <p>Workflows form a tree, where each workflow can have zero or more child workflows. Child workflows
 are started as necessary whenever another workflow asks for them, and are cleaned up automatically
 when they&rsquo;re no longer needed. <a href="../#PropsT">Props</a> propagate down the tree, <a href="../#OutputT">outputs</a> and

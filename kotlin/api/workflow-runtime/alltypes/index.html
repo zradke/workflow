@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -907,8 +931,36 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../com.squareup.workflow.diagnostic/-debug-snapshot-recording-listener/">com.squareup.workflow.diagnostic.DebugSnapshotRecordingListener</a></td>
+<td>A <a href="../com.squareup.workflow.diagnostic/-workflow-diagnostic-listener/">WorkflowDiagnosticListener</a> that records <a href="../com.squareup.workflow.diagnostic/-workflow-hierarchy-debug-snapshot/">WorkflowHierarchyDebugSnapshot</a>s and <a href="../com.squareup.workflow.diagnostic/-workflow-update-debug-info/">WorkflowUpdateDebugInfo</a>s and sends them to <a href="#">debugger</a> after each render pass.</td>
+</tr>
+<tr>
 <td><a href="../com.squareup.workflow/-rendering-and-snapshot/">com.squareup.workflow.RenderingAndSnapshot</a></td>
 <td>Tuple of rendering and snapshot used by <a href="../com.squareup.workflow/launch-workflow-in/">launchWorkflowIn</a>.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.diagnostic/-simple-logging-diagnostic-listener/">com.squareup.workflow.diagnostic.SimpleLoggingDiagnosticListener</a></td>
+<td>A <a href="../com.squareup.workflow.diagnostic/-workflow-diagnostic-listener/">WorkflowDiagnosticListener</a> that just prints all events using <a href="../com.squareup.workflow.diagnostic/-simple-logging-diagnostic-listener/println/">println</a>.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.diagnostic/-workflow-diagnostic-listener/">com.squareup.workflow.diagnostic.WorkflowDiagnosticListener</a></td>
+<td>Receives diagnostic events from the workflow runtime when significant things happen, e.g. the runtime starts or stops, workflows and workers are started or stopped, and information about render passes and workflow actions.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.diagnostic/-workflow-hierarchy-debug-snapshot/">com.squareup.workflow.diagnostic.WorkflowHierarchyDebugSnapshot</a></td>
+<td>Describes a tree of snapshots of the states of the entire workflow tree after a particular render pass.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow/-workflow-session/">com.squareup.workflow.WorkflowSession</a></td>
+<td>A tuple of <a href="#">Flow</a>s representing all the emissions from the workflow runtime.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.testing/-workflow-test-params/">com.squareup.workflow.testing.WorkflowTestParams</a></td>
+<td>Defines configuration for workflow testing infrastructure such as <code>testRender</code>, <code>testFromStart</code>. and <code>test</code>.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.diagnostic/-workflow-update-debug-info/">com.squareup.workflow.diagnostic.WorkflowUpdateDebugInfo</a></td>
+<td>A description of a workflow update triggered by a <a href="../com.squareup.workflow.diagnostic/-workflow-update-debug-info/-source/">Source</a> (worker, event, etc).</td>
 </tr>
 </tbody>
 </table>

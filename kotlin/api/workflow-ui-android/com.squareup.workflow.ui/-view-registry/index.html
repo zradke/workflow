@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -906,7 +930,7 @@
                 
                 <p><a href="../../">workflow-ui-android</a> / <a href="../">com.squareup.workflow.ui</a> / <a href="./">ViewRegistry</a></p>
 <h1 id="viewregistry">ViewRegistry<a class="headerlink" href="#viewregistry" title="Permanent link">&para;</a></h1>
-<p><code>@ExperimentalWorkflowUi class ViewRegistry</code></p>
+<p><code>class ViewRegistry</code></p>
 <p>A collection of <a href="../-view-binding/">ViewBinding</a>s that can be used to display the stream of renderings
 from a workflow tree.</p>
 <p>Two concrete <a href="../-view-binding/">ViewBinding</a> implementations are provided:</p>
@@ -979,7 +1003,7 @@ class doc on <a href="../-layout-runner/">LayoutRunner</a> for details.</p>
 <tbody>
 <tr>
 <td><a href="build-view/">buildView</a></td>
-<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; buildView(initialRendering:</code><a href="build-view/#RenderingT"><code>RenderingT</code></a><code>, contextForNewView:</code><a href="https://developer.android.com/reference/android/content/Context.html"><code>Context</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>? = null):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><br>Creates a <a href="https://developer.android.com/reference/android/view/View.html">View</a> to display <a href="build-view/#com.squareup.workflow.ui.ViewRegistry$buildView(com.squareup.workflow.ui.ViewRegistry.buildView.RenderingT, android.content.Context, android.view.ViewGroup)/initialRendering">initialRendering</a>, which can be updated via calls to <a href="../android.view.-view/show-rendering/">View.showRendering</a>.<code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; buildView(initialRendering:</code><a href="build-view/#RenderingT"><code>RenderingT</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><br>Creates a <a href="https://developer.android.com/reference/android/view/View.html">View</a> to display <a href="build-view/#com.squareup.workflow.ui.ViewRegistry$buildView(com.squareup.workflow.ui.ViewRegistry.buildView.RenderingT, android.view.ViewGroup)/initialRendering">initialRendering</a>, and which can handle calls to <a href="../android.view.-view/show-rendering/">View.showRendering</a>.</td>
+<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; buildView(initialRendering:</code><a href="build-view/#RenderingT"><code>RenderingT</code></a><code>, initialContainerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>, contextForNewView:</code><a href="https://developer.android.com/reference/android/content/Context.html"><code>Context</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>? = null):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><br><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; buildView(initialRendering:</code><a href="build-view/#RenderingT"><code>RenderingT</code></a><code>, initialContainerHints:</code><a href="../-container-hints/"><code>ContainerHints</code></a><code>, container:</code><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><code>ViewGroup</code></a><code>):</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><br>It is usually more convenient to use <a href="../-workflow-view-stub/">WorkflowViewStub</a> than to call this method directly.</td>
 </tr>
 <tr>
 <td><a href="plus/">plus</a></td>

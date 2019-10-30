@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -901,6 +925,8 @@
 <h1 id="awaitnextsnapshot">awaitNextSnapshot<a class="headerlink" href="#awaitnextsnapshot" title="Permanent link">&para;</a></h1>
 <p><code>fun awaitNextSnapshot(timeoutMs:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><code>Long</code></a><code>? = null, skipIntermediate:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><code>Boolean</code></a><code>= true): Snapshot</code></p>
 <p>Blocks until the workflow emits a snapshot, then returns it.</p>
+<p>The returned snapshot will be the snapshot only of the root workflow. It will be null if
+<code>snapshotState</code> returned an empty <a href="#">Snapshot</a>.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p><code>timeoutMs</code> - The maximum amount of time to wait for a snapshot to be emitted. If null,
 <a href="../-d-e-f-a-u-l-t_-t-i-m-e-o-u-t_-m-s/">DEFAULT_TIMEOUT_MS</a> will be used instead.</p>

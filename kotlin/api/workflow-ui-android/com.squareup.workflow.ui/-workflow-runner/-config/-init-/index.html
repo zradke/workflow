@@ -738,6 +738,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../trace-encoder/com.squareup.tracing/" title="trace-encoder" class="md-nav__link">
+      trace-encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../workflow-tracing/com.squareup.workflow.diagnostic.tracing/" title="workflow-tracing" class="md-nav__link">
+      workflow-tracing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -868,6 +892,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -883,8 +923,11 @@
                 
                 <p><a href="../../../../">workflow-ui-android</a> / <a href="../../../">com.squareup.workflow.ui</a> / <a href="../../">WorkflowRunner</a> / <a href="../">Config</a> / <a href="./">&lt;init&gt;</a></p>
 <h1 id="init">&lt;init&gt;<a class="headerlink" href="#init" title="Permanent link">&para;</a></h1>
-<p><code>Config(workflow: Workflow&lt;</code><a href="../#PropsT"><code>PropsT</code></a><code>,</code><a href="../#OutputT"><code>OutputT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;, viewRegistry:</code><a href="../../../-view-registry/"><code>ViewRegistry</code></a><code>, props:</code><a href="../#PropsT"><code>PropsT</code></a><code>, dispatcher: CoroutineDispatcher = Dispatchers.Main.immediate)</code>
-<code>Config(workflow: Workflow&lt;</code><a href="../#PropsT"><code>PropsT</code></a><code>,</code><a href="../#OutputT"><code>OutputT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;, viewRegistry:</code><a href="../../../-view-registry/"><code>ViewRegistry</code></a><code>, props: Flow&lt;</code><a href="../#PropsT"><code>PropsT</code></a><code>&gt;, dispatcher: CoroutineDispatcher)</code></p>
+<p><code>Config(workflow: Workflow&lt;</code><a href="../#PropsT"><code>PropsT</code></a><code>,</code><a href="../#OutputT"><code>OutputT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;, viewRegistry:</code><a href="../../../-view-registry/"><code>ViewRegistry</code></a><code>, props:</code><a href="../#PropsT"><code>PropsT</code></a><code>, dispatcher: CoroutineDispatcher = Dispatchers.Main.immediate, diagnosticListener: WorkflowDiagnosticListener? = null)</code>
+<code>Config(workflow: Workflow&lt;</code><a href="../#PropsT"><code>PropsT</code></a><code>,</code><a href="../#OutputT"><code>OutputT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt;, viewRegistry:</code><a href="../../../-view-registry/"><code>ViewRegistry</code></a><code>, props: Flow&lt;</code><a href="../#PropsT"><code>PropsT</code></a><code>&gt;, dispatcher: CoroutineDispatcher, diagnosticListener: WorkflowDiagnosticListener?)</code></p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<p><code>diagnosticListener</code> - If non-null, will receive all diagnostic events from the workflow
+runtime. See <a href="#">com.squareup.workflow.WorkflowSession.diagnosticListener</a>.</p>
                 
                   
                 
