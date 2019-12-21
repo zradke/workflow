@@ -66,7 +66,25 @@ final class WorkflowNode<WorkflowType: Workflow> {
                         kind: .childDidUpdate(debugInfo)))
         }
 
-        onOutput?(output)
+        apply(output: output)
+    }
+    
+    private var pendingOutputs: [Output] = []
+    private var token: Int = 0
+    private func apply(output: Output) {
+        token += 1
+        let localToken = token
+        DispatchQueue.main.async {
+            self.pendingOutputs += [output]
+            if self.token != localToken {
+                return
+            }
+            
+            for output in self.pendingOutputs {
+                self.onOutput?(output)
+                self.pendingOutputs = []
+            }
+        }
     }
 
     func render() -> WorkflowType.Rendering {
