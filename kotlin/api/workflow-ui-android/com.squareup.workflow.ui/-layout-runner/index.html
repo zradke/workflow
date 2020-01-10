@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../../images/icon-square.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/application.1b62728e.css">
       
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -57,12 +57,12 @@
       
     
     
-      <script src="../../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -219,7 +219,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="../../../../.." title="Overview" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../../.." class="md-tabs__link md-tabs__link--active">
         Overview
       </a>
     
@@ -231,7 +231,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../userguide/concepts/" title="User Guide" class="md-tabs__link">
+        <a href="../../../../../userguide/concepts/" class="md-tabs__link">
           User Guide
         </a>
       
@@ -248,7 +248,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../tutorial/" title="Tutorials & Samples" class="md-tabs__link">
+        <a href="../../../../../tutorial/" class="md-tabs__link">
           Tutorials & Samples
         </a>
       
@@ -263,7 +263,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../workflow-core/com.squareup.workflow/" title="Kotlin API" class="md-tabs__link">
+        <a href="../../../workflow-core/com.squareup.workflow/" class="md-tabs__link">
           Kotlin API
         </a>
       
@@ -276,7 +276,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../swift/api/Workflow/" title="Swift API" class="md-tabs__link">
+        <a href="../../../../../swift/api/Workflow/" class="md-tabs__link">
           Swift API
         </a>
       
@@ -296,7 +296,7 @@
   </div>
 </nav>
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -896,21 +896,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#types" title="Types" class="md-nav__link">
+  <a href="#types" class="md-nav__link">
     Types
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions" title="Functions" class="md-nav__link">
+  <a href="#functions" class="md-nav__link">
     Functions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#companion-object-functions" title="Companion Object Functions" class="md-nav__link">
+  <a href="#companion-object-functions" class="md-nav__link">
     Companion Object Functions
   </a>
   
@@ -966,8 +966,8 @@ it expects to drive.</p>
 </td></tr></table>
 
 <p>}</p>
-<p>This pattern allows us to assemble a <a href="../-view-registry/">ViewRegistry</a> out of the
-<a href="./">LayoutRunner</a> classes themselves.</p>
+<p>This pattern allows us to assemble a <a href="../-view-registry/">ViewRegistry</a> out of the <a href="./">LayoutRunner</a> classes
+themselves.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    val TicTacToeViewBuilders = ViewRegistry(
@@ -976,12 +976,6 @@ it expects to drive.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Every <a href="./">LayoutRunner</a> must have a constructor that accepts a <a href="https://developer.android.com/reference/android/view/View.html">View</a> as its first argument.
-The constructor may also have a second <a href="../-view-registry/">ViewRegistry</a> argument, to allow
-nested renderings to be displayed in nested views.</p>
-<p>It&rsquo;s simplest, and most typical, to pass the <a href="../-view-registry/">ViewRegistry</a> to <a href="../-workflow-view-stub/update/">WorkflowViewStub.update</a> to
-show nested renderings. When that&rsquo;s too constraining, more complex containers can
-call <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>, <a href="../android.view.-view/can-show-rendering/">View.canShowRendering</a> and <a href="../android.view.-view/show-rendering/">View.showRendering</a> directly.</p>
 <h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1023,7 +1017,7 @@ call <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>, <a href
 <tbody>
 <tr>
 <td><a href="bind/">bind</a></td>
-<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; bind(layoutId:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><code>Int</code></a><code>, constructor: (</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>,</code><a href="../-view-registry/"><code>ViewRegistry</code></a><code>) -&gt;</code><a href="./"><code>LayoutRunner</code></a><code>&lt;</code><a href="bind/#RenderingT"><code>RenderingT</code></a><code>&gt;):</code><a href="../-view-binding/"><code>ViewBinding</code></a><code>&lt;</code><a href="bind/#RenderingT"><code>RenderingT</code></a><code>&gt;</code><br><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; bind(layoutId:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><code>Int</code></a><code>, constructor: (</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>) -&gt;</code><a href="./"><code>LayoutRunner</code></a><code>&lt;</code><a href="bind/#RenderingT"><code>RenderingT</code></a><code>&gt;):</code><a href="../-view-binding/"><code>ViewBinding</code></a><code>&lt;</code><a href="bind/#RenderingT"><code>RenderingT</code></a><code>&gt;</code><br>Creates a <a href="../-view-binding/">ViewBinding</a> that inflates <a href="bind/#com.squareup.workflow.ui.LayoutRunner.Companion$bind(kotlin.Int, kotlin.Function2((android.view.View, com.squareup.workflow.ui.ViewRegistry, com.squareup.workflow.ui.LayoutRunner((com.squareup.workflow.ui.LayoutRunner.Companion.bind.RenderingT)))))/layoutId">layoutId</a> to show renderings of type <a href="bind/#RenderingT">RenderingT</a>, using a <a href="./">LayoutRunner</a> created by <a href="bind/#com.squareup.workflow.ui.LayoutRunner.Companion$bind(kotlin.Int, kotlin.Function2((android.view.View, com.squareup.workflow.ui.ViewRegistry, com.squareup.workflow.ui.LayoutRunner((com.squareup.workflow.ui.LayoutRunner.Companion.bind.RenderingT)))))/constructor">constructor</a>.</td>
+<td><code>fun &lt;RenderingT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; bind(layoutId:</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><code>Int</code></a><code>, constructor: (</code><a href="https://developer.android.com/reference/android/view/View.html"><code>View</code></a><code>) -&gt;</code><a href="./"><code>LayoutRunner</code></a><code>&lt;</code><a href="bind/#RenderingT"><code>RenderingT</code></a><code>&gt;):</code><a href="../-view-binding/"><code>ViewBinding</code></a><code>&lt;</code><a href="bind/#RenderingT"><code>RenderingT</code></a><code>&gt;</code><br>Creates a <a href="../-view-binding/">ViewBinding</a> that inflates <a href="bind/#com.squareup.workflow.ui.LayoutRunner.Companion$bind(kotlin.Int, kotlin.Function1((android.view.View, com.squareup.workflow.ui.LayoutRunner((com.squareup.workflow.ui.LayoutRunner.Companion.bind.RenderingT)))))/layoutId">layoutId</a> to show renderings of type <a href="bind/#RenderingT">RenderingT</a>, using a <a href="./">LayoutRunner</a> created by <a href="bind/#com.squareup.workflow.ui.LayoutRunner.Companion$bind(kotlin.Int, kotlin.Function1((android.view.View, com.squareup.workflow.ui.LayoutRunner((com.squareup.workflow.ui.LayoutRunner.Companion.bind.RenderingT)))))/constructor">constructor</a>.</td>
 </tr>
 <tr>
 <td><a href="bind-no-runner/">bindNoRunner</a></td>
@@ -1033,6 +1027,7 @@ call <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>, <a href
 </table>
                 
                   
+                
                 
               
               
@@ -1082,7 +1077,7 @@ call <a href="../-view-registry/build-view/">ViewRegistry.buildView</a>, <a href
       
     </div>
     
-      <script src="../../../../../assets/javascripts/application.245445c6.js"></script>
+      <script src="../../../../../assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../../../.."}})</script>
       

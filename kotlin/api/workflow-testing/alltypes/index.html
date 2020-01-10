@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../images/icon-square.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -57,12 +57,12 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -219,7 +219,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="../../../.." title="Overview" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../.." class="md-tabs__link md-tabs__link--active">
         Overview
       </a>
     
@@ -231,7 +231,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../userguide/concepts/" title="User Guide" class="md-tabs__link">
+        <a href="../../../../userguide/concepts/" class="md-tabs__link">
           User Guide
         </a>
       
@@ -248,7 +248,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../tutorial/" title="Tutorials & Samples" class="md-tabs__link">
+        <a href="../../../../tutorial/" class="md-tabs__link">
           Tutorials & Samples
         </a>
       
@@ -263,7 +263,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../workflow-core/com.squareup.workflow/" title="Kotlin API" class="md-tabs__link">
+        <a href="../../workflow-core/com.squareup.workflow/" class="md-tabs__link">
           Kotlin API
         </a>
       
@@ -276,7 +276,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../swift/api/Workflow/" title="Swift API" class="md-tabs__link">
+        <a href="../../../../swift/api/Workflow/" class="md-tabs__link">
           Swift API
         </a>
       
@@ -296,7 +296,7 @@
   </div>
 </nav>
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -894,7 +894,7 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#all-types" title="All Types" class="md-nav__link">
+  <a href="#all-types" class="md-nav__link">
     All Types
   </a>
   
@@ -931,24 +931,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../com.squareup.workflow.testing/-mock-child-workflow/">com.squareup.workflow.testing.MockChildWorkflow</a></td>
-<td>A mock implementation of <a href="#">Workflow</a> for use in tests with <code>testRender</code> and <a href="../com.squareup.workflow.testing/-test-render-result/">TestRenderResult</a>.</td>
+<td><a href="../com.squareup.workflow.testing/-emitted-output/">com.squareup.workflow.testing.EmittedOutput</a></td>
+<td>Wrapper around a potentially-nullable <a href="../com.squareup.workflow.testing/-emitted-output/#OutputT">OutputT</a> value.</td>
 </tr>
 <tr>
-<td><a href="../com.squareup.workflow.testing/-mock-worker/">com.squareup.workflow.testing.MockWorker</a></td>
-<td>A mock implementation of <a href="#">Worker</a> for use in tests with <code>testRender</code> and <a href="../com.squareup.workflow.testing/-test-render-result/">TestRenderResult</a>.</td>
+<td><a href="../com.squareup.workflow.testing/-render-tester/">com.squareup.workflow.testing.RenderTester</a></td>
+<td>The props must be specified, the initial state may be specified, and then all child workflows and workers that are expected to run, and any outputs from them, must be specified with <a href="../com.squareup.workflow.testing/-render-tester/expect-workflow/">expectWorkflow</a> and <a href="../com.squareup.workflow.testing/-render-tester/expect-worker/">expectWorker</a> calls. Then call <a href="../com.squareup.workflow.testing/-render-tester/render/">render</a> and perform any assertions on the rendering. An event may also be sent to the rendering if no workflows or workers emitted an output. Lastly, the <a href="../com.squareup.workflow.testing/-render-test-result/">RenderTestResult</a> returned by <code>render</code> may be used to assert on the <a href="#">WorkflowAction</a>s processed to handle events or outputs by calling <a href="../com.squareup.workflow.testing/-render-test-result/verify-action/">verifyAction</a> or <a href="../com.squareup.workflow.testing/-render-test-result/verify-action-result/">verifyActionResult</a>.</td>
+</tr>
+<tr>
+<td><a href="../com.squareup.workflow.testing/-render-test-result/">com.squareup.workflow.testing.RenderTestResult</a></td>
+<td>Result of a <a href="../com.squareup.workflow.testing/-render-tester/render/">RenderTester.render</a> call that can be used to verify that a <a href="#">WorkflowAction</a> was processed and perform assertions on that action.</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.testing/com.squareup.workflow.-stateful-workflow/">com.squareup.workflow.StatefulWorkflow</a> (extensions in package com.squareup.workflow.testing)</td>
 <td></td>
-</tr>
-<tr>
-<td><a href="../com.squareup.workflow.testing/com.squareup.workflow.-stateless-workflow/">com.squareup.workflow.StatelessWorkflow</a> (extensions in package com.squareup.workflow.testing)</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../com.squareup.workflow.testing/-test-render-result/">com.squareup.workflow.testing.TestRenderResult</a></td>
-<td>Represents the result of running a single render pass on a workflow.</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.testing/com.squareup.workflow.-worker/">com.squareup.workflow.Worker</a> (extensions in package com.squareup.workflow.testing)</td>
@@ -956,7 +952,7 @@
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.testing/-worker-sink/">com.squareup.workflow.testing.WorkerSink</a></td>
-<td>Implementation of <a href="#">Worker</a> for integration tests (using <a href="../com.squareup.workflow.testing/com.squareup.workflow.-workflow/test-from-start/">testFromStart</a> or <a href="#">testFromState</a>) that need to simply push values into the worker from the test.</td>
+<td>Implementation of <a href="#">Worker</a> for integration tests (using <a href="../com.squareup.workflow.testing/com.squareup.workflow.-workflow/test-from-start/">testFromStart</a> or <a href="../com.squareup.workflow.testing/com.squareup.workflow.-stateful-workflow/test-from-state/">testFromState</a>) that need to simply push values into the worker from the test.</td>
 </tr>
 <tr>
 <td><a href="../com.squareup.workflow.testing/-worker-tester/">com.squareup.workflow.testing.WorkerTester</a></td>
@@ -974,6 +970,7 @@
 </table>
                 
                   
+                
                 
               
               
@@ -1023,7 +1020,7 @@
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.245445c6.js"></script>
+      <script src="../../../../assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
       

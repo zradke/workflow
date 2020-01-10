@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../../../images/icon-square.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/application.1b62728e.css">
       
-        <link rel="stylesheet" href="../../../../../../assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -57,12 +57,12 @@
       
     
     
-      <script src="../../../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -219,7 +219,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="../../../../../.." title="Overview" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../../../.." class="md-tabs__link md-tabs__link--active">
         Overview
       </a>
     
@@ -231,7 +231,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../../userguide/concepts/" title="User Guide" class="md-tabs__link">
+        <a href="../../../../../../userguide/concepts/" class="md-tabs__link">
           User Guide
         </a>
       
@@ -248,7 +248,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../../tutorial/" title="Tutorials & Samples" class="md-tabs__link">
+        <a href="../../../../../../tutorial/" class="md-tabs__link">
           Tutorials & Samples
         </a>
       
@@ -263,7 +263,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../workflow-core/com.squareup.workflow/" title="Kotlin API" class="md-tabs__link">
+        <a href="../../../../workflow-core/com.squareup.workflow/" class="md-tabs__link">
           Kotlin API
         </a>
       
@@ -276,7 +276,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../../swift/api/Workflow/" title="Swift API" class="md-tabs__link">
+        <a href="../../../../../../swift/api/Workflow/" class="md-tabs__link">
           Swift API
         </a>
       
@@ -296,7 +296,7 @@
   </div>
 </nav>
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -896,7 +896,28 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
     Parameters
   </a>
   
@@ -923,19 +944,48 @@
                 
                 <p><a href="../../../">workflow-ui-android</a> / <a href="../../">com.squareup.workflow.ui</a> / <a href="../">androidx.fragment.app.FragmentActivity</a> / <a href="./">setContentWorkflow</a></p>
 <h1 id="setcontentworkflow">setContentWorkflow<a class="headerlink" href="#setcontentworkflow" title="Permanent link">&para;</a></h1>
-<p><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; FragmentActivity.setContentWorkflow(configure: () -&gt;</code><a href="../../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;, onResult: (</code><a href="./#OutputT"><code>OutputT</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
+<p><code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; FragmentActivity.setContentWorkflow(containerHints:</code><a href="../../-container-hints/"><code>ContainerHints</code></a><code>, configure: () -&gt;</code><a href="../../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;, onResult: (</code><a href="./#OutputT"><code>OutputT</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
 <p>Call this method from <a href="#">FragmentActivity.onCreate</a>, instead of <a href="#">FragmentActivity.setContentView</a>.
 It creates a <a href="../../-workflow-runner/">WorkflowRunner</a> for this activity, if one doesn&rsquo;t already exist, and
 sets a view driven by that model as the content view.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<p><code>containerHints</code> - provides the <a href="../../-view-registry/">ViewRegistry</a> used to display workflow renderings.</p>
 <p><code>configure</code> - function defining the root workflow and its environment. Called only
 once per <a href="#">lifecycle</a>, and always called from the UI thread.</p>
 <p><code>onResult</code> - function called with the first (and only) output emitted by the root workflow,
 handy for passing to <a href="#">FragmentActivity.setResult</a>. The workflow is ended once it emits any
 values, so this is also a good place from which to call <a href="#">FragmentActivity.finish</a>. Called
-only while the activity is active, and always called from the UI thread.<code>fun &lt;PropsT&gt; FragmentActivity.setContentWorkflow(configure: () -&gt;</code><a href="../../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;):</code><a href="../../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></p>
+only while the activity is active, and always called from the UI thread.<code>fun &lt;PropsT, OutputT :</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><code>Any</code></a><code>&gt; FragmentActivity.setContentWorkflow(registry:</code><a href="../../-view-registry/"><code>ViewRegistry</code></a><code>, configure: () -&gt;</code><a href="../../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;, onResult: (</code><a href="./#OutputT"><code>OutputT</code></a><code>) -&gt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><code>Unit</code></a><code>):</code><a href="../../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="./#OutputT"><code>OutputT</code></a><code>&gt;</code></p>
+<p>Call this method from <a href="#">FragmentActivity.onCreate</a>, instead of <a href="#">FragmentActivity.setContentView</a>.
+It creates a <a href="../../-workflow-runner/">WorkflowRunner</a> for this activity, if one doesn&rsquo;t already exist, and
+sets a view driven by that model as the content view.</p>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>
+<p><code>registry</code> - used to display workflow renderings.</p>
+<p><code>configure</code> - function defining the root workflow and its environment. Called only
+once per <a href="#">lifecycle</a>, and always called from the UI thread.</p>
+<p><code>onResult</code> - function called with the first (and only) output emitted by the root workflow,
+handy for passing to <a href="#">FragmentActivity.setResult</a>. The workflow is ended once it emits any
+values, so this is also a good place from which to call <a href="#">FragmentActivity.finish</a>. Called
+only while the activity is active, and always called from the UI thread.<code>fun &lt;PropsT&gt; FragmentActivity.setContentWorkflow(containerHints:</code><a href="../../-container-hints/"><code>ContainerHints</code></a><code>, configure: () -&gt;</code><a href="../../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;):</code><a href="../../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></p>
+<p>For workflows that produce no output, call this method from <a href="#">FragmentActivity.onCreate</a>
+instead of <a href="#">FragmentActivity.setContentView</a>.
+It creates a <a href="../../-workflow-runner/">WorkflowRunner</a> for this activity, if one doesn&rsquo;t already exist, and
+sets a view driven by that model as the content view.</p>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h3>
+<p><code>containerHints</code> - provides the <a href="../../-view-registry/">ViewRegistry</a> used to display workflow renderings.</p>
+<p><code>configure</code> - function defining the root workflow and its environment. Called only
+once per <a href="#">lifecycle</a>, and always called from the UI thread.<code>fun &lt;PropsT&gt; FragmentActivity.setContentWorkflow(registry:</code><a href="../../-view-registry/"><code>ViewRegistry</code></a><code>, configure: () -&gt;</code><a href="../../-workflow-runner/-config/"><code>WorkflowRunner.Config</code></a><code>&lt;</code><a href="./#PropsT"><code>PropsT</code></a><code>,</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;):</code><a href="../../-workflow-runner/"><code>WorkflowRunner</code></a><code>&lt;</code><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html"><code>Nothing</code></a><code>&gt;</code></p>
+<p>For workflows that produce no output, call this method from <a href="#">FragmentActivity.onCreate</a>
+instead of <a href="#">FragmentActivity.setContentView</a>.
+It creates a <a href="../../-workflow-runner/">WorkflowRunner</a> for this activity, if one doesn&rsquo;t already exist, and
+sets a view driven by that model as the content view.</p>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h3>
+<p><code>registry</code> - used to display workflow renderings.</p>
+<p><code>configure</code> - function defining the root workflow and its environment. Called only
+once per <a href="#">lifecycle</a>, and always called from the UI thread.</p>
                 
                   
+                
                 
               
               
@@ -985,7 +1035,7 @@ only while the activity is active, and always called from the UI thread.<code>fu
       
     </div>
     
-      <script src="../../../../../../assets/javascripts/application.245445c6.js"></script>
+      <script src="../../../../../../assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../../../../.."}})</script>
       

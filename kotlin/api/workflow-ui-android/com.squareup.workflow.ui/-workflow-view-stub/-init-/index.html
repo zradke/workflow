@@ -38,17 +38,17 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../../../../images/icon-square.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
-        <title> init  - Workflow</title>
+        <title>init - Workflow</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/application.1b62728e.css">
       
-        <link rel="stylesheet" href="../../../../../../assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -57,12 +57,12 @@
       
     
     
-      <script src="../../../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -219,7 +219,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="../../../../../.." title="Overview" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../../../.." class="md-tabs__link md-tabs__link--active">
         Overview
       </a>
     
@@ -231,7 +231,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../../userguide/concepts/" title="User Guide" class="md-tabs__link">
+        <a href="../../../../../../userguide/concepts/" class="md-tabs__link">
           User Guide
         </a>
       
@@ -248,7 +248,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../../tutorial/" title="Tutorials & Samples" class="md-tabs__link">
+        <a href="../../../../../../tutorial/" class="md-tabs__link">
           Tutorials & Samples
         </a>
       
@@ -263,7 +263,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../workflow-core/com.squareup.workflow/" title="Kotlin API" class="md-tabs__link">
+        <a href="../../../../workflow-core/com.squareup.workflow/" class="md-tabs__link">
           Kotlin API
         </a>
       
@@ -276,7 +276,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../../../swift/api/Workflow/" title="Swift API" class="md-tabs__link">
+        <a href="../../../../../../swift/api/Workflow/" class="md-tabs__link">
           Swift API
         </a>
       
@@ -296,7 +296,7 @@
   </div>
 </nav>
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -896,7 +896,7 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" title="Usage" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     Usage
   </a>
   
@@ -927,7 +927,7 @@
 <p>A placeholder <a href="https://developer.android.com/reference/android/view/View.html">View</a> that can replace itself with ones driven by workflow renderings,
 similar to <a href="https://developer.android.com/reference/android/view/ViewStub.html">android.view.ViewStub</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>In the XML layout for your container view, place a <a href="../">WorkflowViewStub</a> where
+<p>In the XML layout for a container view, place a <a href="../">WorkflowViewStub</a> where
 you want child renderings to be displayed. E.g.:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -945,7 +945,6 @@ you want child renderings to be displayed. E.g.:</p>
 
 <p>Then in your <a href="../../-layout-runner/">LayoutRunner</a>,</p>
 <ul>
-<li>get the <code>ViewRegistry</code> in your constructor</li>
 <li>pull the view out with <code>findViewById</code> like any other view</li>
 <li>and update it in your <code>showRendering</code> method:</li>
 </ul>
@@ -958,20 +957,21 @@ you want child renderings to be displayed. E.g.:</p>
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    class YourLayoutRunner(
-      view: View, private
-      val viewRegistry: ViewRegistry
-    ) {
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    class YourLayoutRunner(view: View) {
       private val child = view.findViewById&lt;WorkflowViewStub&gt;(R.id.child_stub)
 
-      override fun showRendering(rendering: YourRendering) {
-        child.update(rendering.childRendering, viewRegistry)
+      override fun showRendering(
+         rendering: YourRendering,
+         containerHints: ContainerHints
+      ) {
+        child.update(rendering.childRendering, containerHints)
       }
     }
 </pre></div>
 </td></tr></table>
                 
                   
+                
                 
               
               
@@ -1021,7 +1021,7 @@ you want child renderings to be displayed. E.g.:</p>
       
     </div>
     
-      <script src="../../../../../../assets/javascripts/application.245445c6.js"></script>
+      <script src="../../../../../../assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../../../../.."}})</script>
       
