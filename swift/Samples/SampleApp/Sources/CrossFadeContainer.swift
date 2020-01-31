@@ -18,11 +18,11 @@ import WorkflowUI
 
 
 struct CrossFadeScreen: Screen {
-    var baseScreen: AnyScreen
+    var baseScreen: Screen
     var key: AnyHashable
 
     init<ScreenType: Screen, Key: Hashable>(base screen: ScreenType, key: Key?) {
-        self.baseScreen = AnyScreen(screen)
+        self.baseScreen = screen
         if let key = key {
             self.key = AnyHashable(key)
         } else {
@@ -69,14 +69,14 @@ fileprivate final class CrossFadeContainerViewController: ScreenViewController<C
     }
 
     override func screenDidChange(from previousScreen: CrossFadeScreen) {
-        if screen.isEquivalent(to: previousScreen) {
-            screen.baseScreen.viewControllerDescription.update(viewController: childViewController,
-                                                               screen: screen.baseScreen)
-//            childViewController.update(screen: screen.baseScreen)
+        let description = screen.baseScreen.viewControllerDescription
+        
+        if description.canUpdate(viewController: childViewController) {
+            description.update(viewController: childViewController)
         } else {
             // The new screen is different than the previous. Animate the transition.
             let oldChild = childViewController
-            childViewController = screen.baseScreen.viewControllerDescription.build()
+            childViewController = description.build()
             addChild(childViewController)
             view.addSubview(childViewController.view)
             UIView.transition(

@@ -20,13 +20,5 @@
 /// Conforming types contain any information needed to populate a screen: data,
 /// styling, event handlers, etc.
 public protocol Screen {
-    /// Use `screenViewControllerDescription` to return the `ViewControllerDescription`
     var viewControllerDescription: ViewControllerDescription { get }
-}
-
-/// Temporary extension to enable soft-migration from `ViewRegistry`.
-public extension Screen {
-    var viewControllerDescription: ViewControllerDescription {
-        fatalError("Return appropriate `ViewControllerDescription` from \(self)")
-    }
 }

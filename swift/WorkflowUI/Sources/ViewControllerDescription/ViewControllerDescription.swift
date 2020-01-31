@@ -30,13 +30,16 @@ public struct ViewControllerDescription {
     private let _build: () -> ViewController
     private let _update: (ViewController) -> Void
 
-    public init<VC: ViewController>(builder: @escaping () -> VC = { VC.init() }, updater: @escaping (VC) -> Void) {
+    public init<VC: ViewController>(
+        builder: @escaping () -> VC = { VC.init() },
+        updater: @escaping (VC) -> Void
+    ) {
         _build = {
             builder()
         }
         _update = { vc in
             guard let vc = vc as? VC else {
-                fatalError("Unexpected type while updating screen for \(VC.self)")
+                fatalError("Unexpected VC type while updating screen for \(VC.self)")
             }
             updater(vc)
         }
@@ -45,15 +48,15 @@ public struct ViewControllerDescription {
 
     internal let viewControllerType: ViewController.Type
 
-    internal func canUpdate(viewController: ViewController) -> Bool {
+    public func canUpdate(viewController: ViewController) -> Bool {
         return type(of: viewController) == viewControllerType
     }
 
-    internal func build() -> ViewController {
+    public func build() -> ViewController {
         return _build()
     }
 
-    internal func update(viewController: ViewController) {
+    public func update(viewController: ViewController) {
         assert(type(of: viewController) == viewControllerType)
         _update(viewController)
     }

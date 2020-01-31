@@ -23,8 +23,6 @@ import UIKit
 /// given screen type.
 open class ScreenViewController<ScreenType: Screen>: UIViewController {
 
-    public final var viewRegistry: ViewRegistry
-
     private var currentScreen: ScreenType
 
     public final var screen: ScreenType {
@@ -35,9 +33,8 @@ open class ScreenViewController<ScreenType: Screen>: UIViewController {
         return ScreenType.self
     }
 
-    public required init(screen: ScreenType, viewRegistry: ViewRegistry = ViewRegistry()) {
+    public required init(screen: ScreenType) {
         self.currentScreen = screen
-        self.viewRegistry = viewRegistry
         super.init(nibName: nil, bundle: nil)
     }
 
