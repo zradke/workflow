@@ -38,24 +38,20 @@ struct CrossFadeScreen: Screen {
     fileprivate func isEquivalent(to otherScreen: CrossFadeScreen) -> Bool {
         return self.key == otherScreen.key
     }
-}
-
-
-extension ViewRegistry {
-
-    public mutating func registerCrossFadeContainer() {
-        self.register(screenViewControllerType: CrossFadeContainerViewController.self)
+    
+    
+    var viewControllerDescription: ViewControllerDescription {
+        return screenViewControllerDescription(for: CrossFadeContainerViewController.self)
     }
-
 }
 
 
 fileprivate final class CrossFadeContainerViewController: ScreenViewController<CrossFadeScreen> {
-    var childViewController: ScreenViewController<AnyScreen>
+    var childViewController: UIViewController
 
-    required init(screen: CrossFadeScreen, viewRegistry: ViewRegistry) {
-        childViewController = viewRegistry.provideView(for: screen.baseScreen)
-        super.init(screen: screen, viewRegistry: viewRegistry)
+    required init(screen: CrossFadeScreen) {
+        childViewController = screen.baseScreen.viewControllerDescription.build()
+        super.init(screen: screen)
     }
 
     override func viewDidLoad() {
@@ -74,11 +70,13 @@ fileprivate final class CrossFadeContainerViewController: ScreenViewController<C
 
     override func screenDidChange(from previousScreen: CrossFadeScreen) {
         if screen.isEquivalent(to: previousScreen) {
-            childViewController.update(screen: screen.baseScreen)
+            screen.baseScreen.viewControllerDescription.update(viewController: childViewController,
+                                                               screen: screen.baseScreen)
+//            childViewController.update(screen: screen.baseScreen)
         } else {
             // The new screen is different than the previous. Animate the transition.
             let oldChild = childViewController
-            childViewController = viewRegistry.provideView(for: screen.baseScreen)
+            childViewController = screen.baseScreen.viewControllerDescription.build()
             addChild(childViewController)
             view.addSubview(childViewController.view)
             UIView.transition(

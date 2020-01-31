@@ -25,7 +25,7 @@ struct WelcomeScreen: Screen {
 
 extension WelcomeScreen {
     var viewControllerDescription: ViewControllerDescription {
-        screenViewControllerDescription(for: WelcomeViewController.self)
+        return screenViewControllerDescription(for: WelcomeViewController.self)
     }
 }
 
@@ -34,11 +34,11 @@ fileprivate final class WelcomeViewController: ScreenViewController<WelcomeScree
     let nameField: UITextField
     let button: UIButton
 
-    required init(screen: WelcomeScreen, viewRegistry: ViewRegistry) {
+    required init(screen: WelcomeScreen) {
         welcomeLabel = UILabel(frame: .zero)
         nameField = UITextField(frame: .zero)
         button = UIButton(frame: .zero)
-        super.init(screen: screen, viewRegistry: viewRegistry)
+        super.init(screen: screen)
 
         update(with: screen)
     }
