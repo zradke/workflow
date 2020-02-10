@@ -119,6 +119,33 @@ extension DemoWorkflow {
 // MARK: Workers
 
 
+struct AnyWorker<O>: Worker {
+    typealias Output = O
+    
+    let signalProducer: SignalProducer<O, Never>
+    let isEqualTo: (Any) -> Bool
+    let baseWorker: Any
+    init<W: Worker>(worker: W) where W.Output == O {
+        self.baseWorker = worker
+        isEqualTo = { other in
+            guard let other = other as? W else {
+                return false
+            }
+            
+            return worker.isEquivalent(to: other)
+        }
+        self.signalProducer = worker.run()
+    }
+    
+    func run() -> SignalProducer<O, Never> {
+        return signalProducer
+    }
+    
+    func isEquivalent(to otherWorker: AnyWorker<O>) -> Bool {
+        return isEqualTo(otherWorker.baseWorker)
+    }
+}
+
 struct RefreshWorker: Worker {
     enum Output {
         case success(String)
@@ -168,7 +195,7 @@ extension DemoWorkflow {
             refreshText = "Loading..."
             refreshEnabled = false
 
-            context.awaitResult(for: RefreshWorker()) { output -> Action in
+            context.awaitResult(for: AnyWorker(worker: RefreshWorker())) { output -> Action in
                 switch output {
                 case .success(let result):
                     return .refreshComplete(result)
