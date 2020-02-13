@@ -123,6 +123,7 @@ buildscript {
       'test': [
           'androidx': [
               'espresso': [
+                  'contrib': "androidx.test.espresso:espresso-contrib:3.2.0",
                   'core': "androidx.test.espresso:espresso-core:3.2.0",
                   'idlingResource': "androidx.test.espresso:espresso-idling-resource:3.2.0",
                   'intents': "androidx.test.espresso:espresso-intents:3.2.0",
@@ -130,6 +131,7 @@ buildscript {
               'junitExt': "androidx.test.ext:junit:1.1.1",
               'runner': "androidx.test:runner:1.2.0",
               'truthExt': "androidx.test.ext:truth:1.2.0",
+              'uiautomator': "androidx.test.uiautomator:uiautomator:2.2.0",
           ],
           'hamcrestCore': "org.hamcrest:hamcrest-core:2.2",
           'junit': "junit:junit:4.13",
