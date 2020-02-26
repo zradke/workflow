@@ -51,6 +51,27 @@ import kotlin.reflect.KClass
  *    val TicTacToeViewBuilders = ViewRegistry(
  *        NewGameLayoutRunner, GamePlayLayoutRunner, GameOverLayoutRunner
  *    )
+ *
+ * ## AndroidX ViewBinding
+ *
+ * [LayoutRunner]s also support AndroidX ViewBindings. There is a [LayoutRunner.bind] overload that
+ * takes a reference to an [androidx.viewbinding.ViewBinding]'s `inflate` method and a
+ * [LayoutRunner] constructor that accepts an [androidx.viewbinding.ViewBinding] instead of a
+ * [View].
+ *
+ *   class HelloLayoutRunner(private val binding: HelloGoodbyeLayoutBinding) : LayoutRunner<Rendering> {
+ *
+ *     override fun showRendering(rendering: Rendering) {
+ *       binding.messageView.text = rendering.message
+ *       binding.messageView.setOnClickListener { rendering.onClick(Unit) }
+ *     }
+ *
+ *     companion object : ViewBinding<Rendering> by bind(
+ *         HelloGoodbyeLayoutBinding, ::HelloLayoutRunner
+ *     )
+ *   }
+ *
+ * If the view does not need to be initialized, the [bindViewBinding] function can be used instead.
  */
 interface LayoutRunner<RenderingT : Any> {
   fun showRendering(
@@ -69,8 +90,7 @@ interface LayoutRunner<RenderingT : Any> {
       contextForNewView: Context,
       container: ViewGroup?
     ): View {
-      return LayoutInflater.from(container?.context ?: contextForNewView)
-          .cloneInContext(contextForNewView)
+      return contextForNewView.viewBindingLayoutInflater(container)
           .inflate(layoutId, container, false)
           .apply {
             bindShowRendering(
@@ -93,6 +113,20 @@ interface LayoutRunner<RenderingT : Any> {
     ): ViewBinding<RenderingT> = Binding(RenderingT::class, layoutId, constructor)
 
     /**
+     * Creates a [ViewBinding] that [inflates][bindingInflater] a [BindingT] to show renderings of
+     * type [RenderingT], using a [LayoutRunner] created by [constructor].
+     *
+     * If the view doesn't need to be initialized before [showRendering] is called,
+     * [bindViewBinding] can be used instead, which just takes a lambda instead requiring a whole
+     * [LayoutRunner] class.
+     */
+    inline fun <BindingT : androidx.viewbinding.ViewBinding, reified RenderingT : Any> bind(
+      noinline bindingInflater: ViewBindingInflater<BindingT>,
+      noinline constructor: (BindingT) -> LayoutRunner<RenderingT>
+    ): ViewBinding<RenderingT> =
+      AndroidXViewBinding(RenderingT::class, bindingInflater, constructor)
+
+    /**
      * Creates a [ViewBinding] that inflates [layoutId] to "show" renderings of type [RenderingT],
      * with a no-op [LayoutRunner]. Handy for showing static views.
      */
@@ -105,6 +139,33 @@ interface LayoutRunner<RenderingT : Any> {
           containerHints: ContainerHints
         ) = Unit
       }
+    }
+
+    private fun Context.viewBindingLayoutInflater(container: ViewGroup?) =
+      LayoutInflater.from(container?.context ?: this)
+          .cloneInContext(this)
+
+    @PublishedApi
+    internal class AndroidXViewBinding<BindingT : androidx.viewbinding.ViewBinding, RenderingT : Any>(
+      override val type: KClass<RenderingT>,
+      private val bindingInflater: ViewBindingInflater<BindingT>,
+      private val runnerConstructor: (BindingT) -> LayoutRunner<RenderingT>
+    ) : ViewBinding<RenderingT> {
+      override fun buildView(
+        initialRendering: RenderingT,
+        initialContainerHints: ContainerHints,
+        contextForNewView: Context,
+        container: ViewGroup?
+      ): View =
+        bindingInflater(contextForNewView.viewBindingLayoutInflater(container), container, false)
+            .also { binding ->
+              binding.root.bindShowRendering(
+                  initialRendering,
+                  initialContainerHints,
+                  runnerConstructor.invoke(binding)::showRendering
+              )
+            }
+            .root
     }
   }
 }

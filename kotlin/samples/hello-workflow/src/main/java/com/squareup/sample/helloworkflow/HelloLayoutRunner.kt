@@ -15,25 +15,12 @@
  */
 package com.squareup.sample.helloworkflow
 
-import android.view.View
-import android.widget.TextView
-import com.squareup.workflow.ui.ContainerHints
-import com.squareup.workflow.ui.LayoutRunner
-import com.squareup.workflow.ui.LayoutRunner.Companion.bind
+import com.squareup.sample.helloworkflow.databinding.HelloGoodbyeLayoutBinding
 import com.squareup.workflow.ui.ViewBinding
+import com.squareup.workflow.ui.bindViewBinding
 
-class HelloLayoutRunner(view: View) : LayoutRunner<HelloWorkflow.Rendering> {
-  private val messageView: TextView = view.findViewById(R.id.hello_message)
-
-  override fun showRendering(
-    rendering: HelloWorkflow.Rendering,
-    containerHints: ContainerHints
-  ) {
-    messageView.text = rendering.message
-    messageView.setOnClickListener { rendering.onClick() }
+val HelloBinding: ViewBinding<HelloWorkflow.Rendering> =
+  bindViewBinding(HelloGoodbyeLayoutBinding::inflate) { rendering, _ ->
+    helloMessage.text = rendering.message
+    helloMessage.setOnClickListener { rendering.onClick }
   }
-
-  companion object : ViewBinding<HelloWorkflow.Rendering> by bind(
-      R.layout.hello_goodbye_layout, ::HelloLayoutRunner
-  )
-}
